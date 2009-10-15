@@ -6,39 +6,43 @@
   <configuration>
     <name>Debug</name>
     <outputs>
+      <file>$TOOLKIT_DIR$\inc\intrinsics.h</file>
+      <file>$PROJ_DIR$\fet140_adc12_09.c</file>
+      <file>$PROJ_DIR$\Debug\Exe\accelerometer.d43</file>
+      <file>$TOOLKIT_DIR$\config\multiplier.xcl</file>
+      <file>$TOOLKIT_DIR$\lib\dlib\dl430fn.r43</file>
+      <file>$PROJ_DIR$\Debug\Obj\main.r43</file>
+      <file>$TOOLKIT_DIR$\inc\in430.h</file>
+      <file>$PROJ_DIR$\Debug\Obj\accelerometer.pbd</file>
       <file>$TOOLKIT_DIR$\inc\msp430x16x.h</file>
       <file>$PROJ_DIR$\Debug\Obj\main.pbi</file>
-      <file>$PROJ_DIR$\Debug\Obj\accelerometer.pbd</file>
-      <file>$TOOLKIT_DIR$\config\multiplier.xcl</file>
-      <file>$PROJ_DIR$\..\..\some stuff\sample codes\fet140_adc12_05.c</file>
-      <file>$PROJ_DIR$\..\..\some stuff\sample codes\fet140_adc12_02.c</file>
       <file>$TOOLKIT_DIR$\config\lnk430F169.xcl</file>
-      <file>$TOOLKIT_DIR$\inc\in430.h</file>
-      <file>$TOOLKIT_DIR$\inc\intrinsics.h</file>
-      <file>$PROJ_DIR$\..\..\some stuff\sample codes\fet140_adc12_03.c</file>
-      <file>$PROJ_DIR$\Debug\Obj\main.r43</file>
-      <file>$TOOLKIT_DIR$\lib\dlib\dl430fn.r43</file>
-      <file>$PROJ_DIR$\..\..\some stuff\sample codes\fet140_adc12_06.c</file>
       <file>$PROJ_DIR$\main.c</file>
-      <file>$PROJ_DIR$\Debug\Exe\accelerometer.d43</file>
-      <file>$PROJ_DIR$\..\..\some stuff\sample codes\fet140_adc12_04.c</file>
-      <file>$PROJ_DIR$\..\..\some stuff\sample codes\fet140_adc12_01.c</file>
     </outputs>
     <file>
       <name>[ROOT_NODE]</name>
       <outputs>
         <tool>
           <name>XLINK</name>
-          <file> 14</file>
+          <file> 2</file>
         </tool>
       </outputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\Debug\Exe\accelerometer.d43</name>
+      <inputs>
+        <tool>
+          <name>XLINK</name>
+          <file> 10 3 5 4</file>
+        </tool>
+      </inputs>
     </file>
     <file>
       <name>$PROJ_DIR$\Debug\Obj\accelerometer.pbd</name>
       <inputs>
         <tool>
           <name>BILINK</name>
-          <file> 1</file>
+          <file> 9</file>
         </tool>
       </inputs>
     </file>
@@ -46,31 +50,22 @@
       <name>$PROJ_DIR$\main.c</name>
       <outputs>
         <tool>
-          <name>BICOMP</name>
-          <file> 1</file>
+          <name>ICC430</name>
+          <file> 5</file>
         </tool>
         <tool>
-          <name>ICC430</name>
-          <file> 10</file>
+          <name>BICOMP</name>
+          <file> 9</file>
         </tool>
       </outputs>
       <inputs>
         <tool>
-          <name>BICOMP</name>
-          <file> 0 7 8</file>
-        </tool>
-        <tool>
           <name>ICC430</name>
-          <file> 0 7 8</file>
+          <file> 8 6 0</file>
         </tool>
-      </inputs>
-    </file>
-    <file>
-      <name>$PROJ_DIR$\Debug\Exe\accelerometer.d43</name>
-      <inputs>
         <tool>
-          <name>XLINK</name>
-          <file> 6 3 10 11</file>
+          <name>BICOMP</name>
+          <file> 8 6 0</file>
         </tool>
       </inputs>
     </file>
