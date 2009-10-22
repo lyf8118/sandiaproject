@@ -1,0 +1,684 @@
+#include  "msp430x41x.h"
+;******************************************************************************
+;   D413/TMP100 Demo Program II
+;
+;   Program has been modified to do I2C master communication using
+;   port P6 instead of P3. P6 is available via pin header on the
+;   'MSP430-Day board' for external access.
+;
+;   I2C functions have been modified to allow the slave to hold SCL low
+;   for introducing a delay and also to fullfill Philips I2C timing specs
+;   for standard mode transfers at 1.048576 MHz CPU frequency.
+;
+;   Andreas Dannenberg
+;   MSP430 Applications
+;   Texas Instruments Inc.
+;******************************************************************************
+;   D413/TMP100 Demo Program - Software Interface TMP100, P1.0 set if
+;                              Temp > 86F (30c).
+;Description:
+;   I2C communication with a TMP100 in default condition is demonstrated. 
+;   If temperature read >= 86F or 30C, P1.0 is set for 5 secs, else reset. 
+;   P3.0 supplies power to the TMP100.
+;
+;   Only upper 9-bits from TMP100 temperature register used, representing 
+;   7F8h = 128c , 800h = -128c. 
+;
+;   I2C Ack error checking not implemented. I2C timing assumed with MCLK ~ 1MHz.
+;
+;Instructions:
+;   Display temp and time. (C & F)
+;   9-bit TMP Data acquired and used in F calc.
+;   S1 press - Enable Temp mode, toggle oC/oF modes
+;   S2 press - Enable Clock display
+;   Press and Hold S1 Then Press and Hold S2 - TIME set mode: Minutes/Hours count
+;   up, release to set. (Pushing S2 with S1 held down will increment minutes.)
+;
+;                                       MSP430F413
+;                                   -----------------
+;                               /|\|              XIN|-  
+;                                | |                 | 32kHz
+;                                --|RST          XOUT|-
+;                                  |                 |
+;                                +-|R33              |     -----------------
+;                                R |              Sxx|--> | + 7 6 5 4 3 2 1 |
+;                                +-|R23              |     -----------------
+;                                R |             COM0|-----||||
+;                                +-|R13          COM1|------|||
+;                                R |             COM2|-------||
+;                                +-|R03          COM3|--------|
+;                                | |                 |
+;               TMP100          \|/|                 |
+;               -------            |                 |
+;              |    Vcc|<-+P3.0+---|P3.0         P1.3|<--- Temperature mode
+;              |       |  |    |   |             P1.4|<--- Time mode
+;              |       | 10k  10k  |                 |
+;              |       |  |    |   |                 | 
+;              |    SDA|<-|----+-->|P2.0         P1.0|---> LED
+;              |       |  |        |                 |
+;           ---|A0     |  |        |                 |
+;           +--|A1     |  |        |                 |
+;           +--|Vss SCL|<-+--------|P2.1             |
+;          \|/  -------             -----------------     
+;
+;
+;            CPU registers used
+#define      TIMEOUT  R4
+#define      DIGITS   R6
+#define      RXTXI2C  R7
+#define      ADDRI2C  R8
+#define      DATAI2C  R9
+#define      BITI2C   R10
+
+; include the following line to use connector J6 for
+; off-board I2C connection instead of the onboard TMP100 sensor
+#define USE_OFFBOARD_INTERFACE              
+
+;            Definitions for I2C bus
+#ifdef USE_OFFBOARD_INTERFACE
+
+PxDIR        equ   P6DIR                     ; I2C port
+PxOUT        equ   P6OUT                     ; P6 = J6 (conn. for ext. access)
+PxIN         equ   P6IN
+
+SDA          equ   002h                      ; Px.1 controls SDA line (pull-up)
+SCL          equ   008h                      ; Px.3 controls SCL line (pull-up)
+
+#else
+
+PxDIR        equ   P2DIR                     ; I2C port
+PxOUT        equ   P2OUT                     ; P2 = onboard TMP100
+PxIN         equ   P2IN
+
+SDA          equ   001h                      ; Px.0 controls SDA line (pull-up)
+SCL          equ   002h                      ; Px.1 controls SCL line (pull-up)
+
+#endif
+
+TMPADDR      equ   090h                      ; TMP100 Device Code with A0=A1=0
+TMPPWR       equ   001h                      ; P3.0 supplies TMP100 V_CC
+;
+;            Definitions for Board
+LED1         equ   001h                      ; P1.0- LED Output
+S1           equ   008h                      ; P1.3- S1 Input
+S2           equ   010h                      ; P1.4- S2 Input
+;
+;   Z. ALBUS
+;   Texas Instruments, Inc
+;   April 15, 2003
+;******************************************************************************
+;------------------------------------------------------------------------------ 
+; word & byte RAM variable definitions
+            ORG     0200h
+;------------------------------------------------------------------------------ 
+Temp_Alarm  DW      0
+Temp_Symb   DW      0
+Delay       DW      0
+Disp_oF     DB      0
+Neg_Sign    DB      0
+Time_Out    DB      0
+secs        DB      0
+mins        DB      0
+hrs         DB      0
+;------------------------------------------------------------------------------ 
+            ORG     0F000h
+;------------------------------------------------------------------------------ 
+RESET       mov.w   #300h,SP                 ; Initialize stackpointer
+            call    #Init_Sys                ; Initialize system
+                                             ;            
+            mov.w   #010,TIMEOUT             ; Initialize timeout to 10secs  
+            clr.b   &secs                    ; Clear secs and mins
+            clr.b   &mins                    ; Clear secs and mins
+            mov.b   #0012h,&hrs              ; Set hrs
+                                             ;
+;*** Default Powerup Mode is oF
+            bis.b   #001h,Disp_oF            ; Set F Mode Operation
+            mov.w   #0086,&Temp_Alarm        ; Temperature alarm 86 "oF"          
+            mov.w   #00A9h,&Temp_Symb        ; Display "F"
+                                             ;
+            jmp     Disp_430_dAY             ;
+                                             ;
+;------------------------------------------------------------------------------ 
+;Main loops are between the ^'s. One for Temp(1), Time(2) and "430 dAY"(3) 
+;^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Disp_Temp   bis.b   #TMPPWR,P3OUT            ; Power-up TMP100
+            mov.b   #005,&Time_Out           ; Time limit for LED "ON" in secs
+                                             ;            
+One_Shot_D  mov.b   #001h,ADDRI2C            ; ADDRI2C = Pointer    
+            mov.b   #081h,DATAI2C            ; One-Shot Command            
+            call    #Write_I2C               ;
+                                             ;
+Mainloop_1  bis.w   #LPM3,SR                 ; Enter LPM3
+                                             ;
+Read_Temp   mov.b   #000h,ADDRI2C            ; ADDRI2C = Pointer       
+            call    #Read_I2C                ;
+            call    #Calc_Temp               ;           
+            call    #Disp_LCD_Temp           ;           
+                                             ;
+LED_Cntrl   bic.b   #LED1,&P1OUT             ; LED Off
+            bit.b   #001h,Neg_Sign           ; Is value negative?
+            jnz     RST_Tout                 ; Jump if yes
+            cmp.w   &Temp_Alarm,DATAI2C      ;
+            jlo     RST_Tout                 ; Again
+            cmp.b   #00h,&Time_Out           ;
+            jeq     LED_OFF                  ;
+            bis.b   #LED1,&P1OUT             ; LED On
+            dec.b   &Time_Out                ;
+            jmp     One_Shot                 ;
+                                             ;
+RST_Tout    mov.b   #005,&Time_Out           ; Time limit for LED "ON" in secs        
+                                             ;
+LED_OFF     bic.b   #LED1,&P1OUT             ; LED Off
+                                             ;
+One_Shot    mov.b   #001h,ADDRI2C            ; ADDRI2C = Pointer       
+            mov.b   #081h,DATAI2C            ; One-Shot Command
+            call    #Write_I2C               ;
+                                             ;
+Main_1_End  jmp     Mainloop_1               ;
+                                             ;
+;------------------------------------------------------------------------------
+Disp_Time   bic.b   #TMPPWR,P3OUT            ; Power-down TMP100
+            bic.b   #LED1,&P1OUT             ; LED Off
+            bic.b   #10h,&LCDM8              ; Clear "-"
+            bic.b   #S1+S2,&P1IE             ; Disable Sx interrupts
+                                             ;                     
+Set_Time    bit.b   #S2,&P1IN                ; Test if S2 still pressed
+            jnz     disphrsmins              ; Normal mode
+            bit.b   #S1,&P1IN                ; Test if S1 is pressed
+            jnz     disphrsmins              ; Normal mode
+                                             ;
+            bis.b   #BIT2+BIT0,&LCDCTL       ; Enable LCD Display
+            mov.w   #3000h,&Delay            ; Time set delay, increase to
+Again       dec.w   &Delay                   ; slow down the min count up
+                                             ; time when setting the clock.
+            jnz     Again                    ;
+                                             ;
+            clrc                             ; Clear carry              
+            dadd.b  #1,&mins                 ; Increment mins
+            cmp.b   #60h,&mins               ;
+            jnz     disphrsmins              ;
+            mov.b   #0,&mins                 ; Clear mins
+                                             ;
+            clrc                             ; Clear carry              
+            dadd.b  #1,&hrs                  ; Increment hrs
+            cmp.b   #13h,&hrs                ;
+            jnz     disphrsmins              ;
+            mov.b   #01,&hrs                 ; Roll hrs
+                                             ;
+Mainloop_2  bis.w   #LPM3,SR                 ; Enter LPM3
+disphrsmins                                  ;
+            dec.w   TIMEOUT                  ; Decrement Timeout             
+            jnz     Continue                 ; Continue if not expired
+            bis.b   #LCDON,&LCDCTL           ; Turn ON LCD
+Continue    mov.b   &mins,DIGITS             ;
+            mov.b   &hrs,R5                  ;
+            swpb    R5                       ;
+            add.w   R5,DIGITS                ; Time is in Digits
+disp        call    #Disp_LCD_Time           ; Display Time on LCD            
+            bit.b   #01h,&secs               ; Flash "-" every other second
+            jz      CLEAR_L                  ; clear "-"
+            bis.b   #08h,&LCDM3              ; To flash "-"
+            jmp     Cont                     ;
+CLEAR_L     bic.b   #08h,&LCDM3              ; To flash "-"
+                                             ;
+Cont        bit.b   #S1,&P1IN                ; Test if S1 is pressed
+            jz      Set_Time                 ; Normal mode
+                                             ;
+            clr.b   &P1IFG                   ;
+            bis.b   #S1+S2,&P1IE             ;
+                                             ;
+Main_2_End  jmp     Mainloop_2               ;
+                                             ;
+;------------------------------------------------------------------------------ 
+Disp_430_dAY   ; Flash "430 dAY" until 1st button press
+            mov.b   #03Eh,&LCDM1             ; 
+            mov.b   #0BBh,&LCDM2             ; 
+            mov.b   #09Eh,&LCDM3             ; 
+            mov.b   #000h,&LCDM4             ; 
+            mov.b   #0B7h,&LCDM5             ; 
+            mov.b   #01Fh,&LCDM6             ; 
+            mov.b   #03Ah,&LCDM7             ; 
+            mov.b   #000h,&LCDM8             ;
+                                             ;
+Mainloop_3  bis.w   #LPM3,SR                 ; Enter LPM3
+            xor.b   #LCDSON,&LCDCTL          ; Flash the LCD
+                                             ;
+Main_3_End  jmp     Mainloop_3               ;
+;^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+;------------------------------------------------------------------------------ 
+Init_Sys;   Subroutine sets up Modules and Control Registers
+;------------------------------------------------------------------------------ 
+            mov.w   #WDTPW+WDTHOLD,&WDTCTL   ; Stop WDT
+SetupFLL2   bis.b   #XCAP18PF,&FLL_CTL0      ;set load capacitance for xtal
+SetupLCD    mov.b   #LCDON+LCD4MUX+LCDP0,&LCDCTL       ; STK LCD 4Mux, S0-S16
+SetupBT     mov.b   #BTFRFQ1+BTDIV+BTIP2+BTIP1,&BTCTL  ; 1s Int, STK LCD freq 
+            mov.b   #0FCh,&P5SEL             ; Common and Rxx all selected
+            bis.b   #BTIE,&IE2               ; Enable Basic Timer interrupt      
+                                             ;
+            clr.b   &LCDM1                   ; Clear the LCD Display
+            clr.b   &LCDM2                   ;
+            clr.b   &LCDM3                   ;
+            clr.b   &LCDM4                   ;
+            clr.b   &LCDM5                   ;
+            clr.b   &LCDM6                   ;
+            clr.b   &LCDM7                   ;
+            clr.b   &LCDM8                   ;
+                                             ;            
+SetupPorts  mov.b   #0FFh,&P1DIR             ;set port to outputs
+            clr.b   &P1OUT                   ;
+            bic.b   #S1+S2,&P1DIR            ;Switches as inputs
+            bis.b   #S1+S2,&P1IE             ;IE Switches
+            bis.b   #S1+S2,&P1IES            ;Falling Edge
+            clr.b   &P1IFG                   ;Clear P1 Ints
+            mov.b   #0FFh,&P2DIR             ;set port to outputs
+            clr.b   &P2OUT                   ;
+            mov.b   #0FFh,&P3DIR             ;set port to outputs
+            clr.b   &P3OUT                   ;
+            mov.b   #0FFh,&P4DIR             ;set port to outputs
+            clr.b   &P4OUT                   ;
+            mov.b   #0FFh,&P5DIR             ;set port to outputs
+            clr.b   &P5OUT                   ;
+            mov.b   #0FFh,&P6DIR             ;set port to outputs
+            clr.b   &P6OUT                   ;
+            eint                             ;enable interrupts
+            ret                              ;
+                                             ;
+;///////////I2C Subroutines start////////////////////////////////////////////// 
+;------------------------------------------------------------------------------ 
+Read_I2C   ; Reads two bytes of data transmitted from slave
+;            enter ADDRI2C=00 - FF I2C device address to read
+;                  RXTXI2C=x
+;                  DATAI2C=x
+;            exit  ADDRI2C=x
+;                  RXTXI2C=x
+;                  DATAI2C=0000 - FFFF I2C device data
+;------------------------------------------------------------------------------ 
+            mov.b   #TMPADDR,RXTXI2C         ; Load HW Address
+            call    #I2C_Start               ; Send Start, Address and Ack
+            mov.b   ADDRI2C,RXTXI2C          ; Load Pointer Address
+            call    #I2C_TX                  ; Send Pointer and Ack
+            mov.b   #TMPADDR,RXTXI2C         ; Load HW Address
+            bis.b   #01h,RXTXI2C             ; Set LSB for "READ"
+            call    #I2C_Start               ; Send Start, Address+RD and Ack
+            call    #I2C_RX                  ; Read Data and Ack
+                                             ;
+;***** Used for 2-Byte transfer only *****   ;
+            call    #I2C_ACKn                ; Acknowledge Byte Rcv'd
+            call    #I2C_RX                  ; Read Data and Ack
+                                             ;
+            call    #I2C_NACKn               ; NOT Acknowledge Byte Rcv'd
+            call    #I2C_Stop                ; Send Stop
+            ret                              ; Return from subroutine
+                                             ;
+;------------------------------------------------------------------------------ 
+Write_I2C;  enter ADDRI2C=00 - FF I2C device address to write to
+;                 RXTXI2C=x
+;                 DATAI2C=00 - FF I2C device data to write
+;           exit  ADDRI2C=x
+;                 RXTXI2C=x
+;                 DATAI2C=x
+;------------------------------------------------------------------------------ 
+            mov.b   #TMPADDR,RXTXI2C         ; Load HW Address
+            call    #I2C_Start               ; Send Start, Address and Ack
+            mov.b   ADDRI2C,RXTXI2C          ; Load Pointer Address
+            call    #I2C_TX                  ; Send Pointer and Ack
+            mov.b   DATAI2C,RXTXI2C          ; Load Out-Going Data
+            call    #I2C_TX                  ; Send Data and Ack
+            call    #I2C_Stop                ; Send Stop
+            ret                              ; Return from subroutine
+                                             ;
+;------------------------------------------------------------------------------ 
+I2C_Start;  enter SDA=1, SCL=x
+;           exit  SDA=0, SCL=0
+;------------------------------------------------------------------------------ 
+            bic.b   #SCL+SDA,&PxDIR          ; SCL and SDA to input direction
+
+            bic.b   #SCL,&PxOUT              ; SCL=1
+I2C_Start2  bit.b   #SCL,&PxIN               ; SCL==1?
+            jz      I2C_Start2               ; wait for SCL==1
+
+            bic.b   #SDA,&PxOUT              ; SDA=1
+            nop                              ; delay
+            nop                              ; (START condition needs
+            nop                              ; set-up time >4.7us)
+            nop
+            bis.b   #SDA,&PxDIR              ; SDA=0
+            nop                              ; delay
+            nop                              ; (START condition needs
+            nop                              ; hold time >4.0us)
+            nop
+            bis.b   #SCL,&PxDIR              ; SCL=0
+                                             ;
+;------------------------------------------------------------------------------ 
+I2C_TX;     enter SDA=x, SCL=0
+;           exit  SDA=1, SCL=0
+;------------------------------------------------------------------------------ 
+            mov     #08,BITI2C               ; number of bits to xfer
+I2C_TX_Bit  rla.b   RXTXI2C                  ; data bit -> carry
+            jc      I2C_TX1                  ; test carry for 1 or 0
+I2C_TX0     bis.b   #SDA,&PxDIR              ; SDA=0
+            jmp     I2C_TXx                  ; Toggle SCL
+I2C_TX1     bic.b   #SDA,&PxDIR              ; SDA=1
+I2C_TXx     bic.b   #SCL,&PxDIR              ; SCL=1
+I2C_TXx2    bit.b   #SCL,&PxIN               ; SCL==1?
+            jz      I2C_TXx2                 ; wait for SCL==1
+            bis.b   #SCL,&PxDIR              ; SCL=0
+            dec     BITI2C                   ; all bits read?
+            jnz     I2C_TX_Bit               ; continue until 8 bits are sent
+            bic.b   #SDA,&PxDIR              ; SDA=1
+                                             ;
+TX_Ackn     bic.b   #SCL,&PxDIR              ; SCL=1
+TX_Ackn2    bit.b   #SCL,&PxIN               ; SCL==1?
+            jz      TX_Ackn2                 ; wait for SCL==1
+            bis.b   #SCL,&PxDIR              ; SCL=0
+                                             ;
+            ret                              ; Return from subroutine
+                                             ;
+;------------------------------------------------------------------------------ 
+I2C_RX  ;   enter SDA=1, SCL=0
+;           exit  SDA=x, SCL=0
+;------------------------------------------------------------------------------ 
+            mov.b   #08,BITI2C               ; number of bits to rcv
+I2C_RX_Bit  bic.b   #SCL,&PxDIR              ; SCL=1
+I2C_RX_Bit2 bit.b   #SCL,&PxIN               ; SCL==1?
+            jz      I2C_RX_Bit2              ; wait for SCL==1
+            bit.b   #SDA,&PxIN               ; SDA bit -> carry
+            rlc.w   DATAI2C                  ; Shift new bit into DATAI2C
+            bis.b   #SCL,&PxDIR              ; SCL=0
+            dec     BITI2C                   ; all bits read?
+            jnz     I2C_RX_Bit               ; continue until 8 bits are read
+                                             ;
+            ret                              ; Return from subroutine
+                                             ;
+;------------------------------------------------------------------------------ 
+I2C_ACKn;   enter SDA=x, SCL=0
+;           exit  SDA=1, SCL=0
+;------------------------------------------------------------------------------ 
+            bis.b   #SDA,&PxDIR              ; SDA=0, Ack
+            bic.b   #SCL,&PxDIR              ; SCL=1
+I2C_ACKn2   bit.b   #SCL,&PxIN               ; SCL==1?
+            jz      I2C_ACKn2                ; wait for SCL==1
+            bis.b   #SCL,&PxDIR              ; SCL=0
+            bic.b   #SDA,&PxDIR              ; SDA=1
+Ackn_End    ret                              ; Return from subroutine
+                                             ;
+;------------------------------------------------------------------------------ 
+I2C_NACKn;  enter SDA=x, SCL=0
+;           exit  SDA=1, SCL=0
+;------------------------------------------------------------------------------ 
+            bic.b   #SDA,&PxDIR              ; SDA=1, NOT Ack
+            bic.b   #SCL,&PxDIR              ; SCL=1
+I2C_NACKn2  bit.b   #SCL,&PxIN               ; SCL==1?
+            jz      I2C_NACKn2               ; wait for SCL==1          
+            bis.b   #SCL,&PxDIR              ; SCL=0
+NAckn_End   ret                              ; Return from subroutine
+                                             ;
+;------------------------------------------------------------------------------ 
+I2C_Stop;   enter SDA=x, SCL=0
+;           exit  SDA=1, SCL=1
+;------------------------------------------------------------------------------ 
+            bis.b   #SDA,&PxDIR              ; SDA = 0
+            nop                              ; delay
+            nop                              ; (STOP condition needs
+            nop                              ; set-up time >4.0us)
+            nop
+            bic.b   #SCL,&PxDIR              ; SCL=1
+I2C_Stop2   bit.b   #SCL,&PxIN               ; SCL==1?
+            jz      I2C_Stop2                ; wait for SCL==1    
+            bic.b   #SDA,&PxDIR              ; SDA = 1
+I2C_End     ret                              ; Return from subroutine
+                                             ;
+;///////////I2C Subroutines stop///////////////////////////////////////////////
+
+;------------------------------------------------------------------------------ 
+Calc_Temp  ;Subroutine handles MSB decoding for negative temp and oF conversion
+           ;CPU Registers used R15, R14, R13; R13 saved for display
+;------------------------------------------------------------------------------ 
+            bic.b   #001h,Neg_Sign           ; Clear Neg Sign
+                                             ; 
+            bit.b   #001h,Disp_oF            ; Test if oF mode set
+            jnz     Calc_F                   ; Display in oC
+                                             ;
+Calc_C      swpb    DATAI2C                  ;
+            and.w   #000FFh,DATAI2C          ;
+            bit.b   #080h,DATAI2C            ; test for negative
+            jz      Calc_End                 ; Jump if number is positive   
+            bis.b   #001h,Neg_Sign           ; Diplay Neg sign
+            inv.b   DATAI2C                  ;
+            inc.b   DATAI2C                  ;
+            jmp     Calc_End                 ; Display in oC
+                                             ;
+Calc_F      bit.w   #8000h,DATAI2C           ; test for negative
+            jz      Calc_F1                  ; Jump if number is positive
+            bis.b   #001h,Neg_Sign           ; Display Neg Sign
+            inv.w   DATAI2C                  ;
+            inc.w   DATAI2C                  ;
+Calc_F1     clrc                             ;
+MULT_by_18  rrc.w   DATAI2C                  ;
+            rrc.w   DATAI2C                  ;
+            rrc.w   DATAI2C                  ;
+            rrc.w   DATAI2C                  ;
+            mov.w   DATAI2C,R15              ; R15 = DATAI2C*16
+            rrc.w   DATAI2C                  ;
+            rrc.w   DATAI2C                  ;
+            rrc.w   DATAI2C                  ; DATAI2C right justified
+            add.w   DATAI2C,R15              ; R15 = DATAI2C*18
+DIV_by_5    clr.w   R13                      ; Clear Remainder
+            mov.w   R15,R12                  ; Dividend
+            mov.w   #005,R11                 ; Divisor
+            clr.w   R14                      ; Result
+            mov.w   #17,R10                  ; Initialize Loop Counter
+DIV1        cmp.w   R11,R13                  ;
+            jlo     DIV2                     ;
+            sub.w   R11,R13                  ;
+DIV2        rlc.w   R14                      ;
+            jc      DIV3                     ; Error: result > 16 bits
+            dec.w   R10                      ; Decrement loop counter
+            jz      DIV3                     ; Is 0: terminate w/o err
+            rla.w   R12                      ;
+            rlc.w   R13                      ;
+            jnc     DIV1                     ;
+            sub.w   R11,R13                  ;
+            setc                             ;
+            jmp     DIV2                     ;
+DIV3        rra.w   R14                      ; Result = XXX.Y: Rotate out Y
+                                             ;
+Calc_0      bit.b   #001h,Neg_Sign           ; Test Neg Sign
+            jz      Calc_2                   ;
+            cmp.w   #020h,R14                ;
+            jlo     Calc_1                   ;
+            sub.w   #032,R14                 ; R14 <= (-)32
+            mov.w   R14,DATAI2C              ;
+            ret                              ;
+Calc_1      bic.b   #001,Neg_Sign            ;
+            mov.w   #032,R15                 ;
+            sub.w   R14,R15                  ; 0 > R14 > (-)32
+            mov.w   R15,DATAI2C              ;
+            ret                              ;
+Calc_2      add.w   #032,R14                 ; R14 > 0
+            mov.w   R14,DATAI2C              ;
+                                             ;
+Calc_End    ret                              ;
+                                             ;
+;---------------------------------------------------------------------------
+Disp_LCD_Temp ; Subroutine to Display "F" and Temperature (R15) value on LCD
+;           Input:  R15, R12 -- R13 is a working register   
+;           Output: LCD display  
+;---------------------------------------------------------------------------
+            mov.b   #000h,&LCDM5             ; Clear 5th Digit for temp
+            mov.w   DATAI2C,DIGITS           ;
+            call    #Bin2Bcd                 ;
+            mov     DIGITS,R15               ;
+                                             ;
+            mov.b   &Temp_Symb,&LCDM1        ; "F" or "C" to display
+            xor.b   #02Bh,&LCDM2             ; "o" blinked on display
+            mov.w   R15,R12                  ; Copy BCD number to R12
+            rra.w   R15                      ; Rotate a nibble (digit)
+            rra.w   R15		             ;
+            rra.w   R15		             ;
+            rra.w   R15	                     ;
+            and.w   #0Fh,R12                 ; Expose single digit
+            and.w   #0Fh,R15                 ; Expose single digit
+            mov.b   LCD_Tab(R12),&LCDM3      ; Move digit to LCD display RAM 
+            mov.b   LCD_Tab(R15),&LCDM4      ; Move digit to LCD display RAM
+                                             ;
+            bit.b   #001h,Neg_Sign           ; Display Neg Sign?
+            jz      Disp_Pos                 ; Jump if No
+            bis.b   #08h,&LCDM5              ; "-" segment active
+            jmp     Disp_1xx                 ;
+                                             ;
+Disp_Pos    bic.b   #08h,&LCDM5              ; "-" segment inactive
+Disp_1xx    bit.w   #000100h,R13             ; Data >99?
+            jnc     Disp_Ret                 ;
+            bis.b   #012h,&LCDM5             ; 100's digit active
+            ret                              ;
+                                             ;
+Disp_Ret    bic.b   #012h,&LCDM5             ; 100's digit inactive 
+            ret                              ;
+                                             ;					                                                 
+                                             ;
+;---------------------------------------------------------------------------
+Disp_LCD_Time ; Subroutine to Display "xx-xx" formatted time (R15) value on LCD
+;           Input:  R15, R12 -- R13 is a working register   
+;           Output: LCD display  
+;---------------------------------------------------------------------------
+            mov.w   DIGITS,R15               ; Get 2 LSD's
+            mov.w   R15,R12                  ; Copy BCD number to R12
+            rra.w   R15                      ; Rotate a nibble (digit)
+            rra.w   R15		             ;
+            rra.w   R15		             ;
+            rra.w   R15	                     ;
+            and.w   #0Fh,R12                 ; Expose single digit
+            and.w   #0Fh,R15                 ; Expose single digit
+            mov.b   LCD_Tab(R12),&LCDM1      ; Move digit to LCD display RAM 
+            mov.b   LCD_Tab(R15),&LCDM2      ; Move digit to LCD display RAM 
+            mov.b   #008h,&LCDM3             ; Move "-" to separate hrs-mins
+                                             ;
+            swpb    DIGITS                   ; Get 2 MSD's
+            mov.w   DIGITS,R15               ;
+            mov.w   R15,R12                  ; Copy BCD number to R12
+            rra.w   R15                      ; Rotate a nibble (digit)
+            rra.w   R15		             ;
+            rra.w   R15		             ;
+            rra.w   R15	                     ;
+            and.w   #0Fh,R12                 ; Expose single digit
+            and.w   #0Fh,R15                 ; Expose single digit
+            mov.b   LCD_Tab(R12),&LCDM4      ; Move digit to LCD display RAM 
+            mov.b   LCD_Tab(R15),&LCDM5      ; Move digit to LCD display RAM 
+            ret                              ;
+                                             ;		
+;------------------------------------------------------------------------------ 
+Bin2Bcd;     Subroutine for converting 16-bit binary to BCD
+       ;     Input DIGIT 16-bit binary, output DIGIT 16-bit BCD
+;------------------------------------------------------------------------------ 
+             mov #16,r15                     ;
+             clr r14                         ;
+             clr r13                         ;
+L$1          rla DIGITS                      ;
+             dadd r13,r13                    ;
+             dadd r14,r14                    ;
+             dec r15                         ;
+             jnz L$1                         ;
+             mov r13,DIGITS                  ;
+             ret                             ;                              
+                                             ;
+;---------------------------------------------------------------------------
+BT_ISR;     Exit any LPMx Mode
+;---------------------------------------------------------------------------
+            clrc                             ;
+            dadd.b  #001h,&secs              ;
+            cmp.b   #60h,&secs               ;
+            jnz     done                     ;
+            mov.b   #0,&secs                 ; Clear secs
+            dadd.b  #0,&mins                 ;                   
+            cmp.b   #60h,&mins               ;
+            jnz     done                     ;
+            mov.b   #0,&mins                 ; Clear mins
+            dadd.b  #0,&hrs                  ;                  
+            cmp.b   #13h,&hrs                ;
+            jnz     done                     ;
+            mov.b   #01,&hrs                 ; Roll hrs     
+done        mov.w   #GIE,0(SP)               ; Exit LPMx, interrupts enabled
+            reti                             ;		 
+                                             ;   
+;---------------------------------------------------------------------------
+P1_ISR;     Exit any LPMx Mode
+;---------------------------------------------------------------------------                                            
+            mov.w   #GIE,0(SP)               ; Exit LPMx, interrupts enabled
+                                             ;
+Test_S1     push    #02500                   ; Debounce Delay to TOS (2.5ms)
+DL1         dec     0(SP)                    ; Decrement TOS
+            jnz     DL1                      ; Delay over?
+            incd    SP                       ; Clean TOS
+            clr.b   &P1IFG                   ; Clear P1IFG to clean up
+            bit.b   #S1,&P1IN                ; Test if S1 pressed
+            jnz     CheckS2                  ; If not jump to CheckS2
+            bis.b   #S1,&P1IFG               ; Force S1 IFG set [switch stable] 
+            jmp     Testbuttons              ; Test S1 or S2
+CheckS2     bit.b   #S2,&P1IN                ; Test if S2 pressed
+            jz      Testbuttons              ;           
+            reti                             ; Exit : switches faulty or not 
+                                             ; pressed long enough                                
+Testbuttons bit.b   #S1,&P1IFG               ; S1 Pin Toggled?
+            jz      Test_S2                  ; If not jump to Test_S2 
+            bit.b   #S2,&P1IN                ; S2 Pin Toggled as well?            
+            jz      Test_S2                  ; If so jump to Test_S2          
+            bis.b   #LCDON+LCDSON,&LCDCTL    ; Enable LCD Display
+            bit.b   #001h,Disp_oF            ; In oF Mode?
+            jz      C_to_F                   ;
+                                             ;
+F_to_C      bic.b   #001h,Disp_oF            ; Set oC Mode Operation
+            mov.w   #0030,&Temp_Alarm        ; Temperature alarm 30"oC"          
+            mov.w   #00A5h,&Temp_Symb        ; Display "C"
+            jmp     Exit_1                   ;
+                                             ;
+C_to_F      bis.b   #001h,Disp_oF            ; Set F Mode Operation
+            mov.w   #0086,&Temp_Alarm        ; Temperature alarm 86"oF"          
+            mov.w   #00A9h,&Temp_Symb        ; Display "F"
+                                             ;
+Exit_1      clr.b   &P1IFG                   ;
+            clr.b   &LCDM1                   ; Clear the LCD Display
+            clr.b   &LCDM2                   ;
+            clr.b   &LCDM3                   ;
+            clr.b   &LCDM4                   ;
+            clr.b   &LCDM5                   ;
+            clr.b   &LCDM6                   ;
+            clr.b   &LCDM7                   ;
+            mov.w   #Disp_Temp,2(SP)         ; Entry on exit
+            reti                             ;
+                                             ;
+Test_S2     ;S2 Pin Toggled                  ;
+            mov.w   #05,TIMEOUT              ; Initialize timeout to 5secs
+            bis.b   #LCDSON,&LCDCTL          ; Enable LCD Display
+            clr.b   &LCDM6                   ;
+            clr.b   &LCDM7                   ;
+            xor.b   #LCDON,&LCDCTL           ; Toggle LCDM0: (Dis/En)able LCD
+Exit_2      bic.b   #S1+S2,&P1IE             ; Disable P1 Ints
+            mov.w   #Disp_Time,2(SP)         ; Enter Time mode on exit          
+Exit_P1_ISR reti                             ;
+                                             ;
+;----------------------------------------------------------------------------- 
+;           MSP-STK/EVK LCD Definitions
+            ORG     0FE00h
+;----------------------------------------------------------------------------- 
+LCD_Tab     DB      0B7h                     ; displays "0"
+            DB      012h                     ; displays "1"
+            DB      08Fh                     ; displays "2"
+            DB      01Fh                     ; displays "3"
+            DB      03Ah                     ; displays "4"
+            DB      03Dh                     ; displays "5"
+            DB      0BDh                     ; displays "6"
+            DB      013h                     ; displays "7"
+            DB      0BFh                     ; displays "8"
+            DB      03Fh                     ; displays "9"       
+                                             ;
+;----------------------------------------------------------------------------- 
+;           Interrupt Vectors Used MSP430F413         
+;----------------------------------------------------------------------------- 
+            ORG     0FFFEh                   ; MSP430 RESET Vector
+            DW      RESET                    ;   
+            ORG     0FFE8h                   ; Port1 Interrupt Vector
+            DW      P1_ISR                   ;
+            ORG     0FFE0h                   ; BT Vector
+            DW      BT_ISR                   ;
+            END                              ;
