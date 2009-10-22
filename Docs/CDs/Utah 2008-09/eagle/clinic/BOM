@@ -1,0 +1,67 @@
+Partlist
+
+Exported from board.sch at 2/2/2009 8:09:25 PM
+
+EAGLE Version 5.3.0 Copyright (c) 1988-2008 CadSoft
+
+Part     Value               Device              Package             Library           Sheet
+
+C1       100 nF              CAP0402             C0402               SparkFun          1
+C2       10 uF               CAP0402             C0402               SparkFun          1
+C3       1 uF                CAP0402             C0402               SparkFun          1
+C4       1 uF                CAP0402             C0402               SparkFun          1
+C5       .1u                 CAP0402             C0402               SparkFun          1
+C6       0.1 uF              CAP0402             C0402               SparkFun          1
+C7       0.1 uF              CAP0402             C0402               SparkFun          1
+C8       0.1 uF              CAP0402             C0402               SparkFun          1
+C9       10n                 CAP0402             C0402               SparkFun          1
+C10      10n                 CAP0402             C0402               SparkFun          1
+C11      1.8p                CAP0402             C0402               SparkFun          1
+C12      22p                 CAP0402             C0402               SparkFun          1
+C13      12p                 CAP0402             C0402               SparkFun          1
+C14      22p                 CAP0402             C0402               SparkFun          1
+C15      220p                CAP0402             C0402               SparkFun          1
+C16      10n                 CAP0402             C0402               SparkFun          1
+C17      100n                CAP0402             C0402               SparkFun          1
+C18      10n                 CAP0402             C0402               SparkFun          1
+C19      10n                 CAP0402             C0402               SparkFun          1
+C20      10n                 CAP0402             C0402               SparkFun          1
+C21      10n                 CAP0402             C0402               SparkFun          1
+C22      10n                 CAP0402             C0402               SparkFun          1
+C24      10uF                CAP0402             C0402               SparkFun          1
+C25      100nF               CAP0402             C0402               SparkFun          1
+C26      10uF                CAP0402             C0402               SparkFun          1
+C27      100nF               CAP0402             C0402               SparkFun          1
+C28      100nF               CAP0402             C0402               SparkFun          1
+C29      10uF                CAP0402             C0402               SparkFun          1
+J1       DF12(5.0)-20DP-0.5V DF12(5.0)-20DP-0.5V DF12(XX)-20DP-0.5V  Hirose Connectors 1
+J2       DF12-20DS-0.5V      DF12-20DS-0.5V      DF12-20DS-0.5V      Hirose Connectors 1
+P1       DF12-20DS-0.5V      DF12-20DS-0.5V      DF12-20DS-0.5V      Hirose Connectors 1
+P2       DF12(5.0)-20DP-0.5V DF12(5.0)-20DP-0.5V DF12(XX)-20DP-0.5V  Hirose Connectors 1
+R1       33k                 RESISTOR0402        C0402               SparkFun          1
+R2       0.0                 RESISTOR            0805                SparkFun          1
+R3       150                 RESISTOR0402        C0402               SparkFun          1
+R5       150                 RESISTOR0402        C0402               SparkFun          1
+R6       150                 RESISTOR0402        C0402               SparkFun          1
+R7       150                 RESISTOR0402        C0402               SparkFun          1
+SL1                          M05                 1X05                SparkFun-3-2-07   1
+TP1      TPTP09SQ            TPTP09SQ            TP09SQ              testpad           1
+TP2      TPTP09SQ            TPTP09SQ            TP09SQ              testpad           1
+TP3      TPTP09SQ            TPTP09SQ            TP09SQ              testpad           1
+TP4      TPTP09SQ            TPTP09SQ            TP09SQ              testpad           1
+TP5      TPTP09SQ            TPTP09SQ            TP09SQ              testpad           1
+U$1      FH12A-10S-0.5SH(55) FH12A-10S-0.5SH(55) FH12A-10S-0.5SH(55) mylib             1
+U$2      ADXL330SMD          ADXL330SMD          LFCSP-16            SparkFun          1
+U$3      SIGE4120            SIGE4120            SIGE4120            mylib             1
+U$4      10n                 INDUCTOR0402        C0402               SparkFun          1
+U$5      ANTENNA2SMD5        ANTENNA2SMD5        ANTENNA-CHIP5       SparkFun          1
+U$6      33n                 INDUCTOR0402        C0402               SparkFun          1
+U$7      TCXO                TCXO                TXCO                mylib             1
+U$8      MSP430F169IPM       MSP430F169IPM       S-PQFP64-G64        msp430            1
+U$9      M25P128             M25P128             VDFPN8              mylib             1
+U$10     LM2936              LM2936              8-SOIC              lm2936a           1
+U$11     74257               74257               16                  mylib             1
+U$12     LED                 LED                 LED0402             mylib             1
+U$13     LED                 LED                 LED0402             mylib             1
+U$14     LED                 LED                 LED0402             mylib             1
+U$15     LED                 LED                 LED0402             mylib             1
