@@ -1,0 +1,3 @@
+@ECHO OFF
+fx2-programmer 0x04b4 0x8613 program_vendor 0x16C0 0x072F
+PAUSE
