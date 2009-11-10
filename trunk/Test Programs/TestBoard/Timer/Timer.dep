@@ -17,6 +17,7 @@
       <file>$TOOLKIT_DIR$\config\lnk430F169.xcl</file>
       <file>$TOOLKIT_DIR$\inc\intrinsics.h</file>
       <file>$PROJ_DIR$\Debug\Obj\main.r43</file>
+      <file>$PROJ_DIR$\timer_ad_conv_LPM3_code.c</file>
       <file>$PROJ_DIR$\..\..\..\Docs\sample codes\fet140_adc12_01.c</file>
     </outputs>
     <file>
