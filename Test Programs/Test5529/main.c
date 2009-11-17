@@ -30,11 +30,10 @@
 #define TRUE  1
 #define FALSE 0
 
-volatile char ADCSamples = 0;
-volatile ADCResults ADXL[3];
+volatile char light = 0;
 
 void ADCSetup()
-{
+{/*
   P6SEL |= 0x07;                            // P6.0 ADC option select
   ADC12CTL0 = ADC12ON+ADC12SHT01;//ADC12MSC;             // 00 for Sampling time, ADC12 on
   ADC12CTL1 = ADC12SHP + 0x08 +ADC12CONSEQ0;    // sampling timer, ACLK, sequence
@@ -44,20 +43,19 @@ void ADCSetup()
   ADC12MCTL2 = ADC12INCH_2+ADC12EOS;                  // ref+=AVcc, channel = A2, end seq.
   ADC12IE = 0x04;                           // Enable ADC12IFG.2
   ADC12CTL0 |= ADC12ENC;
-  
+  */
   //sample code
-  /*
-  P6SEL = 0x0F;                             // Enable A/D channel inputs
+  
+  P6SEL = 0x07;                             // Enable A/D channel inputs
   ADC12CTL0 = ADC12ON+ADC12MSC+ADC12SHT0_8; // Turn on ADC12, extend sampling time
                                             // to avoid overflow of results
-  ADC12CTL1 = ADC12SHP+ADC12CONSEQ_3;       // Use sampling timer, repeated sequence
+  ADC12CTL1 = ADC12SHP+ADC12CONSEQ_3 + 0x08;       // Use sampling timer, repeated sequence
   ADC12MCTL0 = ADC12INCH_0;                 // ref+=AVcc, channel = A0
   ADC12MCTL1 = ADC12INCH_1;                 // ref+=AVcc, channel = A1
-  ADC12MCTL2 = ADC12INCH_2;                 // ref+=AVcc, channel = A2
-  ADC12MCTL3 = ADC12INCH_3+ADC12EOS;        // ref+=AVcc, channel = A3, end seq.
-  ADC12IE = 0x08;                           // Enable ADC12IFG.3
+  ADC12MCTL2 = ADC12INCH_2+ADC12EOS;        // ref+=AVcc, channel = A3, end seq.
+  ADC12IE = 0x04;                           // Enable ADC12IFG.2
   ADC12CTL0 |= ADC12ENC;                    // Enable conversions
-  */
+  ADCCounter = 0x70;
   
                               //initializing ADXL array
   for(int i = 0; i < 3; i++)
@@ -111,8 +109,9 @@ void main(void)
   TimerA_Setup();
   ADCSetup();
   P1DIR |= 0x03;                            // P1.0,1.1 output
+  P1OUT = 0;
 
-  __bis_SR_register(LPM3_bits + GIE);       // Enter LPM0, enable interrupts
+  __bis_SR_register(LPM3_bits + GIE);       // Enter LPM3, enable interrupts
   __no_operation();                         // For debugger
 }
 
@@ -120,41 +119,48 @@ void main(void)
 #pragma vector=TIMER1_A0_VECTOR
 __interrupt void TIMER1_A0_ISR(void)
 {
-  int minVal;
-  int newVal;
+  _DINT();
   //P1OUT = 0x01;                            // Toggle P1.0
   TA1CCR0 += U_ADCWAIT;                         // Add Offset to CCR0
 unsigned short c = ADC12IV;
-  if(ADCSamples == U_ADCSAMPLESNEEDED){
-    P1OUT = isMoving();
-    ADCSamples = 0;
-  }
-  else{
-      //update min,max values
-      for(int i = 0; i < 3; i++){
-        minVal = ADXL[i].Results[ADXL[i].min];
-        newVal = ADXL[i].Results[ADCSamples];
-        ADXL[i].min = (min(minVal, newVal) != minVal) ? ADCSamples : ADXL[i].min;
-      }
-    ADC12CTL0 |= ADC12SC;                   // Start sampling/conversion
-  }
+  if(ADCCounter > 0x6f){
+    ADCOn();
+    if(ADCSamples == U_ADCSAMPLESNEEDED){
+      ADCOff();
+//      P1OUT = 0;//!P1OUT;
+      c = isMoving();
+      ADCSamples = 0;
+      ADCCounter = 0;
+    }
+    else if(ADCSamples == ADCSampleNum){   //wait till previous sample is finished
+        ADCSampleNum = (ADCSampleNum+1 == U_ADCSAMPLESNEEDED) ? 0 : ADCSampleNum + 1;
+      P1OUT = 0;//!P1OUT;
+        ADC12CTL0 |= ADC12SC;                   // Start sampling/conversion
+    }
+  }else ADCCounter++;
+  _EINT();
 }
 
 #pragma vector = ADC12_VECTOR
 __interrupt void ADC12_ISR(void)
 {
-  //switch(__even_in_range(ADC12IV,34))
-  //{
-  //case  6:                                  // Vector  6:  ADC12IFG0
+  _DINT();
+  int minVal;
+  int newVal;
    // if (ADC12MEM0 >= 0x7ff)                 // ADC12MEM = A0 > 0.5AVcc?
+  if(ADCSamples < U_ADCSAMPLESNEEDED){
     ADXL[0].Results[ADCSamples] = ADC12MEM0;
       ADXL[1].Results[ADCSamples] = ADC12MEM1;
-      ADXL[2].Results[ADCSamples] = ADC12MEM2;
-      P1OUT = 0x01; 
-      
+      ADXL[2].Results[ADCSamples] = ADC12MEM2; 
+      P1OUT = 1;//!P1OUT;
+      //update min,max values
+      for(int i = 0; i < 3; i++){
+        minVal = ADXL[i].Results[ADXL[i].min];
+        newVal = ADXL[i].Results[ADCSamples];
+        ADXL[i].min = (min(minVal, newVal) != minVal) ? ADCSamples : ADXL[i].min;
+      }   
       ADCSamples++;
-  //break;
+  }
     //__bic_SR_register_on_exit(LPM3_bits);   // Exit active CPU
-  //default: break; 
-  //}
+  _EINT();
 }
