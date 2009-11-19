@@ -1739,6 +1739,12 @@
   <file>
     <name>$PROJ_DIR$\main.c</name>
   </file>
+  <file>
+    <name>$PROJ_DIR$\Timer.h</name>
+  </file>
+  <file>
+    <name>$PROJ_DIR$\Utils.h</name>
+  </file>
 </project>
 
 
