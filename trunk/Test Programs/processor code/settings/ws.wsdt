@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<Workspace>
+  <ConfigDictionary>
+    
+  <CurrentConfigs><Project>USBCDC_Example1/Debug</Project><Project>mcu1/Debug</Project></CurrentConfigs><CurrentProj>USBCDC_Example1</CurrentProj><OverviewSelected>0</OverviewSelected></ConfigDictionary>
+  <Desktop>
+    <Static>
+      <Workspace>
+        <ColumnWidths>
+          
+          
+          
+          
+        <Column0>185</Column0><Column1>27</Column1><Column2>27</Column2><Column3>27</Column3></ColumnWidths>
+      </Workspace>
+      <Debug-Log>
+        
+        
+      <ColumnWidth0>20</ColumnWidth0><ColumnWidth1>965</ColumnWidth1></Debug-Log>
+      <Build>
+        
+        
+        
+        
+      <ColumnWidth0>20</ColumnWidth0><ColumnWidth1>723</ColumnWidth1><ColumnWidth2>193</ColumnWidth2><ColumnWidth3>48</ColumnWidth3></Build>
+    <TerminalIO/></Static>
+    <Windows>
+      
+      
+    <Wnd0>
+        <Tabs>
+          <Tab>
+            <Identity>TabID-13511-12759</Identity>
+            <TabName>Workspace</TabName>
+            <Factory>Workspace</Factory>
+            <Session>
+              
+            <NodeDict><ExpandedNode>USBCDC_Example1</ExpandedNode><ExpandedNode>mcu1</ExpandedNode></NodeDict></Session>
+          </Tab>
+        </Tabs>
+        
+      <SelectedTab>0</SelectedTab></Wnd0><Wnd1>
+        <Tabs>
+          <Tab>
+            <Identity>TabID-28734-12883</Identity>
+            <TabName>Debug Log</TabName>
+            <Factory>Debug-Log</Factory>
+            <Session/>
+          </Tab>
+          <Tab>
+            <Identity>TabID-9454-13654</Identity>
+            <TabName>Build</TabName>
+            <Factory>Build</Factory>
+            <Session/>
+          </Tab>
+        </Tabs>
+        
+      <SelectedTab>1</SelectedTab></Wnd1></Windows>
+    <Editor>
+      
+      
+      
+      
+    <Pane><Tab><Factory>TextEditor</Factory><Filename>C:\Program Files\IAR Systems\Embedded Workbench 5.3 Kickstart\430\INC\msp430x552x.h</Filename><XPos>0</XPos><YPos>111</YPos><SelStart>3107</SelStart><SelEnd>3107</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>C:\Documents and Settings\Hartman\My Documents\IAR Embedded Workbench\mcu\main.c</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>C:\Documents and Settings\Hartman\My Documents\IAR Embedded Workbench\MSP430 USB CDC+HID API Stacks\CDC API\USB CDCv1.12 for IAR\SANDIAPROJECT\USBCDC_Example1\main.c</Filename><XPos>0</XPos><YPos>216</YPos><SelStart>10680</SelStart><SelEnd>10680</SelEnd></Tab><ActiveTab>2</ActiveTab></Pane><ActivePane>0</ActivePane><Sizes><Pane><X>1000000</X><Y>1000000</Y></Pane></Sizes><SplitMode>1</SplitMode></Editor>
+    <Positions>
+      
+      
+      
+      
+      
+    <Top><Row0><Sizes><Toolbar-00ab9cd0><key>iaridepm.enu1</key></Toolbar-00ab9cd0></Sizes></Row0></Top><Left><Row0><Sizes><Wnd0><Rect><Top>-2</Top><Left>-2</Left><Bottom>436</Bottom><Right>259</Right><x>-2</x><y>-2</y><xscreen>279</xscreen><yscreen>214</yscreen><sizeHorzCX>272461</sizeHorzCX><sizeHorzCY>309249</sizeHorzCY><sizeVertCX>254883</sizeVertCX><sizeVertCY>632948</sizeVertCY></Rect></Wnd0></Sizes></Row0></Left><Right><Row0><Sizes/></Row0></Right><Bottom><Row0><Sizes><Wnd1><Rect><Top>-2</Top><Left>-2</Left><Bottom>212</Bottom><Right>1026</Right><x>-2</x><y>-2</y><xscreen>1028</xscreen><yscreen>214</yscreen><sizeHorzCX>1003906</sizeHorzCX><sizeHorzCY>309249</sizeHorzCY><sizeVertCX>272461</sizeVertCX><sizeVertCY>309249</sizeVertCY></Rect></Wnd1></Sizes></Row0></Bottom><Float><Sizes/></Float></Positions>
+  </Desktop>
+</Workspace>
+
+
