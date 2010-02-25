@@ -1,5 +1,5 @@
 [DebugChecksum]
-Checksum=-1596968717
+Checksum=-475411444
 [DisAssemblyWindow]
 NumStates=_ 1
 State 1=_ 1
@@ -24,7 +24,7 @@ Control Register=0
 NextState0=0
 NextState1=0
 [Action Register]
-Break=15
+Break=3
 State Storage=0
 [Interrupts]
 Enabled=1
@@ -46,10 +46,8 @@ Category=_ 0
 LoggingEnabled=_ 0
 LogFile=_ ""
 [Breakpoints]
-Bp0=_ "STD_CODE" "{$PROJ_DIR$\main.c}.21.5@1" 1 0 0 0 "" 0 ""
-Bp1=_ "STD_CODE" "{$PROJ_DIR$\main.c}.25.7@1" 1 0 0 0 "" 0 ""
-Bp2=_ "STD_CODE" "{$PROJ_DIR$\Timer.h}.34.3@1" 1 0 0 0 "" 0 ""
-Count=3
+Bp0=_ "STD_CODE" "{$PROJ_DIR$\ADC.h}.31.5@1" 1 0 0 0 "" 0 ""
+Count=1
 [FET]
 Clock mode=14
 Extended Clock mode=61663
