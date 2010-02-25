@@ -45,6 +45,10 @@ __interrupt void TIMER1_A0_ISR(void)
         MODE = UMODE_ADC;
       if(movementDetected == TRUE){
         MODE = UMODE_SIGE;
+        /*
+          Any conversion mode may be stopped immediately by setting the CONSEQx = 0 and resetting the
+          ADC12ENC bit. Conversion data are unreliable.
+        */
         __bic_SR_register_on_exit(LPM3_bits);   // Exit to active CPU
       }
       SetNextInterval();     

@@ -22,12 +22,13 @@
 @REM but they are listed at the end of this file for reference.
 
 
-"C:\Program Files\IAR Systems\Embedded Workbench 5.0\common\bin\cspybat" "C:\Program Files\IAR Systems\Embedded Workbench 5.0\430\bin\430proc.dll" "C:\Program Files\IAR Systems\Embedded Workbench 5.0\430\bin\430fet.dll"  %1 --plugin "C:\Program Files\IAR Systems\Embedded Workbench 5.0\430\bin\<libsupport_plugin>" --backend -B "--hardware_multiplier" "16" "--hwmult_type" "1" "-p" "C:\Program Files\IAR Systems\Embedded Workbench 5.0\430\config\MSP430F169.ddf" "-d" "fet" "--erase_main_and_info" "--derivative" "MSP430F169" "--vccvoltage=3.0" "--protocol" "4wire" "--eem" "EMEX_HIGH" "--port" "Automatic" "--connection" "ti_usb" "--settlingtime=0" 
+"C:\Program Files\IAR Systems\Embedded Workbench 5.3 Kickstart\common\bin\cspybat" "C:\Program Files\IAR Systems\Embedded Workbench 5.3 Kickstart\430\bin\430proc.dll" "C:\Program Files\IAR Systems\Embedded Workbench 5.3 Kickstart\430\bin\430fet.dll"  %1 --plugin "C:\Program Files\IAR Systems\Embedded Workbench 5.3 Kickstart\430\bin\<libsupport_plugin>" --backend -B "--hardware_multiplier" "16" "--hwmult_type" "1" "-p" "C:\Program Files\IAR Systems\Embedded Workbench 5.3 Kickstart\430\config\MSP430F169.ddf" "--iv_base" "0xFFE0" "-d" "fet" "--erase_main_and_info" "--derivative" "MSP430F169" "--vccvoltage=3.0" "--protocol" "4wire" "--eem" "EMEX_HIGH" "--port" "Automatic" "--connection" "ti_usb" "--settlingtime=0" 
 
 
 @REM Loaded plugins:
-@REM    430libsupport.dll
-@REM    C:\Program Files\IAR Systems\Embedded Workbench 5.0\430\plugins\lcd\lcd.dll
-@REM    C:\Program Files\IAR Systems\Embedded Workbench 5.0\common\plugins\CodeCoverage\CodeCoverage.dll
-@REM    C:\Program Files\IAR Systems\Embedded Workbench 5.0\common\plugins\Profiling\Profiling.dll
-@REM    C:\Program Files\IAR Systems\Embedded Workbench 5.0\common\plugins\stack\stack.dll
+@REM    C:\Program Files\IAR Systems\Embedded Workbench 5.3 Kickstart\430\bin\430libsupport.dll
+@REM    C:\Program Files\IAR Systems\Embedded Workbench 5.3 Kickstart\430\plugins\lcd\lcd.dll
+@REM    C:\Program Files\IAR Systems\Embedded Workbench 5.3 Kickstart\common\plugins\CodeCoverage\CodeCoverage.dll
+@REM    C:\Program Files\IAR Systems\Embedded Workbench 5.3 Kickstart\common\plugins\Profiling\Profiling.dll
+@REM    C:\Program Files\IAR Systems\Embedded Workbench 5.3 Kickstart\common\plugins\stack\stack.dll
+@REM    C:\Program Files\IAR Systems\Embedded Workbench 5.3 Kickstart\common\plugins\SymList\SymList.dll

@@ -2,6 +2,9 @@
 
 <workspace>
   <project>
+    <path>$WS_DIR$\test\ADCtest.ewp</path>
+  </project>
+  <project>
     <path>$WS_DIR$\TimerA.ewp</path>
   </project>
   <batchBuild/>

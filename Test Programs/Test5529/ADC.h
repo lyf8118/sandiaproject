@@ -28,8 +28,9 @@ void ADCSetup()
   P6SEL = 0x07;                             // Enable A/D channel inputs
   ADC12CTL0 = ADC12ON+ADC12MSC+ADC12SHT0_7; // Turn on ADC12, extend sampling time
                                             // to avoid overflow of results
-  ADC12CTL1 = ADC12SHP+ADC12CONSEQ_3 + 0x08;       // Use sampling timer, repeated sequence
-  //ADC12CTL1 = ADC12SHP+ADC12CONSEQ_1 + ADC12SSEL_1; // Use sampling timer, sequence of channels
+//  ADC12CTL1 = ADC12SHP+ADC12CONSEQ_3 + 0x08;       // Use sampling timer, repeated sequence
+  ADC12CTL1 = ADC12CONSEQ_3 + 0x08;       // Use sampling timer, repeated sequence
+  ADC12CTL2 |= 0x180;                        //predivide clock source and turn off temp sensor
   ADC12MCTL0 = ADC12INCH_0;                 // ref+=AVcc, channel = A0
   ADC12MCTL1 = ADC12INCH_1;                 // ref+=AVcc, channel = A1
   ADC12MCTL2 = ADC12INCH_2+ADC12EOS;        // ref+=AVcc, channel = A3, end seq.
