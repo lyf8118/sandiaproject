@@ -40,9 +40,11 @@ void TimerA_Setup();
 
 //////////////////////////////////////////////////////////////////////////////
 
-static char* pageData = (char*)0x03400;  //128 bytes long, ends 0x2f7f
-void write_Flash();
-void insertBit(char val, int position);
+#define PAGEDATASTART   0x3400    //address in RAM
+
+void write_Flash(char* pageData, int flashID);
+void insertBit(char val, int position, char* pageData);
+char BadPage(int pageNumber, char* pageData);
 
 //////////////////////////////////////////////////////////////////////////////
 
