@@ -3,11 +3,11 @@
 //------------------------------------------------------------------------------
 // Input = value[], holds value to writes to segment B
 //------------------------------------------------------------------------------
-void write_Flash()
+void write_Flash(char* pageData, int flashID)
 {
   unsigned int i;
   char * Flash_ptr;                         // Initialize Flash pointer
-  Flash_ptr = (char *) 0x1900;
+  Flash_ptr = (char *) 0x1800 + 0x0100 * flashID;
   FCTL3 = FWKEY;                            // Clear Lock bit
   FCTL1 = FWKEY+ERASE;                      // Set Erase bit
   *Flash_ptr = 0;                           // Dummy write to erase Flash seg
@@ -23,7 +23,7 @@ void write_Flash()
 
 //val is a TRUE/FALSE value
 //position is 0 - 1023
-void insertBit(char val, int position)
+void insertBit(char val, int position, char* pageData)
 {
   int charIndex = position/8;
   int bitIndex = position%8;
@@ -31,9 +31,20 @@ void insertBit(char val, int position)
   pageData[charIndex] |= val;
 }
 
-char PageIsBad(int pageNumber)
+char BadPage(int pageNumber, char* pageData)
 {
   int charIndex = pageNumber/8;
   int bitIndex = pageNumber%8;
-  return pageData[charIndex] & (1<<bitIndex);
+  return ( (pageData[charIndex] & (1<<bitIndex)) > 0 ) ? 1 : 0;
+}
+
+int FindNextPage(int currentPage, char* pageData)
+{
+  while(BadPage(currentPage + 1, pageData)) 
+  {
+    currentPage++;
+    if(currentPage == 1023)     //reached end of pages, pageData[1023+1] is out of bounds
+      return -1;
+  }
+  return currentPage + 1;
 }
