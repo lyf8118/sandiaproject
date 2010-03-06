@@ -19,15 +19,11 @@
 |  R.Stolyar    2008/12/23   enhancements of CDC API                          |
 +----------------------------------------------------------------------------*/
 
-#include "..\Common\device.h"
-#include "..\Common\types.h"            // Basic Type declarations
-#include "..\USB_Common\defMSP430USB.h"
-#include "usb.h"                        // USB-specific Data Structures
-#include "descriptors.h"
+#include "../../UGPS.h"
 
 // These variables are only example, they are not needed for stack
 //extern volatile BYTE bDataReceived_event;          // data received event
-//variable was changed to static, UGPS included in usb.h
+//variable was changed to static and put in UGPS.h  **UGPS
 
 /*
 If this function gets executed, it's a sign that the output of the USB PLL has failed.

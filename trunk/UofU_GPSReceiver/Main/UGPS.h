@@ -85,11 +85,11 @@ void SiGECounterSetup();
 //////////////////////////////////////////////////////////////////////////////
 
 #include "USBCDC\Common\device.h"
-#include "USBCDC\Common\types.h"          
+#include "USBCDC\Common\types.h"          // Basic Type declarations
 #include "USBCDC\Common\hal_UCS.h"
 
 #include "USBCDC\USB_Common\descriptors.h"
-#include "USBCDC\USB_Common\usb.h"        
+#include "USBCDC\USB_Common\usb.h"        // USB-specific Data Structures
 #ifdef _CDC_
     #include "USBCDC\USB_CDC_API\UsbCdc.h"
 #endif
@@ -99,7 +99,9 @@ void SiGECounterSetup();
 
 #include <string.h>
 #include "USBCDC\USBCDC_constructs.h"
-#include "USBCDC\USBmain.h"
+#include "USBCDC\USBmain.h"            
+#include "USBCDC\USB_Common\defMSP430USB.h"
+
 
 #define MAX_STR_LENGTH 64
 static volatile BYTE bDataReceived_event = FALSE; // Indicates data has been received without an open rcv operation
