@@ -1,10 +1,11 @@
 #pragma once
-#ifndef _UPS_H
-#define _UPS_H
+#ifndef _UGPS_H
+#define _UGPS_H
 
 #include  "msp430x552x.h"
 
 //General Purpose
+///////////////////////////////////////////////////////////////////////////////
 #define   TRUE              1
 #define   FALSE             0
 
@@ -12,6 +13,9 @@ unsigned int UINT_MAX(unsigned int, unsigned int);
 unsigned int UINT_MIN(unsigned int, unsigned int);
 unsigned int UINT_ArrayMax(unsigned int volatile* Array, int length);
 unsigned int UINT_ArrayMax(unsigned int volatile* Array, int length);
+
+///////////////////////////////////////////////////////////////////////////////
+
 
 //For ADC code
 ///////////////////////////////////////////////////////////////////////////////
@@ -40,11 +44,18 @@ void TimerA_Setup();
 
 //////////////////////////////////////////////////////////////////////////////
 
-#define PAGEDATASTART   0x3400    //address in RAM
+#define PAGEDATASTART   0x3400    //address in RAM, using 128 bytes
 
-void write_Flash(char* pageData, int flashID);
-void insertBit(char val, int position, char* pageData);
-char BadPage(int pageNumber, char* pageData);
+//TRUE if flash info has already been stored
+char FlashInfoStored();             
+//TRUE if given page number from flash is bad
+char BadPage(int pageNumber, int flashID);
+//returns the next good page, looks at currentPage+1 first
+int FindNextPage(int currentPage, int flashID); 
+//writes 128 bytes to given address block
+void write_Flash(char* pageData, int flashID);  
+//helper to build 128 byte array
+void insertBit(char val, int position, char* pageData); 
 
 //////////////////////////////////////////////////////////////////////////////
 

@@ -21,6 +21,14 @@ void write_Flash(char* pageData, int flashID)
   FCTL3 = FWKEY+LOCK;                       // Set LOCK bit
 }
 
+//checks first four bytes of flash blocks, if it equals 0xffffffff, then it hasn't been initialized
+//if the first 32 pages of both blocks are bad (very low probability),
+//then this will just have to get the info again and re-store it
+char FlashInfoStored()
+{
+  return (*((unsigned long*)0x1800) == 0xffffffff) && (*((unsigned long*)0x1900) == 0xffffffff);
+}
+
 //val is a TRUE/FALSE value
 //position is 0 - 1023
 void insertBit(char val, int position, char* pageData)
@@ -31,16 +39,17 @@ void insertBit(char val, int position, char* pageData)
   pageData[charIndex] |= val;
 }
 
-char BadPage(int pageNumber, char* pageData)
+char BadPage(int pageNumber, int flashID)
 {
+  char* pageData = (char*)0x1800 + 0x100 * flashID;
   int charIndex = pageNumber/8;
   int bitIndex = pageNumber%8;
   return ( (pageData[charIndex] & (1<<bitIndex)) > 0 ) ? 1 : 0;
 }
 
-int FindNextPage(int currentPage, char* pageData)
+int FindNextPage(int currentPage, int flashID)
 {
-  while(BadPage(currentPage + 1, pageData)) 
+  while(BadPage(currentPage + 1, flashID)) 
   {
     currentPage++;
     if(currentPage == 1023)     //reached end of pages, pageData[1023+1] is out of bounds
