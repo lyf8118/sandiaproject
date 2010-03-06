@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<workspace>
+  <project>
+    <path>$WS_DIR$\ADC\ADC.ewp</path>
+  </project>
+  <project>
+    <path>$WS_DIR$\InternalFlash\InternalFlash.ewp</path>
+  </project>
+  <project>
+    <path>$WS_DIR$\MicronFlash\MicronFlash.ewp</path>
+  </project>
+  <project>
+    <path>$WS_DIR$\PulseCounter\PulseCounter.ewp</path>
+  </project>
+  <project>
+    <path>$WS_DIR$\RTC\RTC.ewp</path>
+  </project>
+  <project>
+    <path>$WS_DIR$\Main\UGPS.ewp</path>
+  </project>
+  <batchBuild/>
+</workspace>
+
+
