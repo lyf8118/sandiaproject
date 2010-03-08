@@ -1742,6 +1742,9 @@
   <file>
     <name>$PROJ_DIR$\..\Main\UGPS.h</name>
   </file>
+  <file>
+    <name>$PROJ_DIR$\..\Main\utils.c</name>
+  </file>
 </project>
 
 
