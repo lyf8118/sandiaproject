@@ -13,6 +13,10 @@ unsigned int UINT_ArrayMax(unsigned int volatile* Array, int length);
 unsigned int UINT_ArrayMax(unsigned int volatile* Array, int length);
 unsigned int UINT_ArrayAverage(unsigned int volatile* Array, int length);
 
+//Clear length bytes and return the pointer, starting at address
+//address must be in RAM address space, or a null pointer is returned
+char* makeArrayBlock(unsigned int address, int length);
+
 ///////////////////////////////////////////////////////////////////////////////
 
 
@@ -55,6 +59,8 @@ int FindNextPage(int currentPage, int flashID);
 void write_Flash(char* pageData, int flashID);  
 //helper to build 128 byte array
 void insertBit(char val, int position, char* pageData); 
+//Main function to do commands and store bad flash page info
+void StoreFlashPageInfo();
 
 //////////////////////////////////////////////////////////////////////////////
 

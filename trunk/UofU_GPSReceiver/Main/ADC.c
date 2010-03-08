@@ -56,6 +56,7 @@ void ADCSetup()
   ADC12CTL2 |= 0x80;                        //turn ADC temp sensor off
   ADC12IE = 0x04;                           // Enable ADC12IFG.2
   ADC12CTL0 |= ADC12ENC;                    // Enable conversions
+  TimerA_Setup();                           //setup periodic interrupt to trigger ADC
 }
 
 void ADCOff()

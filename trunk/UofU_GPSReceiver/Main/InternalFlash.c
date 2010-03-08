@@ -1,5 +1,30 @@
 #include "UGPS.h"
 
+void StoreFlashPageInfo()
+{
+  char* flashArray = makeArrayBlock(PAGEDATASTART, 128);
+    //loop for flash chip 1
+      //command to get bad page info
+        //char result = // 1 bit result from the command
+      //call function below for appropriate page number
+        //insertBit(result, page number, flashArray)
+    //end loop
+    
+    //call function to store info for flash chip 1
+      //write_Flash(flashArray, 0);
+    
+    flashArray = makeArrayBlock(PAGEDATASTART, 128);    //getting new array
+    //loop for flash chip 2
+      //command to get bad page info
+        //char result = //result from the command
+      //call function below for appropriate page number
+        //insertBit(result, page number, flashArray);
+    //end loop
+    
+    //call function to store info for flash chip 2
+      //write_Flash(flashArray, 1);
+}
+
 //------------------------------------------------------------------------------
 // Input = value[], holds value to writes to segment B
 //------------------------------------------------------------------------------

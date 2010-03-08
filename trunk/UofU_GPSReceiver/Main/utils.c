@@ -35,3 +35,14 @@ unsigned int UINT_ArrayAverage(unsigned int volatile* Array, int length)
  sum -= UINT_ArrayMax(Array, length) + UINT_ArrayMin(Array, length);
  return sum/(length-2);
 }
+
+char* makeArrayBlock(unsigned int address, int length)
+{
+  int i;
+  if(address < 0x2400  && address > (0x43ff - length))
+    return (char*)0x0;
+  char* pageData = (char*)address;
+  for(i=0; i < length; i++)
+    pageData[i] = 0;
+  return pageData;
+}
