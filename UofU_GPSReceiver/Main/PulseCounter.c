@@ -1,6 +1,6 @@
 #include "../Main/UGPS.h"
 
-void SiGECounterSetup()
+void ExternalPinWakeupSetup()
 {
  SiGEPulseCount = 0;
  P1DIR = 0x01;
@@ -14,8 +14,9 @@ __interrupt void Port1Interrupt(void)
   _DINT();                                 //Disable interrupts
   if(P1IFG & 0x2)
   {
-    SiGEPulseCount++;
+//    SiGEPulseCount++;//use this as the external interrupt to wake up the CPU
+    __bic_SR_register_on_exit(LPM3_bits);   // Exit to active CPU
     P1IFG &= ~0x02;
   }
-  _EINT();
+  _EINT();                                //Enable interrupts
 }
