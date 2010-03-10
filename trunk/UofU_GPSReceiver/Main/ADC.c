@@ -187,12 +187,5 @@ __interrupt void TIMER1_A0_ISR(void)
     ADCStarted = TRUE;
     ADCStart();    
   }
-  //Also check external signal tied to P1.1, currently conflicts w/ pin used for
-  //the SiGEpulseCounter
-  if(P1IN&0x2)
-  {
-    P1OUT = 1;
-    __bic_SR_register_on_exit(LPM3_bits);
-  }
   _EINT();                                //Enable interrupts
 }
