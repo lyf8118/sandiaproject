@@ -3,26 +3,39 @@
 void StoreFlashPageInfo()
 {
   char* flashArray = makeArrayBlock(PAGEDATASTART, 128);
-    //loop for flash chip 1
-      //command to get bad page info
-        //char result = // 1 bit result from the command
-      //call function below for appropriate page number
-        //insertBit(result, page number, flashArray)
-    //end loop
+    unsigned int i = 0;
+    char result;
+    // mux1 = mcu
+    // mux2 = mcu
+    // hold1 = 1
+    // hold2 = 1
+    initclk();
+    initspi();
     
-    //call function to store info for flash chip 1
-      //write_Flash(flashArray, 0);
+    //********** record bad blocks for flash chip 1 ********//
+    insertBit(1, 0, flashArray);// dont use block1 otp area
+    for(i=1;i<1024;i++){
+      resetflash();
+      //hold2 = 0 flash2 on hold
+      pageread(i<<6,2048); //read spare area in block
+      result = (page[0] == 0x00) ? 1 : 0;// 1 bit result from the command
+      insertBit(result, i, flashArray);
+    }
+    write_Flash(flashArray, 0);//store bad pages
     
+    //********** record bad blocks for flash chip 2 ********//
     flashArray = makeArrayBlock(PAGEDATASTART, 128);    //getting new array
+    // hold2 = 1 flash2 off hold
+    insertBit(1, 0, flashArray);// dont use block1 otp area
     //loop for flash chip 2
-      //command to get bad page info
-        //char result = //result from the command
-      //call function below for appropriate page number
-        //insertBit(result, page number, flashArray);
-    //end loop
-    
-    //call function to store info for flash chip 2
-      //write_Flash(flashArray, 1);
+    for(i=1;i<1024;i++){
+      resetflash();
+      //hold1 = 0 flash1 on hold
+      pageread(i<<6,2048); //read spare area in block
+      result = (page[0] == 0x00) ? 1 : 0;// 1 bit result from the command
+      insertBit(result, i, flashArray);
+    }
+    write_Flash(flashArray, 1);//store bad pages
 }
 
 //------------------------------------------------------------------------------
@@ -63,7 +76,7 @@ void insertBit(char val, int position, char* pageData)
   val <<= bitIndex;
   pageData[charIndex] |= val;
 }
-
+//should be changed to BadBlock()
 char BadPage(int pageNumber, int flashID)
 {
   char* pageData = (char*)0x1800 + 0x100 * flashID;
@@ -72,6 +85,7 @@ char BadPage(int pageNumber, int flashID)
   return ( (pageData[charIndex] & (1<<bitIndex)) > 0 ) ? 1 : 0;
 }
 
+// change to findnextblock()
 int FindNextPage(int currentPage, int flashID)
 {
   while(BadPage(currentPage + 1, flashID)) 
