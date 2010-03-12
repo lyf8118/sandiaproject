@@ -24,6 +24,7 @@ unsigned char temp;
 void SetVcoreUp (unsigned int level);
 void usb (char status);
 void pageread (unsigned int row);
+void takesample(void);
 void initclk(void){
   // when cpu wakes up from lpm init spi ports and clock
   // code to init clock 
@@ -554,3 +555,25 @@ __interrupt void TIMER1_A0_ISR(void)
   P1OUT ^= BIT0;                            // Toggle LED P1.0
 }
 */
+void takesample (void){
+  unsigned int count = 0;
+  int i;
+  P1OUT &= ~BIT4;//mux1 = mcu
+  P1OUT &= ~BIT5;//mux2 = mcu
+  P1OUT |= BIT4;// hold1 = 1
+  P1OUT |= BIT4;// hold2 = 1
+  WDTCTL = WDTPW+WDTHOLD;                   // Stop watchdog timer
+  initclk();
+  initspi();
+  reset flash();
+  writeen();
+  // need to test this but i dont know how
+  // this is to make shure we start recording at the begining of a word
+  if(P2IN&BIT0)//sync is high
+    while(P2IN&BIT0);//wait for it to go low
+  while(!(P2IN&BIT0));//wait for it to go high
+  P1OUT |= BIT4;//mux1 = sige
+  for(i=0;i<
+  
+  
+}
