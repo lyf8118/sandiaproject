@@ -1,14 +1,11 @@
 #include "UGPS.h"
-
+// need to transfer flash methods to ugps to use.
 void StoreFlashPageInfo()
 {
   char* flashArray = makeArrayBlock(PAGEDATASTART, 128);
     unsigned int i = 0;
     char result;
-    // mux1 = mcu
-    // mux2 = mcu
-    // hold1 = 1
-    // hold2 = 1
+    WDTCTL = WDTPW+WDTHOLD;                   // Stop watchdog timer
     initclk();
     initspi();
     
@@ -16,22 +13,23 @@ void StoreFlashPageInfo()
     insertBit(1, 0, flashArray);// dont use block1 otp area
     for(i=1;i<1024;i++){
       resetflash();
-      //hold2 = 0 flash2 on hold
-      pageread(i<<6,2048); //read spare area in block
+      P1OUT &= ~BIT3;//hold2 = 0 flash2 on hold
+      pageread((i<<6)+2048); //read spare area in block
       result = (page[0] == 0x00) ? 1 : 0;// 1 bit result from the command
-      insertBit(result, i, flashArray);
+      insertBit(result, i, flashArray);//1=bad
     }
     write_Flash(flashArray, 0);//store bad pages
     
     //********** record bad blocks for flash chip 2 ********//
     flashArray = makeArrayBlock(PAGEDATASTART, 128);    //getting new array
-    // hold2 = 1 flash2 off hold
+    P1OUT |= BIT3;// hold2 = 1 flash2 off hold
+    P1OUT &= ~BIT2;//hold1
     insertBit(1, 0, flashArray);// dont use block1 otp area
     //loop for flash chip 2
     for(i=1;i<1024;i++){
       resetflash();
       //hold1 = 0 flash1 on hold
-      pageread(i<<6,2048); //read spare area in block
+      pageread((i<<6)+2048); //read spare area in block
       result = (page[0] == 0x00) ? 1 : 0;// 1 bit result from the command
       insertBit(result, i, flashArray);
     }
@@ -76,7 +74,7 @@ void insertBit(char val, int position, char* pageData)
   val <<= bitIndex;
   pageData[charIndex] |= val;
 }
-//should be changed to BadBlock()
+//returns1 if page is bad 0 otherwise
 char BadPage(int pageNumber, int flashID)
 {
   char* pageData = (char*)0x1800 + 0x100 * flashID;
@@ -85,7 +83,7 @@ char BadPage(int pageNumber, int flashID)
   return ( (pageData[charIndex] & (1<<bitIndex)) > 0 ) ? 1 : 0;
 }
 
-// change to findnextblock()
+// returns next good block #
 int FindNextPage(int currentPage, int flashID)
 {
   while(BadPage(currentPage + 1, flashID)) 
