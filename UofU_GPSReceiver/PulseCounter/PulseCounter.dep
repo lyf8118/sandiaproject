@@ -6,90 +6,55 @@
   <configuration>
     <name>Debug</name>
     <outputs>
-      <file>$PROJ_DIR$\Debug\Obj\PulseCounter.pbd</file>
-      <file>$PROJ_DIR$\Debug\Obj\PulseCounter.pbi</file>
-      <file>$TOOLKIT_DIR$\inc\dlib\ysizet.h</file>
-      <file>$PROJ_DIR$\..\Main\UGPS.h</file>
-      <file>$PROJ_DIR$\Debug\Exe\PulseCounter.d43</file>
-      <file>$TOOLKIT_DIR$\inc\intrinsics.h</file>
-      <file>$TOOLKIT_DIR$\inc\dlib\ycheck.h</file>
-      <file>$TOOLKIT_DIR$\inc\in430.h</file>
-      <file>$PROJ_DIR$\..\Main\ADC.c</file>
-      <file>$TOOLKIT_DIR$\inc\dlib\xencoding_limits.h</file>
       <file>$PROJ_DIR$\Debug\Obj\main.pbi</file>
-      <file>$TOOLKIT_DIR$\config\lnk430F5529.xcl</file>
       <file>$TOOLKIT_DIR$\inc\dlib\string.h</file>
-      <file>$TOOLKIT_DIR$\lib\dlib\dl430xsfn.h</file>
-      <file>$PROJ_DIR$\..\Main\USBCDC\Common\types.h</file>
-      <file>$PROJ_DIR$\..\Main\USBCDC\USBmain.h</file>
-      <file>$TOOLKIT_DIR$\inc\dlib\yvals.h</file>
+      <file>$TOOLKIT_DIR$\inc\dlib\xencoding_limits.h</file>
+      <file>$PROJ_DIR$\Debug\Exe\PulseCounter.d43</file>
       <file>$PROJ_DIR$\Debug\Obj\main.r43</file>
+      <file>$PROJ_DIR$\..\Main\USBCDC\Common\types.h</file>
       <file>$TOOLKIT_DIR$\inc\dlib\DLib_Product.h</file>
-      <file>$TOOLKIT_DIR$\config\multiplier32_loc2.xcl</file>
-      <file>$TOOLKIT_DIR$\lib\dlib\dl430xsfn.r43</file>
-      <file>$TOOLKIT_DIR$\inc\msp430x552x.h</file>
-      <file>$PROJ_DIR$\..\Main\main.c</file>
-      <file>$PROJ_DIR$\Debug\Obj\PulseCounter.r43</file>
       <file>$PROJ_DIR$\..\Main\USBCDC\USB_Common\defMSP430USB.h</file>
-      <file>$TOOLKIT_DIR$\inc\dlib\DLib_Defaults.h</file>
-      <file>$PROJ_DIR$\..\Main\USBCDC\USBCDC_constructs.h</file>
       <file>$TOOLKIT_DIR$\inc\dlib\DLib_Threads.h</file>
-      <file>$PROJ_DIR$\..\Main\USBCDC\USB_Common\usb.h</file>
-      <file>$PROJ_DIR$\main.c</file>
+      <file>$PROJ_DIR$\Debug\Obj\PulseCounter.r43</file>
+      <file>$TOOLKIT_DIR$\inc\dlib\ycheck.h</file>
+      <file>$PROJ_DIR$\..\Main\UGPS.h</file>
       <file>$PROJ_DIR$\..\Main\USBCDC\Common\device.h</file>
-      <file>$PROJ_DIR$\..\Main\USBCDC\USB_Common\descriptors.h</file>
       <file>$PROJ_DIR$\..\Main\USBCDC\USB_CDC_API\UsbCdc.h</file>
+      <file>$TOOLKIT_DIR$\config\multiplier32_loc2.xcl</file>
+      <file>$PROJ_DIR$\..\Main\USBCDC\USBCDC_constructs.h</file>
+      <file>$TOOLKIT_DIR$\inc\dlib\DLib_Defaults.h</file>
+      <file>$TOOLKIT_DIR$\inc\dlib\yvals.h</file>
+      <file>$PROJ_DIR$\..\Main\USBCDC\USB_Common\descriptors.h</file>
+      <file>$TOOLKIT_DIR$\inc\dlib\ysizet.h</file>
+      <file>$TOOLKIT_DIR$\lib\dlib\dl430xsfn.r43</file>
+      <file>$TOOLKIT_DIR$\inc\intrinsics.h</file>
+      <file>$PROJ_DIR$\Debug\Obj\PulseCounter.pbd</file>
       <file>$PROJ_DIR$\..\Main\PulseCounter.c</file>
+      <file>$PROJ_DIR$\..\Main\USBCDC\USBmain.h</file>
+      <file>$TOOLKIT_DIR$\inc\in430.h</file>
+      <file>$TOOLKIT_DIR$\inc\msp430x552x.h</file>
       <file>$PROJ_DIR$\..\Main\USBCDC\Common\hal_UCS.h</file>
-      <file>$PROJ_DIR$\..\ADC\main.c</file>
+      <file>$TOOLKIT_DIR$\lib\dlib\dl430xsfn.h</file>
+      <file>$PROJ_DIR$\main.c</file>
+      <file>$PROJ_DIR$\Debug\Obj\PulseCounter.pbi</file>
+      <file>$TOOLKIT_DIR$\config\lnk430F5529.xcl</file>
+      <file>$PROJ_DIR$\..\Main\USBCDC\USB_Common\usb.h</file>
     </outputs>
     <file>
-      <name>[ROOT_NODE]</name>
-      <outputs>
+      <name>$PROJ_DIR$\Debug\Exe\PulseCounter.d43</name>
+      <inputs>
         <tool>
           <name>XLINK</name>
-          <file> 4</file>
+          <file> 31 14 9 4 20</file>
         </tool>
-      </outputs>
+      </inputs>
     </file>
     <file>
       <name>$PROJ_DIR$\Debug\Obj\PulseCounter.pbd</name>
       <inputs>
         <tool>
           <name>BILINK</name>
-          <file> 1 10</file>
-        </tool>
-      </inputs>
-    </file>
-    <file>
-      <name>$PROJ_DIR$\Debug\Exe\PulseCounter.d43</name>
-      <inputs>
-        <tool>
-          <name>XLINK</name>
-          <file> 11 19 23 17 20</file>
-        </tool>
-      </inputs>
-    </file>
-    <file>
-      <name>$PROJ_DIR$\main.c</name>
-      <outputs>
-        <tool>
-          <name>BICOMP</name>
-          <file> 10</file>
-        </tool>
-        <tool>
-          <name>ICC430</name>
-          <file> 17</file>
-        </tool>
-      </outputs>
-      <inputs>
-        <tool>
-          <name>BICOMP</name>
-          <file> 3 21 7 5 30 14 34 31 28 32 12 6 16 25 18 9 27 2 26 15 24</file>
-        </tool>
-        <tool>
-          <name>ICC430</name>
-          <file> 3 21 7 5 30 14 34 31 28 32 12 6 16 25 13 18 9 27 2 26 15 24</file>
+          <file> 30 0</file>
         </tool>
       </inputs>
     </file>
@@ -97,22 +62,54 @@
       <name>$PROJ_DIR$\..\Main\PulseCounter.c</name>
       <outputs>
         <tool>
-          <name>BICOMP</name>
-          <file> 1</file>
+          <name>ICC430</name>
+          <file> 9</file>
         </tool>
         <tool>
-          <name>ICC430</name>
-          <file> 23</file>
+          <name>BICOMP</name>
+          <file> 30</file>
         </tool>
       </outputs>
       <inputs>
         <tool>
-          <name>BICOMP</name>
-          <file> 3 21 7 5 30 14 34 31 28 32 12 6 16 25 18 9 27 2 26 15 24</file>
+          <name>ICC430</name>
+          <file> 11 26 25 21 12 5 27 18 32 13 1 10 17 16 28 6 2 8 19 15 24 7</file>
         </tool>
         <tool>
+          <name>BICOMP</name>
+          <file> 11 26 25 21 12 5 27 18 32 13 1 10 17 16 6 2 8 19 15 24 7</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>[ROOT_NODE]</name>
+      <outputs>
+        <tool>
+          <name>XLINK</name>
+          <file> 3</file>
+        </tool>
+      </outputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\main.c</name>
+      <outputs>
+        <tool>
           <name>ICC430</name>
-          <file> 3 21 7 5 30 14 34 31 28 32 12 6 16 25 13 18 9 27 2 26 15 24</file>
+          <file> 4</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 0</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICC430</name>
+          <file> 11 26 25 21 12 5 27 18 32 13 1 10 17 16 28 6 2 8 19 15 24 7</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 11 26 25 21 12 5 27 18 32 13 1 10 17 16 6 2 8 19 15 24 7</file>
         </tool>
       </inputs>
     </file>
