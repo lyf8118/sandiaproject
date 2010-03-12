@@ -149,15 +149,14 @@ void writeen(void){
   UCA0TXBUF = 0x06;                         // Write Enable
   while (!(UCA0IFG&UCTXIFG));               // wait for data to be sent
   P1OUT |= 0x02;                            // CS = 1
-  /*
+  /* uncomment this after flashes are setup
   P1OUT &= ~0x02;                           // CS = 0
   UCA0TXBUF = 0x02;                         // program load
   while (!(UCA0IFG&UCTXIFG));               // USCI_A0 TX buffer ready?
   UCA0TXBUF = 0x00;                         // column address1
   while (!(UCA0IFG&UCTXIFG));               // USCI_A0 TX buffer ready?
-  UCA0TXBUF = 0x02;                         // column address0
+  UCA0TXBUF = 0x02;??                         // column address0
   while (!(UCA0IFG&UCTXIFG));               // USCI_A0 TX buffer ready?
-  //P1OUT |= 0x02;                            // CS = 1
   */
 }
 // program execute sends the flash the execute command and waits for the
@@ -555,6 +554,9 @@ __interrupt void TIMER1_A0_ISR(void)
   P1OUT ^= BIT0;                            // Toggle LED P1.0
 }
 */
+
+//thinking about changing to takesample (unsigned int ms)
+// un-optimized cpu active whole time
 void takesample (void){
   unsigned int count = 0;
   int i;
@@ -567,13 +569,41 @@ void takesample (void){
   initspi();
   reset flash();
   writeen();
+  
+  // ********** write RTC time to flash1 here ***************
+  
   // need to test this but i dont know how
   // this is to make shure we start recording at the begining of a word
-  if(P2IN&BIT0)//sync is high
+  if(P2IN&BIT0)//if sync is high
     while(P2IN&BIT0);//wait for it to go low
   while(!(P2IN&BIT0));//wait for it to go high
   P1OUT |= BIT4;//mux1 = sige
-  for(i=0;i<
-  
-  
+  __delay_cycles(49902-25);//record first page
+  //   ***************  record 15 sec    ******************
+  // pages to program = 16.368mhz / 2 * numofsec / pagesize(2042*8)
+  for(i=0;i<7515;i++){   //i=number of pages to program
+   
+    // need to make shure same bit is not split between 2 pages max25 cycles?
+    if(P2IN&BIT0)//if sync is high
+      while(P2IN&BIT0);//wait for it to go low
+    while(!(P2IN&BIT0));//wait for it to go high
+    P1OUT ^= 0x30;     //mux1 ^ mcu mux2 ^ sige   
+    //start timer
+    //add stop byte 0x00 end of page marker
+    UCA0TXBUF = 0x00;                         // stop byte
+    while (!(UCA0IFG&UCTXIFG));               // wait for stop to be sent
+    P1OUT |= 0x02;                            // CS = 1
+    progexe(blocknum); //program flash
+      
+                     // takes 400us-typ 900us max  
+    writeen();         // ?? cycles (profile this)
+    // wait for data to be flashed
+    //16.368/2mhzsigclk: max delay 1.996ms 49902.2 cycles=2042bytes
+    
+    //program 2042 bytes onto flash
+    __delay_cycles(49902);//may have to lower this syncronization issues
+                       //add time to loop
+    // instead of delay wait on timer
+  }
+  // done
 }
