@@ -25,6 +25,7 @@ void SetVcoreUp (unsigned int level);
 void usb (char status);
 void pageread (unsigned int row);
 void takesample(void);
+void progexe(unsigned int page);
 void initclk(void){
   // when cpu wakes up from lpm init spi ports and clock
   // code to init clock 
@@ -51,16 +52,18 @@ void initclk(void){
   // changed is n x 32 x 32 x f_MCLK / f_FLL_reference. See UCS chapter in 5xx
   // UG for optimization.
   // 32 x 32 x 25 MHz / 32,768 Hz ~ 780k MCLK cycles for DCO to settle
- // __delay_cycles(782000);
-  P1DIR |= BIT1;                            // P1.1 output
+  __delay_cycles(782000);
+  //P1DIR |= BIT1;                            // P1.1 output
 
-  P1DIR |= BIT0;                            // ACLK set out to pins
+  //P1DIR |= BIT0;                            // ACLK set out to pins
   //P1SEL |= BIT0;                            
 }
 void initspi(){
-  P1DIR |= BIT1;                            // Set P1.0-2 to output direction
-  P3SEL |= BIT3+BIT4;                       // P3.3,4 option select
-  P2SEL |= BIT7;                            // P2.7 option select
+  P1OUT |= BIT1;                            // cs = 1
+  P1OUT &= ~(BIT2+BIT3+BIT4+BIT5);          // muxes=mcu holds=off = 0
+  P1DIR |= BIT1+BIT2+BIT3+BIT4+BIT5;        // Set P1.1-5 to output direction
+  P3SEL |= BIT3+BIT4;                       // P3.3,4,5 option select UCA0 
+  P2SEL |= BIT7;                            // P2.7 option select UCA0
   
   UCA0CTL1 |= UCSWRST;                      // **Put state machine in reset**
   UCA0CTL0 |= UCMST+UCSYNC+UCCKPL+UCMSB;    // 3-pin, 8-bit SPI master
@@ -72,15 +75,18 @@ void initspi(){
   UCA0CTL1 &= ~UCSWRST;                     // **Initialize USCI state machine**
   P3DIR &= ~BIT5;                           // 3.5 = input
   P3SEL &= ~BIT5;                           // 3.5 = i/o  
- // UCA0IE |= UCRXIE;                         // Enable USCI_A0 RX interrupt
+ // UCA0IE |= UCRXIE;                       // Enable USCI_A0 RX interrupt
 }
 void resetflash(){
+  __delay_cycles(6250);                     // wait 250us @ 25mhz on startup
   P1OUT &= ~0x02;                           // CS = 0
-  UCA0TXBUF = 0xff;                         // program load
+  UCA0TXBUF = 0xFF;                         // reset
   while (!(UCA0IFG&UCTXIFG));               // USCI_A0 TX buffer ready?
   P1OUT |= 0x02;                            // cs = 1
-  __delay_cycles(24000);                    // wait for reset
+  __delay_cycles(24000);                    // wait 1 ms @ 25mhz for reset
 }
+
+// may want to change this to use UCA0RXBUF (will need to sel port)
 char getbyte(){
   char byte = 0;
   int i;
@@ -107,7 +113,7 @@ char readstatus(){
   UCA0TXBUF = 0xC0;                         // status register address
   while (!(UCA0IFG&UCTXIFG));               // USCI_A0 TX buffer ready?
   status = getbyte();                       // read status register
-  //P1OUT |= 0x02;                            // CS = 1
+  //P1OUT |= 0x02;        // CS = 1 disabled to allow mult calls w/o interruption
   return status;                            // opperation finished
 }
 
@@ -119,7 +125,7 @@ void pageread(unsigned int row){
   while (!(UCA0IFG&UCTXIFG));               // wait for data to be sent
   UCA0TXBUF = 0x00;                         // dummy
   while (!(UCA0IFG&UCTXIFG));               // wait for data to be sent
-  UCA0TXBUF = (row & 0xFF00);               // row addr hi
+  UCA0TXBUF = (row & 0xFF00)>>8;            // row addr hi
   while (!(UCA0IFG&UCTXIFG));               // wait for data to be sent
   UCA0TXBUF = (row & 0x00FF);               // row addr low
   while (!(UCA0IFG&UCTXIFG));               // wait for data to be sent
@@ -143,25 +149,26 @@ void pageread(unsigned int row){
                                             // from flash  
   P1OUT |= 0x02;                            // CS = 1
 }
-
+// preforms write enable and prog load cs is left low
+// all spi commands will recorded until cs is set high
 void writeen(void){
   P1OUT &= ~0x02;                           // CS = 0
   UCA0TXBUF = 0x06;                         // Write Enable
   while (!(UCA0IFG&UCTXIFG));               // wait for data to be sent
   P1OUT |= 0x02;                            // CS = 1
-  /* uncomment this after flashes are setup
+  ///* uncomment this after flashes are setup
   P1OUT &= ~0x02;                           // CS = 0
   UCA0TXBUF = 0x02;                         // program load
   while (!(UCA0IFG&UCTXIFG));               // USCI_A0 TX buffer ready?
   UCA0TXBUF = 0x00;                         // column address1
   while (!(UCA0IFG&UCTXIFG));               // USCI_A0 TX buffer ready?
-  UCA0TXBUF = 0x02;??                         // column address0
+  UCA0TXBUF = 0x00;//originally had 0x02 why?// column address0
   while (!(UCA0IFG&UCTXIFG));               // USCI_A0 TX buffer ready?
-  */
+  /* */
 }
 // program execute sends the flash the execute command and waits for the
 // data to be flashed.
-char progexe(void){
+char progexe(unsigned int page){
   unsigned int i;
   
   P1OUT &= ~0x02;                           // cs = 0
@@ -169,9 +176,9 @@ char progexe(void){
   while (!(UCA0IFG&UCTXIFG));               // USCI_A0 TX buffer ready?
   UCA0TXBUF = 0x00;                         // dummy bits
   while (!(UCA0IFG&UCTXIFG));               // USCI_A0 TX buffer ready?
-  UCA0TXBUF = 0x00;                         // row address1
+  UCA0TXBUF = (page&0xFF00)>>8;             // row address1
   while (!(UCA0IFG&UCTXIFG));               // USCI_A0 TX buffer ready?
-  UCA0TXBUF = 0x20;                         // row address0
+  UCA0TXBUF = (page&0x00FF);                // row address0
   while (!(UCA0IFG&UCTXIFG));               // USCI_A0 TX buffer ready?
   P1OUT |= 0x02;                            // CS = 1 
   
@@ -186,30 +193,59 @@ char progexe(void){
     UCA0TXBUF = 0x00;                         // get status
     while (!(UCA0IFG&UCTXIFG));               
     }
-  while (!(UCA0RXBUF & 0x01));              // check oip flag
+  while (UCA0RXBUF & BIT0);                 // wait for oip flag to go low
   P1OUT |= 0x02;                            // CS = 1
                                             // opperation finished
-  return (!(!(UCA0RXBUF & 0x08)));             // return 1 if program sucessfull
+  return (UCA0RXBUF | 0xFF);          // return status reg contents
 }
-
+// main is used to test all methods
 void main(void)
 {
   volatile unsigned int i;
   char status;
-  P1OUT |= 0x02;
+  P1OUT |= 0x02;                            //cs=1
   WDTCTL = WDTPW+WDTHOLD;                   // Stop watchdog timer
   initclk();
   initspi();
-
-  for(i=50;i>0;i--);                        // Wait for slave to initialize
-
-  MST_Data = 0x01;                          // Initialize data values
-  SLV_Data = 0x00;                          //
-  while(1){
-    resetflash();
-    //usb(readstatus());//1
-    //P1OUT |= 0x02; //1                           // CS = 1
-    writeen();//2                              // initilize flash
+  P1DIR |= BIT0;                            //p1.0=output
+  P1SEL |= BIT0;                            //p1.0=io
+  P1OUT &= ~BIT0;                           // led off
+  /*        status reg        meaning
+    bit5        ecc1          00= no errors,  01= single bit error detected and corrected
+    bit4        ecc0          10= multiple errors not corrected.  set on read cleared on reset, read
+    bit3        p_fail        1= program fail or locked reigon. cleared on block erase or reset
+    bit2        e_fail        1= erase fail (or) locked region. cleared on block erase or reset
+    bit1        WEL           1 = ready to program execute or block erase
+    bit0        OIP           1=opperation in prog
+  */
+    resetflash();                              // initial reset
+    status = readstatus();                     // status reg
+    P1OUT |= BIT1;                            // CS = 1
+    P1OUT |= BIT0;//light led
+    if (status & BIT5)// test for eccfail firstpage       
+      P1OUT &= ~BIT0; //turn off led if eccfail
+    
+    P1OUT |= BIT0;//light led
+    if (status & BIT4)// test for eccfail firstpage       
+      P1OUT &= ~BIT0; //turn off led if eccfail
+    
+    P1OUT |= BIT0;//light led
+    if (status & BIT3)// test for progfail       
+      P1OUT &= ~BIT0; //shouldnt happen
+    
+    P1OUT |= BIT0;//light led
+    if (status & BIT2)// test for erasefail       
+      P1OUT &= ~BIT0; //shouldnt happen
+    
+    P1OUT |= BIT0;//light led
+    if (status & BIT1)// test wel bit       
+      P1OUT &= ~BIT0; //should be 0
+    
+    P1OUT |= BIT0;//light led
+    if (status & BIT0)// test for oip       
+      P1OUT &= ~BIT0; //shouldnt happen
+    //done testing reset
+    writeen()                              // initilize flash
     usb(readstatus());//2
     pageread(500);//3 
     usb(page[0]);//3
@@ -556,7 +592,9 @@ __interrupt void TIMER1_A0_ISR(void)
 */
 
 //thinking about changing to takesample (unsigned int ms)
-// un-optimized cpu active whole time
+// un-optimized cpu active whole time we want to delay for max time
+// to give enough time for page to fill. end of page will be 
+// followed by 00FFFF....
 void takesample (void){
   unsigned int count = 0;
   int i;
