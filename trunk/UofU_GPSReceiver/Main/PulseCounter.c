@@ -1,11 +1,11 @@
 #include "../Main/UGPS.h"
 
-void ExternalPinWakeupSetup()
+void WakeupPinSetup()
 {
- SiGEPulseCount = 0;
- P1DIR = 0x01;
- P1IES = 0x00;
- P1IE = 0x02;
+ //SiGEPulseCount = 0;
+ P2DIR &= ~BIT0;      //set P2.0 as an input
+ P2IES = 0x00;
+ P2IE |= BIT0;        //enable 2.0 interrupt
 }
 
 #pragma vector=PORT1_VECTOR 
@@ -15,8 +15,8 @@ __interrupt void Port1Interrupt(void)
   if(P1IFG & 0x2)
   {
 //    SiGEPulseCount++;//use this as the external interrupt to wake up the CPU
-    __bic_SR_register_on_exit(LPM3_bits);   // Exit to active CPU
     P1IFG &= ~0x02;
+    __bic_SR_register_on_exit(LPM3_bits);   // Exit to active CPU
   }
   _EINT();                                //Enable interrupts
 }

@@ -11,7 +11,7 @@
       P1.5        mux2       26        1 = sige         hr
       P1.6        ---        27
       P1.7        ---        28
-      P2.0        ---        29
+      P2.0     wakeUpPin     29
       P2.1     sigesync      30
       P2.2        ---        31
       P2.3        ---        32
@@ -27,15 +27,12 @@
       P3.5   flash/UCA0SOMI  42                         hr
       P3.6        ---        43
       P3.7        ---        44
+      
 
 
-
-
-
-
-
-
-
+      P6.0    ADXL, pin X    77
+      P6.1    ADXL, pin Y    78
+      P6.2    ADXL, pin Z    79
 
 */
 
@@ -51,7 +48,7 @@ void main(void)
   }
   
   ADCSetup();                    //Setup ADC conversion, also does TimerA setup
-  ExternalPinWakeupSetup();       //External wakeup signal
+  WakeupPinSetup();       //External wakeup signal
   while(1)
   {
     __bis_SR_register(LPM3_bits + GIE);   //Enter LPM3 Mode, wait for ADXL trigger to exit
@@ -60,5 +57,3 @@ void main(void)
     //control the switching between the flash chips for a set amount of time
   }
 }
-
-
