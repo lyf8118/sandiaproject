@@ -59,8 +59,8 @@ void initclk(void){
   //P1SEL |= BIT0;                            
 }
 void initspi(){
-  P1OUT |= BIT1;                            // cs = 1
-  P1OUT &= ~(BIT2+BIT3+BIT4+BIT5);          // muxes=mcu holds=off = 0
+  P1OUT |= (BIT1+BIT2+BIT3);                // cs = 1 holds=off
+  P1OUT &= ~(BIT4+BIT5);                    // muxes=mcu  = 0
   P1DIR |= BIT1+BIT2+BIT3+BIT4+BIT5;        // Set P1.1-5 to output direction
   P3SEL |= BIT3+BIT4;                       // P3.3,4,5 option select UCA0 
   P2SEL |= BIT7;                            // P2.7 option select UCA0
@@ -129,7 +129,8 @@ void pageread(unsigned int row){
   while (!(UCA0IFG&UCTXIFG));               // wait for data to be sent
   UCA0TXBUF = (row & 0x00FF);               // row addr low
   while (!(UCA0IFG&UCTXIFG));               // wait for data to be sent
-  __delay_cycles(3);                        // wait 100ns
+  __delay_cycles(2500);                     // wait 100ns=3cycles 100us=2500??
+                                            // could also poll status reg 
   P1OUT |= 0x02;                            // CS = 1
   status = readstatus();
   while (status & BIT0)                     // poll the opperation in
