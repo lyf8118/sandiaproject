@@ -2,54 +2,154 @@
 
 <Workspace>
   <ConfigDictionary>
-    
-    
-    
-  <CurrentConfigs><Project>ADC/Debug</Project><Project>InternalFlash/Debug</Project><Project>MicronFlash/Debug</Project><Project>RTC/Debug</Project><Project>UGPS/Debug</Project><Project>PulseCounter/Debug</Project></CurrentConfigs><CurrentProj>InternalFlash</CurrentProj><OverviewSelected>0</OverviewSelected></ConfigDictionary>
+    <CurrentConfigs>
+      <Project>MicronFlash/Debug</Project>
+      <Project>ADC/Debug</Project>
+      <Project>PulseCounter/Debug</Project>
+      <Project>RTC/Debug</Project>
+      <Project>InternalFlash/Debug</Project>
+      <Project>UGPS/Debug</Project>
+    </CurrentConfigs>
+    <CurrentProj>MicronFlash</CurrentProj>
+    <OverviewSelected>0</OverviewSelected>
+  </ConfigDictionary>
   <Desktop>
     <Static>
       <Workspace>
         <ColumnWidths>
-          
-          
-          
-          
-        <Column0>343</Column0><Column1>27</Column1><Column2>27</Column2><Column3>27</Column3></ColumnWidths>
-      <PreferedWindows><Position>4</Position><ScreenPosX>775</ScreenPosX><ScreenPosY>186</ScreenPosY><Windows/></PreferedWindows></Workspace>
-      <Build>
-        
-        
-        
-        
-      <ColumnWidth0>20</ColumnWidth0><ColumnWidth1>826</ColumnWidth1><ColumnWidth2>407</ColumnWidth2><ColumnWidth3>61</ColumnWidth3></Build>
-    <Find-in-Files><ColumnWidth0>517</ColumnWidth0><ColumnWidth1>62</ColumnWidth1><ColumnWidth2>754</ColumnWidth2></Find-in-Files><Debug-Log><ColumnWidth0>21</ColumnWidth0><ColumnWidth1>1220</ColumnWidth1></Debug-Log><SourceBrowser><PreferedWindows><Position>4</Position><ScreenPosX>770</ScreenPosX><ScreenPosY>161</ScreenPosY><Windows><Window><Factory>Workspace</Factory></Window></Windows></PreferedWindows></SourceBrowser></Static>
+          <Column0>449</Column0>
+          <Column1>27</Column1>
+          <Column2>27</Column2>
+          <Column3>27</Column3>
+        </ColumnWidths>
+      </Workspace>
+      <Debug-Log>
+        <ColumnWidth0>20</ColumnWidth0>
+        <ColumnWidth1>1221</ColumnWidth1>
+      </Debug-Log>
+    </Static>
     <Windows>
-      
-      
-    <Wnd2>
+      <Wnd0>
         <Tabs>
           <Tab>
-            <Identity>TabID-9375-21107</Identity>
-            <TabName>Build</TabName>
-            <Factory>Build</Factory>
+            <Identity>TabID-26233-11087</Identity>
+            <TabName>Workspace</TabName>
+            <Factory>Workspace</Factory>
+            <Session>
+              <NodeDict>
+                <ExpandedNode>&lt;ws></ExpandedNode>
+                <ExpandedNode>InternalFlash</ExpandedNode>
+                <ExpandedNode>MicronFlash</ExpandedNode>
+              </NodeDict>
+            </Session>
+          </Tab>
+        </Tabs>
+        <SelectedTab>0</SelectedTab>
+      </Wnd0>
+      <Wnd1>
+        <Tabs>
+          <Tab>
+            <Identity>TabID-5844-11469</Identity>
+            <TabName>Debug Log</TabName>
+            <Factory>Debug-Log</Factory>
             <Session/>
           </Tab>
-        <Tab><Identity>TabID-6835-680</Identity><TabName>Find in Files</TabName><Factory>Find-in-Files</Factory><Session/></Tab><Tab><Identity>TabID-12210-3240</Identity><TabName>Debug Log</TabName><Factory>Debug-Log</Factory><Session/></Tab></Tabs>
-        
-      <SelectedTab>2</SelectedTab></Wnd2><Wnd3><Tabs><Tab><Identity>TabID-28216-29038</Identity><TabName>Workspace</TabName><Factory>Workspace</Factory><Session><NodeDict><ExpandedNode>&lt;ws></ExpandedNode><ExpandedNode>&lt;ws>/UGPS</ExpandedNode><ExpandedNode>ADC</ExpandedNode><ExpandedNode>InternalFlash</ExpandedNode><ExpandedNode>MicronFlash</ExpandedNode><ExpandedNode>PulseCounter</ExpandedNode><ExpandedNode>RTC</ExpandedNode><ExpandedNode>UGPS</ExpandedNode><ExpandedNode>UGPS/USBCDC</ExpandedNode></NodeDict></Session></Tab></Tabs><SelectedTab>0</SelectedTab></Wnd3></Windows>
+        </Tabs>
+        <SelectedTab>0</SelectedTab>
+      </Wnd1>
+    </Windows>
     <Editor>
-      
-      
-      
-      
-    <Pane><Tab><Factory>TextEditor</Factory><Filename>C:\Documents and Settings\Hartman\Desktop\clinic project\Main\InternalFlash.c</Filename><XPos>0</XPos><YPos>17</YPos><SelStart>1332</SelStart><SelEnd>1332</SelEnd></Tab><ActiveTab>0</ActiveTab><Tab><Factory>TextEditor</Factory><Filename>C:\Documents and Settings\Hartman\Desktop\clinic project\MicronFlash\main.c</Filename><XPos>0</XPos><YPos>50</YPos><SelStart>6552</SelStart><SelEnd>6552</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>C:\Documents and Settings\Hartman\Desktop\clinic project\Main\PulseCounter.c</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>C:\Documents and Settings\Hartman\Desktop\clinic project\Main\main.c</Filename><XPos>0</XPos><YPos>2</YPos><SelStart>505</SelStart><SelEnd>505</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>C:\Documents and Settings\Hartman\Desktop\clinic project\PulseCounter\main.c</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>C:\Documents and Settings\Hartman\Desktop\clinic project\Main\ADC.c</Filename><XPos>0</XPos><YPos>140</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd></Tab></Pane><ActivePane>0</ActivePane><Sizes><Pane><X>1000000</X><Y>1000000</Y></Pane></Sizes><SplitMode>1</SplitMode></Editor>
+      <Pane>
+        <Tab>
+          <Factory>TextEditor</Factory>
+          <Filename>C:\Documents and Settings\Cory\My Documents\School\Fall 2009\Clinic Project\Development\UofU_GPSReceiver\Main\InternalFlash.c</Filename>
+          <XPos>0</XPos>
+          <YPos>0</YPos>
+          <SelStart>459</SelStart>
+          <SelEnd>459</SelEnd>
+        </Tab>
+        <Tab>
+          <Factory>TextEditor</Factory>
+          <Filename>C:\Documents and Settings\Cory\My Documents\School\Fall 2009\Clinic Project\Development\UofU_GPSReceiver\MicronFlash\main.c</Filename>
+          <XPos>0</XPos>
+          <YPos>72</YPos>
+          <SelStart>4124</SelStart>
+          <SelEnd>4124</SelEnd>
+        </Tab>
+        <ActiveTab>1</ActiveTab>
+      </Pane>
+      <ActivePane>0</ActivePane>
+      <Sizes>
+        <Pane>
+          <X>1000000</X>
+          <Y>1000000</Y>
+        </Pane>
+      </Sizes>
+      <SplitMode>1</SplitMode>
+    </Editor>
     <Positions>
-      
-      
-      
-      
-      
-    <Top><Row0><Sizes><Toolbar-00ab9c18><key>iaridepm.enu1</key></Toolbar-00ab9c18></Sizes></Row0></Top><Left><Row0><Sizes><Wnd3><Rect><Top>-2</Top><Left>-2</Left><Bottom>439</Bottom><Right>417</Right><x>-2</x><y>-2</y><xscreen>160</xscreen><yscreen>191</yscreen><sizeHorzCX>156250</sizeHorzCX><sizeHorzCY>276012</sizeHorzCY><sizeVertCX>409180</sizeVertCX><sizeVertCY>637283</sizeVertCY></Rect></Wnd3></Sizes></Row0></Left><Right><Row0><Sizes/></Row0></Right><Bottom><Row0><Sizes><Wnd2><Rect><Top>-2</Top><Left>-2</Left><Bottom>209</Bottom><Right>1026</Right><x>-2</x><y>-2</y><xscreen>1028</xscreen><yscreen>211</yscreen><sizeHorzCX>1003906</sizeHorzCX><sizeHorzCY>304913</sizeHorzCY><sizeVertCX>543945</sizeVertCX><sizeVertCY>296243</sizeVertCY></Rect></Wnd2></Sizes></Row0></Bottom><Float><Sizes/></Float></Positions>
+      <Top>
+        <Row0>
+          <Sizes>
+            <Toolbar-00c0a250>
+              <key>iaridepm.enu1</key>
+            </Toolbar-00c0a250>
+          </Sizes>
+        </Row0>
+      </Top>
+      <Left>
+        <Row0>
+          <Sizes>
+            <Wnd0>
+              <Rect>
+                <Top>-2</Top>
+                <Left>-2</Left>
+                <Bottom>482</Bottom>
+                <Right>523</Right>
+                <x>-2</x>
+                <y>-2</y>
+                <xscreen>200</xscreen>
+                <yscreen>200</yscreen>
+                <sizeHorzCX>156250</sizeHorzCX>
+                <sizeHorzCY>276243</sizeHorzCY>
+                <sizeVertCX>410156</sizeVertCX>
+                <sizeVertCY>668508</sizeVertCY>
+              </Rect>
+            </Wnd0>
+          </Sizes>
+        </Row0>
+      </Left>
+      <Right>
+        <Row0>
+          <Sizes/>
+        </Row0>
+      </Right>
+      <Bottom>
+        <Row0>
+          <Sizes>
+            <Wnd1>
+              <Rect>
+                <Top>-2</Top>
+                <Left>-2</Left>
+                <Bottom>198</Bottom>
+                <Right>1282</Right>
+                <x>-2</x>
+                <y>-2</y>
+                <xscreen>1284</xscreen>
+                <yscreen>200</yscreen>
+                <sizeHorzCX>1003125</sizeHorzCX>
+                <sizeHorzCY>276243</sizeHorzCY>
+                <sizeVertCX>156250</sizeVertCX>
+                <sizeVertCY>276243</sizeVertCY>
+              </Rect>
+            </Wnd1>
+          </Sizes>
+        </Row0>
+      </Bottom>
+      <Float>
+        <Sizes/>
+      </Float>
+    </Positions>
   </Desktop>
 </Workspace>
 

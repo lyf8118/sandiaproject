@@ -82,6 +82,8 @@ void StoreFlashPageInfo();
 
 static unsigned long SiGEPulseCount;
 void WakeupPinSetup();
+void EnableWakeupPin();
+void DisableWakeupPin();
 
 //////////////////////////////////////////////////////////////////////////////
 

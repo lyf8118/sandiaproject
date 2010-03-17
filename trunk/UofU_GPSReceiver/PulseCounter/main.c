@@ -4,7 +4,7 @@ void main()
 {
  WDTCTL = WDTPW+WDTHOLD;                   // Stop watchdog timer
  long i = 0;
- SiGECounterSetup();
+ WakeupPinSetup();
  P1OUT=1;
  while( i !=0xffff){i++;}
    i=0;
