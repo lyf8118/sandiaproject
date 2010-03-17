@@ -2,76 +2,75 @@
 
 <project>
   <fileVersion>2</fileVersion>
-  <fileChecksum>1887528047</fileChecksum>
+  <fileChecksum>991709880</fileChecksum>
   <configuration>
     <name>Debug</name>
     <outputs>
-      <file>$PROJ_DIR$\USBCDC\USB_CDC_API\UsbCdc.c</file>
-      <file>$PROJ_DIR$\Debug\Obj\InternalFlash.pbi</file>
-      <file>$PROJ_DIR$\Debug\Obj\UsbHidReq.r43</file>
       <file>$PROJ_DIR$\Debug\Obj\RTC.pbi</file>
-      <file>$PROJ_DIR$\Debug\Obj\usb_eventHandling.r43</file>
-      <file>$TOOLKIT_DIR$\lib\dlib\dl430xsfn.h</file>
-      <file>$TOOLKIT_DIR$\inc\intrinsics.h</file>
-      <file>$TOOLKIT_DIR$\inc\dlib\string.h</file>
-      <file>$PROJ_DIR$\Debug\Exe\UGPS.d43</file>
-      <file>$PROJ_DIR$\Debug\Obj\hal_UCS.pbi</file>
-      <file>$PROJ_DIR$\Debug\Obj\PulseCounter.r43</file>
+      <file>$PROJ_DIR$\Debug\Obj\RTC.r43</file>
+      <file>$TOOLKIT_DIR$\inc\dlib\yvals.h</file>
       <file>$PROJ_DIR$\Debug\Obj\usb.pbi</file>
-      <file>$PROJ_DIR$\Debug\Obj\dma.pbi</file>
-      <file>$PROJ_DIR$\Debug\Obj\usb.r43</file>
+      <file>$PROJ_DIR$\Debug\Obj\utils.r43</file>
+      <file>$PROJ_DIR$\Debug\Obj\USBCDC_constructs.r43</file>
+      <file>$TOOLKIT_DIR$\inc\dlib\DLib_Threads.h</file>
+      <file>$PROJ_DIR$\Debug\Obj\UGPS.pbd</file>
+      <file>$TOOLKIT_DIR$\inc\dlib\DLib_Defaults.h</file>
       <file>$PROJ_DIR$\Debug\Obj\UsbCdc.pbi</file>
-      <file>$PROJ_DIR$\Debug\Obj\HidReportHandler.r43</file>
-      <file>$TOOLKIT_DIR$\config\multiplier32_loc2.xcl</file>
       <file>$TOOLKIT_DIR$\inc\dlib\ycheck.h</file>
-      <file>$PROJ_DIR$\Debug\Obj\ADC.pbi</file>
-      <file>$PROJ_DIR$\Debug\Obj\UsbIsr.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\dma.pbi</file>
+      <file>$TOOLKIT_DIR$\config\multiplier32_loc2.xcl</file>
+      <file>$PROJ_DIR$\Debug\Obj\InternalFlash.r43</file>
+      <file>$PROJ_DIR$\Debug\Obj\descriptors.r43</file>
+      <file>$PROJ_DIR$\Debug\Obj\UsbIsr.r43</file>
+      <file>$PROJ_DIR$\USBCDC\USB_CDC_API\UsbCdc.c</file>
+      <file>$TOOLKIT_DIR$\inc\in430.h</file>
+      <file>$PROJ_DIR$\Debug\Obj\TLV.r43</file>
+      <file>$PROJ_DIR$\Debug\Obj\dma.r43</file>
+      <file>$PROJ_DIR$\Debug\Obj\usb_eventHandling.pbi</file>
+      <file>$PROJ_DIR$\Debug\Exe\UGPS.d43</file>
       <file>$TOOLKIT_DIR$\inc\dlib\xencoding_limits.h</file>
-      <file>$PROJ_DIR$\Debug\Obj\ADC.r43</file>
-      <file>$PROJ_DIR$\Debug\Obj\UsbHid.r43</file>
-      <file>$PROJ_DIR$\Debug\Obj\utils.pbi</file>
-      <file>$PROJ_DIR$\Debug\Obj\HidReportHandler.pbi</file>
+      <file>$TOOLKIT_DIR$\inc\dlib\DLib_Product.h</file>
+      <file>$TOOLKIT_DIR$\inc\dlib\ysizet.h</file>
+      <file>$PROJ_DIR$\USBCDC\USBCDC_constructs.h</file>
       <file>$PROJ_DIR$\Debug\Obj\main.r43</file>
       <file>$PROJ_DIR$\Debug\Obj\UsbHidReq.pbi</file>
       <file>$TOOLKIT_DIR$\lib\dlib\dl430xsfn.r43</file>
-      <file>$PROJ_DIR$\Debug\Obj\TLV.r43</file>
       <file>$PROJ_DIR$\Debug\Obj\PulseCounter.pbi</file>
       <file>$PROJ_DIR$\Debug\Obj\UsbCdc.r43</file>
       <file>$TOOLKIT_DIR$\inc\msp430x552x.h</file>
-      <file>$PROJ_DIR$\Debug\Obj\dma.r43</file>
-      <file>$PROJ_DIR$\Debug\Obj\usb_eventHandling.pbi</file>
-      <file>$PROJ_DIR$\Debug\Obj\descriptors.pbi</file>
-      <file>$TOOLKIT_DIR$\config\lnk430F5529.xcl</file>
-      <file>$PROJ_DIR$\Debug\Obj\USBCDC_constructs.r43</file>
-      <file>$TOOLKIT_DIR$\inc\dlib\DLib_Threads.h</file>
-      <file>$PROJ_DIR$\Debug\Obj\RTC.r43</file>
-      <file>$TOOLKIT_DIR$\inc\dlib\yvals.h</file>
-      <file>$PROJ_DIR$\Debug\Obj\hal_UCS.r43</file>
-      <file>$PROJ_DIR$\Debug\Obj\main.pbi</file>
-      <file>$PROJ_DIR$\Debug\Obj\USBCDC_constructs.pbi</file>
-      <file>$PROJ_DIR$\Debug\Obj\UGPS.pbd</file>
-      <file>$TOOLKIT_DIR$\inc\dlib\DLib_Defaults.h</file>
+      <file>$PROJ_DIR$\Debug\Obj\ADC.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\UsbIsr.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\utils.pbi</file>
       <file>$PROJ_DIR$\USBCDC\USBmain.h</file>
-      <file>$PROJ_DIR$\Debug\Obj\InternalFlash.r43</file>
       <file>$PROJ_DIR$\Debug\Obj\TLV.pbi</file>
       <file>$PROJ_DIR$\Debug\Obj\UsbHid.pbi</file>
-      <file>$PROJ_DIR$\Debug\Obj\descriptors.r43</file>
-      <file>$PROJ_DIR$\Debug\Obj\UsbIsr.r43</file>
-      <file>$TOOLKIT_DIR$\inc\in430.h</file>
-      <file>$TOOLKIT_DIR$\inc\dlib\DLib_Product.h</file>
-      <file>$TOOLKIT_DIR$\inc\dlib\ysizet.h</file>
-      <file>$PROJ_DIR$\USBCDC\Common\TLV.c</file>
+      <file>$PROJ_DIR$\Debug\Obj\HidReportHandler.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\main.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\USBCDC_constructs.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\hal_UCS.r43</file>
+      <file>$TOOLKIT_DIR$\inc\dlib\string.h</file>
+      <file>$PROJ_DIR$\Debug\Obj\usb.r43</file>
+      <file>$PROJ_DIR$\Debug\Obj\hal_UCS.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\PulseCounter.r43</file>
+      <file>$TOOLKIT_DIR$\lib\dlib\dl430xsfn.h</file>
+      <file>$TOOLKIT_DIR$\inc\intrinsics.h</file>
+      <file>$PROJ_DIR$\Debug\Obj\descriptors.pbi</file>
+      <file>$TOOLKIT_DIR$\config\lnk430F5529.xcl</file>
+      <file>$PROJ_DIR$\Debug\Obj\UsbHidReq.r43</file>
+      <file>$PROJ_DIR$\Debug\Obj\InternalFlash.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\HidReportHandler.r43</file>
       <file>$PROJ_DIR$\USBCDC\Common\device.h</file>
       <file>$PROJ_DIR$\USBCDC\Common\hal_UCS.h</file>
       <file>$PROJ_DIR$\USBCDC\Common\TLV_descriptors.h</file>
       <file>$PROJ_DIR$\USBCDC\Common\types.h</file>
       <file>$PROJ_DIR$\USBCDC\USB_HID_API\HidReportHandler.c</file>
-      <file>$PROJ_DIR$\USBCDC\USBCDC_constructs.h</file>
-      <file>$PROJ_DIR$\USBCDC\Common\hal_UCS.c</file>
       <file>$PROJ_DIR$\USBCDC\USB_HID_API\HidReportHandler.h</file>
       <file>$PROJ_DIR$\USBCDC\USB_HID_API\UsbHid.c</file>
       <file>$PROJ_DIR$\USBCDC\USB_HID_API\UsbHid.h</file>
       <file>$PROJ_DIR$\USBCDC\USB_HID_API\UsbHidReq.c</file>
+      <file>$PROJ_DIR$\USBCDC\Common\TLV.c</file>
+      <file>$PROJ_DIR$\Debug\Obj\ADC.r43</file>
+      <file>$PROJ_DIR$\Debug\Obj\UsbHid.r43</file>
       <file>$PROJ_DIR$\USBCDC\USB_Common\defMSP430USB.h</file>
       <file>$PROJ_DIR$\USBCDC\USB_Common\descriptors.c</file>
       <file>$PROJ_DIR$\USBCDC\USB_Common\descriptors.h</file>
@@ -82,7 +81,6 @@
       <file>$PROJ_DIR$\USBCDC\USB_Common\UsbIsr.c</file>
       <file>$PROJ_DIR$\USBCDC\USB_Common\UsbIsr.h</file>
       <file>$PROJ_DIR$\USBCDC\USBCDC_constructs.c</file>
-      <file>$PROJ_DIR$\USBCDC\USB_CDC_API\UsbCdc.h</file>
       <file>$PROJ_DIR$\ADC.c</file>
       <file>$PROJ_DIR$\InternalFlash.c</file>
       <file>$PROJ_DIR$\main.c</file>
@@ -90,8 +88,31 @@
       <file>$PROJ_DIR$\RTC.c</file>
       <file>$PROJ_DIR$\UGPS.h</file>
       <file>$PROJ_DIR$\utils.c</file>
-      <file>$PROJ_DIR$\Debug\Obj\utils.r43</file>
+      <file>$PROJ_DIR$\USBCDC\USB_CDC_API\UsbCdc.h</file>
+      <file>$PROJ_DIR$\Debug\Obj\usb_eventHandling.r43</file>
+      <file>$PROJ_DIR$\USBCDC\Common\hal_UCS.c</file>
+      <file>$PROJ_DIR$\Debug\Obj\ExternalWakeup.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\ExternalWakeup.r43</file>
+      <file>$PROJ_DIR$\ExternalWakeup.c</file>
     </outputs>
+    <file>
+      <name>$PROJ_DIR$\Debug\Obj\UGPS.pbd</name>
+      <inputs>
+        <tool>
+          <name>BILINK</name>
+          <file> 32 85 38 51 0 36 40 9 37 27 33 48 11 44 39 3 20 34</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>[ROOT_NODE]</name>
+      <outputs>
+        <tool>
+          <name>XLINK</name>
+          <file> 21</file>
+        </tool>
+      </outputs>
+    </file>
     <file>
       <name>$PROJ_DIR$\USBCDC\USB_CDC_API\UsbCdc.c</name>
       <outputs>
@@ -101,17 +122,17 @@
         </tool>
         <tool>
           <name>BICOMP</name>
-          <file> 14</file>
+          <file> 9</file>
         </tool>
       </outputs>
       <inputs>
         <tool>
           <name>ICC430</name>
-          <file> 68 58 55 31 51 6 66 71 76 7 17 39 44 5 52 20 37 53</file>
+          <file> 67 56 53 31 17 47 65 70 82 42 10 2 8 46 23 22 6 24</file>
         </tool>
         <tool>
           <name>BICOMP</name>
-          <file> 68 58 55 31 51 6 66 71 76 7 17 39 44 52 20 37 53</file>
+          <file> 67 56 53 31 17 47 65 70 82 42 10 2 8 23 22 6 24</file>
         </tool>
       </inputs>
     </file>
@@ -120,48 +141,7 @@
       <inputs>
         <tool>
           <name>XLINK</name>
-          <file> 35 16 21 15 46 10 38 28 36 30 22 2 50 49 32 40 25 13 4 84 27</file>
-        </tool>
-      </inputs>
-    </file>
-    <file>
-      <name>[ROOT_NODE]</name>
-      <outputs>
-        <tool>
-          <name>XLINK</name>
-          <file> 8</file>
-        </tool>
-      </outputs>
-    </file>
-    <file>
-      <name>$PROJ_DIR$\Debug\Obj\UGPS.pbd</name>
-      <inputs>
-        <tool>
-          <name>BILINK</name>
-          <file> 18 24 1 29 3 47 42 14 48 26 19 34 12 9 41 11 33 23</file>
-        </tool>
-      </inputs>
-    </file>
-    <file>
-      <name>$PROJ_DIR$\USBCDC\Common\TLV.c</name>
-      <outputs>
-        <tool>
-          <name>ICC430</name>
-          <file> 28</file>
-        </tool>
-        <tool>
-          <name>BICOMP</name>
-          <file> 47</file>
-        </tool>
-      </outputs>
-      <inputs>
-        <tool>
-          <name>ICC430</name>
-          <file> 57</file>
-        </tool>
-        <tool>
-          <name>BICOMP</name>
-          <file> 57</file>
+          <file> 49 12 63 86 52 13 1 18 5 30 64 50 15 14 19 41 26 43 83 4 28</file>
         </tool>
       </inputs>
     </file>
@@ -170,44 +150,21 @@
       <outputs>
         <tool>
           <name>ICC430</name>
-          <file> 15</file>
+          <file> 52</file>
         </tool>
         <tool>
           <name>BICOMP</name>
-          <file> 24</file>
+          <file> 38</file>
         </tool>
       </outputs>
       <inputs>
         <tool>
           <name>ICC430</name>
-          <file> 55 31 51 6 58 66 71 45 68 62</file>
+          <file> 53 31 17 47 56 65 70 35 67 58</file>
         </tool>
         <tool>
           <name>BICOMP</name>
-          <file> 55 31 51 6 58 66 71 45 68 62</file>
-        </tool>
-      </inputs>
-    </file>
-    <file>
-      <name>$PROJ_DIR$\USBCDC\Common\hal_UCS.c</name>
-      <outputs>
-        <tool>
-          <name>ICC430</name>
-          <file> 40</file>
-        </tool>
-        <tool>
-          <name>BICOMP</name>
-          <file> 9</file>
-        </tool>
-      </outputs>
-      <inputs>
-        <tool>
-          <name>ICC430</name>
-          <file> 55 31 51 6 56</file>
-        </tool>
-        <tool>
-          <name>BICOMP</name>
-          <file> 55 31 51 6 56</file>
+          <file> 53 31 17 47 56 65 70 35 67 58</file>
         </tool>
       </inputs>
     </file>
@@ -216,7 +173,76 @@
       <outputs>
         <tool>
           <name>ICC430</name>
-          <file> 22</file>
+          <file> 64</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 37</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICC430</name>
+          <file> 53 31 17 47 56 65 70 60 67 42 10 2 8 46 23 22 6 24</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 53 31 17 47 56 65 70 60 67 42 10 2 8 23 22 6 24</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\USBCDC\USB_HID_API\UsbHidReq.c</name>
+      <outputs>
+        <tool>
+          <name>ICC430</name>
+          <file> 50</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 27</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICC430</name>
+          <file> 53 31 17 47 56 65 70 58 67</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 53 31 17 47 56 65 70 58 67</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\USBCDC\Common\TLV.c</name>
+      <outputs>
+        <tool>
+          <name>ICC430</name>
+          <file> 18</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 36</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICC430</name>
+          <file> 55</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 55</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\USBCDC\USB_Common\descriptors.c</name>
+      <outputs>
+        <tool>
+          <name>ICC430</name>
+          <file> 14</file>
         </tool>
         <tool>
           <name>BICOMP</name>
@@ -226,57 +252,11 @@
       <inputs>
         <tool>
           <name>ICC430</name>
-          <file> 55 31 51 6 58 66 71 64 68 7 17 39 44 5 52 20 37 53</file>
+          <file> 53 31 17 47 56 65 70 67 82</file>
         </tool>
         <tool>
           <name>BICOMP</name>
-          <file> 55 31 51 6 58 66 71 64 68 7 17 39 44 52 20 37 53</file>
-        </tool>
-      </inputs>
-    </file>
-    <file>
-      <name>$PROJ_DIR$\USBCDC\USB_HID_API\UsbHidReq.c</name>
-      <outputs>
-        <tool>
-          <name>ICC430</name>
-          <file> 2</file>
-        </tool>
-        <tool>
-          <name>BICOMP</name>
-          <file> 26</file>
-        </tool>
-      </outputs>
-      <inputs>
-        <tool>
-          <name>ICC430</name>
-          <file> 55 31 51 6 58 66 71 62 68</file>
-        </tool>
-        <tool>
-          <name>BICOMP</name>
-          <file> 55 31 51 6 58 66 71 62 68</file>
-        </tool>
-      </inputs>
-    </file>
-    <file>
-      <name>$PROJ_DIR$\USBCDC\USB_Common\descriptors.c</name>
-      <outputs>
-        <tool>
-          <name>ICC430</name>
-          <file> 49</file>
-        </tool>
-        <tool>
-          <name>BICOMP</name>
-          <file> 34</file>
-        </tool>
-      </outputs>
-      <inputs>
-        <tool>
-          <name>ICC430</name>
-          <file> 55 31 51 6 58 66 71 68 76</file>
-        </tool>
-        <tool>
-          <name>BICOMP</name>
-          <file> 55 31 51 6 58 66 71 68 76</file>
+          <file> 53 31 17 47 56 65 70 67 82</file>
         </tool>
       </inputs>
     </file>
@@ -285,30 +265,7 @@
       <outputs>
         <tool>
           <name>ICC430</name>
-          <file> 32</file>
-        </tool>
-        <tool>
-          <name>BICOMP</name>
-          <file> 12</file>
-        </tool>
-      </outputs>
-      <inputs>
-        <tool>
-          <name>ICC430</name>
-          <file> 55 31 51 6 58 66 68 7 17 39 44 5 52 20 37 53</file>
-        </tool>
-        <tool>
-          <name>BICOMP</name>
-          <file> 55 31 51 6 58 66 68 7 17 39 44 52 20 37 53</file>
-        </tool>
-      </inputs>
-    </file>
-    <file>
-      <name>$PROJ_DIR$\USBCDC\USB_Common\usb.c</name>
-      <outputs>
-        <tool>
-          <name>ICC430</name>
-          <file> 13</file>
+          <file> 19</file>
         </tool>
         <tool>
           <name>BICOMP</name>
@@ -318,181 +275,20 @@
       <inputs>
         <tool>
           <name>ICC430</name>
-          <file> 55 31 51 6 58 66 68 71 76 56 57</file>
+          <file> 53 31 17 47 56 65 67 42 10 2 8 46 23 22 6 24</file>
         </tool>
         <tool>
           <name>BICOMP</name>
-          <file> 55 31 51 6 58 66 68 71 76 56 57</file>
+          <file> 53 31 17 47 56 65 67 42 10 2 8 23 22 6 24</file>
         </tool>
       </inputs>
     </file>
     <file>
-      <name>$PROJ_DIR$\USBCDC\USB_Common\usb_eventHandling.c</name>
+      <name>$PROJ_DIR$\USBCDC\USB_Common\usb.c</name>
       <outputs>
         <tool>
           <name>ICC430</name>
-          <file> 4</file>
-        </tool>
-        <tool>
-          <name>BICOMP</name>
-          <file> 33</file>
-        </tool>
-      </outputs>
-      <inputs>
-        <tool>
-          <name>ICC430</name>
-          <file> 82 31 51 6 55 58 56 68 71 76 7 17 39 44 5 52 20 37 53 60 45 66</file>
-        </tool>
-        <tool>
-          <name>BICOMP</name>
-          <file> 82 31 51 6 55 58 56 68 71 76 7 17 39 44 52 20 37 53 60 45 66</file>
-        </tool>
-      </inputs>
-    </file>
-    <file>
-      <name>$PROJ_DIR$\USBCDC\USB_Common\UsbIsr.c</name>
-      <outputs>
-        <tool>
-          <name>ICC430</name>
-          <file> 50</file>
-        </tool>
-        <tool>
-          <name>BICOMP</name>
-          <file> 19</file>
-        </tool>
-      </outputs>
-      <inputs>
-        <tool>
-          <name>ICC430</name>
-          <file> 55 31 51 6 58 66 68 71 76 64 74 7 17 39 44 5 52 20 37 53</file>
-        </tool>
-        <tool>
-          <name>BICOMP</name>
-          <file> 55 31 51 6 58 66 68 71 76 64 74 7 17 39 44 52 20 37 53</file>
-        </tool>
-      </inputs>
-    </file>
-    <file>
-      <name>$PROJ_DIR$\USBCDC\USBCDC_constructs.c</name>
-      <outputs>
-        <tool>
-          <name>ICC430</name>
-          <file> 36</file>
-        </tool>
-        <tool>
-          <name>BICOMP</name>
-          <file> 42</file>
-        </tool>
-      </outputs>
-      <inputs>
-        <tool>
-          <name>ICC430</name>
-          <file> 55 31 51 6 58 68 71 45 76 60</file>
-        </tool>
-        <tool>
-          <name>BICOMP</name>
-          <file> 55 31 51 6 58 68 71 45 76 60</file>
-        </tool>
-      </inputs>
-    </file>
-    <file>
-      <name>$PROJ_DIR$\ADC.c</name>
-      <outputs>
-        <tool>
-          <name>ICC430</name>
-          <file> 21</file>
-        </tool>
-        <tool>
-          <name>BICOMP</name>
-          <file> 18</file>
-        </tool>
-      </outputs>
-      <inputs>
-        <tool>
-          <name>ICC430</name>
-          <file> 82 31 51 6 55 58 56 68 71 76 7 17 39 44 5 52 20 37 53 60 45 66</file>
-        </tool>
-        <tool>
-          <name>BICOMP</name>
-          <file> 82 31 51 6 55 58 56 68 71 76 7 17 39 44 52 20 37 53 60 45 66</file>
-        </tool>
-      </inputs>
-    </file>
-    <file>
-      <name>$PROJ_DIR$\InternalFlash.c</name>
-      <outputs>
-        <tool>
-          <name>ICC430</name>
-          <file> 46</file>
-        </tool>
-        <tool>
-          <name>BICOMP</name>
-          <file> 1</file>
-        </tool>
-      </outputs>
-      <inputs>
-        <tool>
-          <name>ICC430</name>
-          <file> 82 31 51 6 55 58 56 68 71 76 7 17 39 44 5 52 20 37 53 60 45 66</file>
-        </tool>
-        <tool>
-          <name>BICOMP</name>
-          <file> 82 31 51 6 55 58 56 68 71 76 7 17 39 44 52 20 37 53 60 45 66</file>
-        </tool>
-      </inputs>
-    </file>
-    <file>
-      <name>$PROJ_DIR$\main.c</name>
-      <outputs>
-        <tool>
-          <name>ICC430</name>
-          <file> 25</file>
-        </tool>
-        <tool>
-          <name>BICOMP</name>
-          <file> 41</file>
-        </tool>
-      </outputs>
-      <inputs>
-        <tool>
-          <name>ICC430</name>
-          <file> 82 31 51 6 55 58 56 68 71 76 7 17 39 44 5 52 20 37 53 60 45 66</file>
-        </tool>
-        <tool>
-          <name>BICOMP</name>
-          <file> 82 31 51 6 55 58 56 68 71 76 7 17 39 44 52 20 37 53 60 45 66</file>
-        </tool>
-      </inputs>
-    </file>
-    <file>
-      <name>$PROJ_DIR$\PulseCounter.c</name>
-      <outputs>
-        <tool>
-          <name>ICC430</name>
-          <file> 10</file>
-        </tool>
-        <tool>
-          <name>BICOMP</name>
-          <file> 29</file>
-        </tool>
-      </outputs>
-      <inputs>
-        <tool>
-          <name>ICC430</name>
-          <file> 82 31 51 6 55 58 56 68 71 76 7 17 39 44 5 52 20 37 53 60 45 66</file>
-        </tool>
-        <tool>
-          <name>BICOMP</name>
-          <file> 82 31 51 6 55 58 56 68 71 76 7 17 39 44 52 20 37 53 60 45 66</file>
-        </tool>
-      </inputs>
-    </file>
-    <file>
-      <name>$PROJ_DIR$\RTC.c</name>
-      <outputs>
-        <tool>
-          <name>ICC430</name>
-          <file> 38</file>
+          <file> 43</file>
         </tool>
         <tool>
           <name>BICOMP</name>
@@ -502,11 +298,181 @@
       <inputs>
         <tool>
           <name>ICC430</name>
-          <file> 82 31 51 6 55 58 56 68 71 76 7 17 39 44 5 52 20 37 53 60 45 66</file>
+          <file> 53 31 17 47 56 65 67 70 82 54 55</file>
         </tool>
         <tool>
           <name>BICOMP</name>
-          <file> 82 31 51 6 55 58 56 68 71 76 7 17 39 44 52 20 37 53 60 45 66</file>
+          <file> 53 31 17 47 56 65 67 70 82 54 55</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\USBCDC\USB_Common\usb_eventHandling.c</name>
+      <outputs>
+        <tool>
+          <name>ICC430</name>
+          <file> 83</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 20</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICC430</name>
+          <file> 80 31 17 47 53 56 54 67 70 82 42 10 2 8 46 23 22 6 24 25 35 65</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 80 31 17 47 53 56 54 67 70 82 42 10 2 8 23 22 6 24 25 35 65</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\USBCDC\USB_Common\UsbIsr.c</name>
+      <outputs>
+        <tool>
+          <name>ICC430</name>
+          <file> 15</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 33</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICC430</name>
+          <file> 53 31 17 47 56 65 67 70 82 60 73 42 10 2 8 46 23 22 6 24</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 53 31 17 47 56 65 67 70 82 60 73 42 10 2 8 23 22 6 24</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\USBCDC\USBCDC_constructs.c</name>
+      <outputs>
+        <tool>
+          <name>ICC430</name>
+          <file> 5</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 40</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICC430</name>
+          <file> 53 31 17 47 56 67 70 35 82 25</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 53 31 17 47 56 67 70 35 82 25</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\ADC.c</name>
+      <outputs>
+        <tool>
+          <name>ICC430</name>
+          <file> 63</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 32</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICC430</name>
+          <file> 80 31 17 47 53 56 54 67 70 82 42 10 2 8 46 23 22 6 24 25 35 65</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 80 31 17 47 53 56 54 67 70 82 42 10 2 8 23 22 6 24 25 35 65</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\InternalFlash.c</name>
+      <outputs>
+        <tool>
+          <name>ICC430</name>
+          <file> 13</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 51</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICC430</name>
+          <file> 80 31 17 47 53 56 54 67 70 82 42 10 2 8 46 23 22 6 24 25 35 65</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 80 31 17 47 53 56 54 67 70 82 42 10 2 8 23 22 6 24 25 35 65</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\main.c</name>
+      <outputs>
+        <tool>
+          <name>ICC430</name>
+          <file> 26</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 39</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICC430</name>
+          <file> 80 31 17 47 53 56 54 67 70 82 42 10 2 8 46 23 22 6 24 25 35 65</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 80 31 17 47 53 56 54 67 70 82 42 10 2 8 23 22 6 24 25 35 65</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\PulseCounter.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 29</file>
+        </tool>
+      </outputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\RTC.c</name>
+      <outputs>
+        <tool>
+          <name>ICC430</name>
+          <file> 1</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 0</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICC430</name>
+          <file> 80 31 17 47 53 56 54 67 70 82 42 10 2 8 46 23 22 6 24 25 35 65</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 80 31 17 47 53 56 54 67 70 82 42 10 2 8 23 22 6 24 25 35 65</file>
         </tool>
       </inputs>
     </file>
@@ -515,24 +481,74 @@
       <outputs>
         <tool>
           <name>ICC430</name>
-          <file> 84</file>
+          <file> 4</file>
         </tool>
         <tool>
           <name>BICOMP</name>
-          <file> 23</file>
+          <file> 34</file>
         </tool>
       </outputs>
       <inputs>
         <tool>
           <name>ICC430</name>
-          <file> 82 31 51 6 55 58 56 68 71 76 7 17 39 44 5 52 20 37 53 60 45 66</file>
+          <file> 80 31 17 47 53 56 54 67 70 82 42 10 2 8 46 23 22 6 24 25 35 65</file>
         </tool>
         <tool>
           <name>BICOMP</name>
-          <file> 82 31 51 6 55 58 56 68 71 76 7 17 39 44 52 20 37 53 60 45 66</file>
+          <file> 80 31 17 47 53 56 54 67 70 82 42 10 2 8 23 22 6 24 25 35 65</file>
         </tool>
       </inputs>
     </file>
+    <file>
+      <name>$PROJ_DIR$\USBCDC\Common\hal_UCS.c</name>
+      <outputs>
+        <tool>
+          <name>ICC430</name>
+          <file> 41</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 44</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICC430</name>
+          <file> 53 31 17 47 54</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 53 31 17 47 54</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\ExternalWakeup.c</name>
+      <outputs>
+        <tool>
+          <name>ICC430</name>
+          <file> 86</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 85</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICC430</name>
+          <file> 80 31 17 47 53 56 54 67 70 82 42 10 2 8 46 23 22 6 24 25 35 65</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 80 31 17 47 53 56 54 67 70 82 42 10 2 8 23 22 6 24 25 35 65</file>
+        </tool>
+      </inputs>
+    </file>
+    <forcedrebuild>
+      <name>[MULTI_TOOL]</name>
+      <tool>XLINK</tool>
+    </forcedrebuild>
   </configuration>
   <configuration>
     <name>Release</name>
