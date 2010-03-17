@@ -573,7 +573,7 @@
         </option>
         <option>
           <name>OutputFile</name>
-          <state>UGPS.d43</state>
+          <state>ExternalWakeup.d43</state>
         </option>
         <option>
           <name>OutputFormat</name>
@@ -767,7 +767,7 @@
         </option>
         <option>
           <name>ExtraOutputFile</name>
-          <state>UGPS.a43</state>
+          <state>ExternalWakeup.a43</state>
         </option>
         <option>
           <name>ExtraOutputFormat</name>
@@ -1733,116 +1733,14 @@
       <data/>
     </settings>
   </configuration>
-  <group>
-    <name>USBCDC</name>
-    <group>
-      <name>CDC_Stack</name>
-      <file>
-        <name>$PROJ_DIR$\USBCDC\USB_CDC_API\UsbCdc.c</name>
-      </file>
-      <file>
-        <name>$PROJ_DIR$\USBCDC\USB_CDC_API\UsbCdc.h</name>
-      </file>
-    </group>
-    <group>
-      <name>Common</name>
-      <file>
-        <name>$PROJ_DIR$\USBCDC\Common\hal_UCS.c</name>
-      </file>
-      <file>
-        <name>$PROJ_DIR$\USBCDC\Common\TLV.c</name>
-      </file>
-    </group>
-    <group>
-      <name>Headers</name>
-      <file>
-        <name>$PROJ_DIR$\USBCDC\Common\device.h</name>
-      </file>
-      <file>
-        <name>$PROJ_DIR$\USBCDC\Common\hal_UCS.h</name>
-      </file>
-      <file>
-        <name>$PROJ_DIR$\USBCDC\Common\TLV_descriptors.h</name>
-      </file>
-      <file>
-        <name>$PROJ_DIR$\USBCDC\Common\types.h</name>
-      </file>
-    </group>
-    <group>
-      <name>HID_Stack</name>
-      <file>
-        <name>$PROJ_DIR$\USBCDC\USB_HID_API\HidReportHandler.c</name>
-      </file>
-      <file>
-        <name>$PROJ_DIR$\USBCDC\USB_HID_API\HidReportHandler.h</name>
-      </file>
-      <file>
-        <name>$PROJ_DIR$\USBCDC\USB_HID_API\UsbHid.c</name>
-      </file>
-      <file>
-        <name>$PROJ_DIR$\USBCDC\USB_HID_API\UsbHid.h</name>
-      </file>
-      <file>
-        <name>$PROJ_DIR$\USBCDC\USB_HID_API\UsbHidReq.c</name>
-      </file>
-      <file>
-        <name>$PROJ_DIR$\USBCDC\USB_HID_API\UsbHidReq.h</name>
-      </file>
-    </group>
-    <group>
-      <name>USB</name>
-      <file>
-        <name>$PROJ_DIR$\USBCDC\USB_Common\defMSP430USB.h</name>
-      </file>
-      <file>
-        <name>$PROJ_DIR$\USBCDC\USB_Common\descriptors.c</name>
-      </file>
-      <file>
-        <name>$PROJ_DIR$\USBCDC\USB_Common\descriptors.h</name>
-      </file>
-      <file>
-        <name>$PROJ_DIR$\USBCDC\USB_Common\dma.c</name>
-      </file>
-      <file>
-        <name>$PROJ_DIR$\USBCDC\USB_Common\usb.c</name>
-      </file>
-      <file>
-        <name>$PROJ_DIR$\USBCDC\USB_Common\usb.h</name>
-      </file>
-      <file>
-        <name>$PROJ_DIR$\USBCDC\USB_Common\usb_eventHandling.c</name>
-      </file>
-      <file>
-        <name>$PROJ_DIR$\USBCDC\USB_Common\UsbIsr.c</name>
-      </file>
-      <file>
-        <name>$PROJ_DIR$\USBCDC\USB_Common\UsbIsr.h</name>
-      </file>
-    </group>
-    <file>
-      <name>$PROJ_DIR$\USBCDC\USBCDC_constructs.c</name>
-    </file>
-  </group>
   <file>
-    <name>$PROJ_DIR$\ADC.c</name>
-  </file>
-  <file>
-    <name>$PROJ_DIR$\ExternalWakeup.c</name>
-  </file>
-  <file>
-    <name>$PROJ_DIR$\InternalFlash.c</name>
+    <name>$PROJ_DIR$\..\Main\ExternalWakeup.c</name>
   </file>
   <file>
     <name>$PROJ_DIR$\main.c</name>
   </file>
   <file>
-    <name>$PROJ_DIR$\RTC.c</name>
-  </file>
-  <file>
-    <name>$PROJ_DIR$\UGPS.h</name>
-  </file>
-  <file>
-    <name>$PROJ_DIR$\utils.c</name>
+    <name>$PROJ_DIR$\..\Main\UGPS.h</name>
   </file>
 </project>
 

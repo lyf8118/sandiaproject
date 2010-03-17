@@ -5,13 +5,13 @@
     <path>$WS_DIR$\ADC\ADC.ewp</path>
   </project>
   <project>
+    <path>$WS_DIR$\ExternalWakeup\ExternalWakeup.ewp</path>
+  </project>
+  <project>
     <path>$WS_DIR$\InternalFlash\InternalFlash.ewp</path>
   </project>
   <project>
     <path>$WS_DIR$\MicronFlash\MicronFlash.ewp</path>
-  </project>
-  <project>
-    <path>$WS_DIR$\PulseCounter\PulseCounter.ewp</path>
   </project>
   <project>
     <path>$WS_DIR$\RTC\RTC.ewp</path>

@@ -2,51 +2,41 @@
 
 <Workspace>
   <ConfigDictionary>
-    <CurrentConfigs>
-      <Project>MicronFlash/Debug</Project>
-      <Project>ADC/Debug</Project>
-      <Project>PulseCounter/Debug</Project>
-      <Project>RTC/Debug</Project>
-      <Project>InternalFlash/Debug</Project>
-      <Project>UGPS/Debug</Project>
-    </CurrentConfigs>
-    <CurrentProj>MicronFlash</CurrentProj>
-    <OverviewSelected>0</OverviewSelected>
-  </ConfigDictionary>
+    
+    
+    
+  <CurrentConfigs><Project>ADC/Debug</Project><Project>MicronFlash/Debug</Project><Project>InternalFlash/Debug</Project><Project>RTC/Debug</Project><Project>UGPS/Debug</Project><Project>ExternalWakeup/Debug</Project></CurrentConfigs><CurrentProj>ExternalWakeup</CurrentProj><OverviewSelected>0</OverviewSelected></ConfigDictionary>
   <Desktop>
     <Static>
       <Workspace>
         <ColumnWidths>
-          <Column0>449</Column0>
-          <Column1>27</Column1>
-          <Column2>27</Column2>
-          <Column3>27</Column3>
-        </ColumnWidths>
+          
+          
+          
+          
+        <Column0>449</Column0><Column1>27</Column1><Column2>27</Column2><Column3>27</Column3></ColumnWidths>
       </Workspace>
       <Debug-Log>
-        <ColumnWidth0>20</ColumnWidth0>
-        <ColumnWidth1>1221</ColumnWidth1>
-      </Debug-Log>
-    </Static>
+        
+        
+      <ColumnWidth0>20</ColumnWidth0><ColumnWidth1>1221</ColumnWidth1></Debug-Log>
+    <Build><ColumnWidth0>20</ColumnWidth0><ColumnWidth1>915</ColumnWidth1><ColumnWidth2>244</ColumnWidth2><ColumnWidth3>61</ColumnWidth3></Build></Static>
     <Windows>
-      <Wnd0>
+      
+      
+    <Wnd2>
         <Tabs>
           <Tab>
             <Identity>TabID-26233-11087</Identity>
             <TabName>Workspace</TabName>
             <Factory>Workspace</Factory>
             <Session>
-              <NodeDict>
-                <ExpandedNode>&lt;ws></ExpandedNode>
-                <ExpandedNode>InternalFlash</ExpandedNode>
-                <ExpandedNode>MicronFlash</ExpandedNode>
-              </NodeDict>
-            </Session>
+              
+            <NodeDict><ExpandedNode>&lt;ws></ExpandedNode><ExpandedNode>ADC</ExpandedNode><ExpandedNode>ExternalWakeup</ExpandedNode><ExpandedNode>InternalFlash</ExpandedNode><ExpandedNode>MicronFlash</ExpandedNode><ExpandedNode>UGPS</ExpandedNode></NodeDict></Session>
           </Tab>
         </Tabs>
-        <SelectedTab>0</SelectedTab>
-      </Wnd0>
-      <Wnd1>
+        
+      <SelectedTab>0</SelectedTab></Wnd2><Wnd3>
         <Tabs>
           <Tab>
             <Identity>TabID-5844-11469</Identity>
@@ -54,102 +44,22 @@
             <Factory>Debug-Log</Factory>
             <Session/>
           </Tab>
-        </Tabs>
-        <SelectedTab>0</SelectedTab>
-      </Wnd1>
-    </Windows>
+        <Tab><Identity>TabID-17262-14120</Identity><TabName>Build</TabName><Factory>Build</Factory><Session/></Tab></Tabs>
+        
+      <SelectedTab>1</SelectedTab></Wnd3></Windows>
     <Editor>
-      <Pane>
-        <Tab>
-          <Factory>TextEditor</Factory>
-          <Filename>C:\Documents and Settings\Cory\My Documents\School\Fall 2009\Clinic Project\Development\UofU_GPSReceiver\Main\InternalFlash.c</Filename>
-          <XPos>0</XPos>
-          <YPos>0</YPos>
-          <SelStart>459</SelStart>
-          <SelEnd>459</SelEnd>
-        </Tab>
-        <Tab>
-          <Factory>TextEditor</Factory>
-          <Filename>C:\Documents and Settings\Cory\My Documents\School\Fall 2009\Clinic Project\Development\UofU_GPSReceiver\MicronFlash\main.c</Filename>
-          <XPos>0</XPos>
-          <YPos>72</YPos>
-          <SelStart>4124</SelStart>
-          <SelEnd>4124</SelEnd>
-        </Tab>
-        <ActiveTab>1</ActiveTab>
-      </Pane>
-      <ActivePane>0</ActivePane>
-      <Sizes>
-        <Pane>
-          <X>1000000</X>
-          <Y>1000000</Y>
-        </Pane>
-      </Sizes>
-      <SplitMode>1</SplitMode>
-    </Editor>
+      
+      
+      
+      
+    <Pane><Tab><Factory>TextEditor</Factory><Filename>C:\Documents and Settings\Cory\My Documents\School\Fall 2009\Clinic Project\Development\UofU_GPSReceiver\ExternalWakeup\main.c</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>447</SelStart><SelEnd>447</SelEnd></Tab><ActiveTab>0</ActiveTab></Pane><ActivePane>0</ActivePane><Sizes><Pane><X>1000000</X><Y>1000000</Y></Pane></Sizes><SplitMode>1</SplitMode></Editor>
     <Positions>
-      <Top>
-        <Row0>
-          <Sizes>
-            <Toolbar-00c0a250>
-              <key>iaridepm.enu1</key>
-            </Toolbar-00c0a250>
-          </Sizes>
-        </Row0>
-      </Top>
-      <Left>
-        <Row0>
-          <Sizes>
-            <Wnd0>
-              <Rect>
-                <Top>-2</Top>
-                <Left>-2</Left>
-                <Bottom>482</Bottom>
-                <Right>523</Right>
-                <x>-2</x>
-                <y>-2</y>
-                <xscreen>200</xscreen>
-                <yscreen>200</yscreen>
-                <sizeHorzCX>156250</sizeHorzCX>
-                <sizeHorzCY>276243</sizeHorzCY>
-                <sizeVertCX>410156</sizeVertCX>
-                <sizeVertCY>668508</sizeVertCY>
-              </Rect>
-            </Wnd0>
-          </Sizes>
-        </Row0>
-      </Left>
-      <Right>
-        <Row0>
-          <Sizes/>
-        </Row0>
-      </Right>
-      <Bottom>
-        <Row0>
-          <Sizes>
-            <Wnd1>
-              <Rect>
-                <Top>-2</Top>
-                <Left>-2</Left>
-                <Bottom>198</Bottom>
-                <Right>1282</Right>
-                <x>-2</x>
-                <y>-2</y>
-                <xscreen>1284</xscreen>
-                <yscreen>200</yscreen>
-                <sizeHorzCX>1003125</sizeHorzCX>
-                <sizeHorzCY>276243</sizeHorzCY>
-                <sizeVertCX>156250</sizeVertCX>
-                <sizeVertCY>276243</sizeVertCY>
-              </Rect>
-            </Wnd1>
-          </Sizes>
-        </Row0>
-      </Bottom>
-      <Float>
-        <Sizes/>
-      </Float>
-    </Positions>
+      
+      
+      
+      
+      
+    <Top><Row0><Sizes><Toolbar-00c0a250><key>iaridepm.enu1</key></Toolbar-00c0a250></Sizes></Row0></Top><Left><Row0><Sizes><Wnd2><Rect><Top>-2</Top><Left>-2</Left><Bottom>482</Bottom><Right>523</Right><x>-2</x><y>-2</y><xscreen>200</xscreen><yscreen>200</yscreen><sizeHorzCX>156250</sizeHorzCX><sizeHorzCY>276243</sizeHorzCY><sizeVertCX>410156</sizeVertCX><sizeVertCY>668508</sizeVertCY></Rect></Wnd2></Sizes></Row0></Left><Right><Row0><Sizes/></Row0></Right><Bottom><Row0><Sizes><Wnd3><Rect><Top>-2</Top><Left>-2</Left><Bottom>198</Bottom><Right>1282</Right><x>-2</x><y>-2</y><xscreen>1284</xscreen><yscreen>200</yscreen><sizeHorzCX>1003125</sizeHorzCX><sizeHorzCY>276243</sizeHorzCY><sizeVertCX>156250</sizeVertCX><sizeVertCY>276243</sizeVertCY></Rect></Wnd3></Sizes></Row0></Bottom><Float><Sizes/></Float></Positions>
   </Desktop>
 </Workspace>
 

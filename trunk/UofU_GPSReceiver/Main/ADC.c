@@ -49,11 +49,11 @@ void ADCSetup()
   P6SEL = 0x07;                             // Enable A/D channel inputs
   ADC12CTL0 = ADC12ON+ADC12MSC+ADC12SHT0_8; // Turn on ADC12, extend sampling time
                                             // to avoid overflow of results
+  ADC12CTL2 |= 0x80;                        //turn ADC temp sensor off
   ADC12CTL1 = ADC12SHP+ADC12CONSEQ_3+0x8;   // Use sampling timer, repeated sequence
   ADC12MCTL0 = ADC12INCH_0;                 // ref+=AVcc, channel = A0
   ADC12MCTL1 = ADC12INCH_1;                 // ref+=AVcc, channel = A1
   ADC12MCTL2 = ADC12INCH_2+ADC12EOS;        // ref+=AVcc, channel = A2, end seq.
-  ADC12CTL2 |= 0x80;                        //turn ADC temp sensor off
   ADC12IE = 0x04;                           // Enable ADC12IFG.2
   ADC12CTL0 |= ADC12ENC;                    // Enable conversions
   TimerA_Setup();                           //setup periodic interrupt to trigger ADC
