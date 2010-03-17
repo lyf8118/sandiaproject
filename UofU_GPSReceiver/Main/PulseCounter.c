@@ -4,8 +4,17 @@ void WakeupPinSetup()
 {
  //SiGEPulseCount = 0;
  P2DIR &= ~BIT0;      //set P2.0 as an input
- P2IES = 0x00;
- P2IE |= BIT0;        //enable 2.0 interrupt
+ P2IES &= ~BIT0;      //triggered on rising edge
+}
+
+void DisableWakeupPin()
+{
+  P2IE &= ~BIT0;    //disable 2.0 interrupt
+}
+
+void EnableWakeupPin()
+{
+  P2IE |= BIT0;        //enable 2.0 interrupt 
 }
 
 #pragma vector=PORT1_VECTOR 
