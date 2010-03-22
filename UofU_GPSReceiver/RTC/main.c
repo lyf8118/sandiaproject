@@ -3,8 +3,15 @@
 //#include  "msp430x552x.h"
 //#include <signal.h>
 //#include "time.h"
-
-
+/*struct RTC_date_t 
+{
+     unsigned int year;
+     unsigned int month;
+     unsigned int day;
+     unsigned int hour;
+     unsigned int min;
+     unsigned int sec;
+};*/
 
 void main(void) {
   WDTCTL = WDTPW+WDTHOLD; // Stop the dog

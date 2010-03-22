@@ -69,10 +69,27 @@ void StoreFlashPageInfo();
 
 //////////////////////////////////////////////////////////////////////////////
 //#include "time.h"
-//#include <signal.h>
+#include <signal.h>
+// struct for RTC
+typedef struct 
+{
+     char yearh;
+     char yearl;
+     char month;
+     char day;
+     char hour;
+     char min;
+     char sec;
+} RTC_date;
 
-//void TIME_getDate(TIME_date_tm *const date);
-//void TIME_setDate(const TIME_date_tm *date);
+void RTC_init();
+void RTC_getDate(RTC_date *date);
+void RTC_setDate(RTC_date *date);
+void RTC_setAlarm(char day,char dayOfWeek,char hour,char minute);
+void RTC_setMinute();
+void RTC_setHour();
+void RTC_setNoon();
+void RTC_setMidnight();
 
 //////////////////////////////////////////////////////////////////////////////
 
