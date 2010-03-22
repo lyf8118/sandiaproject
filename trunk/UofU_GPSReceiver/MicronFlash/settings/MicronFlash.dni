@@ -23,7 +23,8 @@ State Storage=-1
 Count=0
 [FET]
 Extended Clock mode=-1
-Extended Clock Control Enable=0
+Secure Password=
+Extended Clock Control Enable=1
 Advanced Extended Clock Control=0
 Emulation mode=0
 Free running=0
