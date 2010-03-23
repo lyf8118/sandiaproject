@@ -15,9 +15,12 @@ void SiGECounterSetup()
 void main( void )
 {
   WDTCTL = WDTPW+WDTHOLD;                   // Stop watchdog timer
-  char* PageDataArray = (char*)PAGEDATASTART;
+  
   P1DIR = 0x01;
   P1OUT = 1;
+  
+  char* PageDataArray = (char*)PAGEDATASTART;
+  
   for(int x = 0; x < 1024; x++)
   {
     if(x < 128)
@@ -36,6 +39,6 @@ void main( void )
     else insertBit(FALSE, x, PageDataArray); 
   }
   write_Flash(PageDataArray, 1);   //writing info for flash 2
-  
+  P1OUT = 0;
   while(1){  }
 }

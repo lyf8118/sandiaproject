@@ -62,6 +62,8 @@ void RTC_setMidnight()
 
 #pragma vector=RTC_VECTOR
 __interrupt void every_minute(void) {
-//  P5OUT ^= 0x02; // Toggle P5.1 every minute
-  P1OUT = ~P1OUT;
+  _DINT();                                 //Disable interrupts
+  RTCIV &= 0x00;
+  P1OUT ^= 0x01;
+  _EINT();                                //Enable interrupts
 }
