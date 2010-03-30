@@ -2,19 +2,27 @@
 
 void RTC_init()
 {
-  RTCCTL01 = RTCBCD_H | RTCMODE_H | RTCRDY_H;
+   RTCCTL01 = RTCBCD | RTCHOLD | 0x2040 | RTCTEV_0;
+   // Enable, BCD, int every minute
+//   RTCSEC = 0x01; // Set Seconds
+//   RTCMIN = 0x00; // Set Minutes
+//   RTCHOUR = 0x08; // Set Hours
+//   RTCDOW = 0x02; // Set DOW
+//   RTCDAY = 0x23; // Set Day
+//   RTCMON = 0x11; // Set Month
+//   RTCYEAR = 0x2009; // Set Year
+   RTCCTL01 &= ~RTCHOLD; // Enable RTC
 }
 void RTC_getDate(RTC_date *date)
 {
-     //RTCCTL |= RTCHOLD;
-     date->yearh = RTCYEARH;
-     date->yearl = RTCYEARL;
-     date->month = RTCMON;
-     date->day = RTCDAY;
-     date->hour = RTCHOUR;
-     date->min = RTCMIN;
-     date->sec = RTCSEC;
-     //RTCCTL &= ~RTCHOLD;
+   while(!(RTCCTL1 & 0x10));   //wait for RTCRDY signal to go high, so read will be valid
+   date->yearh = RTCYEARH;
+   date->yearl = RTCYEARL;
+   date->month = RTCMON;
+   date->day = RTCDAY;
+   date->hour = RTCHOUR;
+   date->min = RTCMIN;
+   date->sec = RTCSEC;
 }
  
 void RTC_setDate(RTC_date *date)
@@ -64,6 +72,6 @@ void RTC_setMidnight()
 __interrupt void every_minute(void) {
   _DINT();                                 //Disable interrupts
   RTCIV &= 0x00;
-  P1OUT ^= 0x01;
+//  P1OUT ^= 0x01;
   _EINT();                                //Enable interrupts
 }
