@@ -59,9 +59,9 @@ void ADCSetup()
   TimerA_Setup();                           //setup periodic interrupt to trigger ADC
 }
 
-void ADCOff()
+void ADCStop()
 {
-  ADC12CTL0 &= ~ADC12ON;
+  ADC12CTL0 &= ~ADC12ENC;
 }
 
 void ADCOn()
@@ -117,6 +117,7 @@ __interrupt void ADC12ISR (void)
       {
         if (index == U_ADCSAMPLESIZE)
         {
+          ADCStop();
           index = 0;
           ADCDone = TRUE;
         }   //set flag to start averaging, computes baseline values 
@@ -125,6 +126,7 @@ __interrupt void ADC12ISR (void)
       {
         if (index == U_ADCBASELINESIZE)
         {
+          ADCStop();
           index = 0;
           ADCDone = TRUE;
         }   //set flag to start averaging, checks for movement
