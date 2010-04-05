@@ -64,14 +64,10 @@ void ADCStop()
   ADC12CTL0 &= ~ADC12ENC;
 }
 
-void ADCOn()
-{
-  ADC12CTL0 |= ADC12ON;
-}
-
 void ADCStart()
 { 
-  ADC12CTL0 |= ADC12SC;                     // Start convn - software trigger
+  ADC12CTL0 |= ADC12ENC;          //Enable the A/D unit in case it had been stopped
+  ADC12CTL0 |= ADC12SC;           //Start convn - software trigger
 }
 
 char MovementDetected()
@@ -129,7 +125,7 @@ __interrupt void ADC12ISR (void)
           ADCStop();
           index = 0;
           ADCDone = TRUE;
-        }   //set flag to start averaging, checks for movement
+        }   //set flag to start averaging, checks for motion
       }
   case 12: break;                           // Vector 12:  ADC12IFG3
   case 14: break;                           // Vector 14:  ADC12IFG4

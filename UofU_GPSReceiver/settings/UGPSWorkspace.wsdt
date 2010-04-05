@@ -5,7 +5,7 @@
     
     
     
-  <CurrentConfigs><Project>ADC/Debug</Project><Project>RTC/Debug</Project><Project>InternalFlash/Debug</Project><Project>ExternalWakeup/Debug</Project><Project>MicronFlash/Debug</Project><Project>UGPS/Debug</Project></CurrentConfigs><CurrentProj>RTC</CurrentProj><OverviewSelected>0</OverviewSelected></ConfigDictionary>
+  <CurrentConfigs><Project>ADC/Debug</Project><Project>RTC/Debug</Project><Project>InternalFlash/Debug</Project><Project>MicronFlash/Debug</Project><Project>ExternalWakeup/Debug</Project><Project>UGPS/Debug</Project></CurrentConfigs><CurrentProj>ADC</CurrentProj><OverviewSelected>0</OverviewSelected></ConfigDictionary>
   <Desktop>
     <Static>
       <Workspace>
@@ -14,7 +14,7 @@
           
           
           
-        <Column0>466</Column0><Column1>27</Column1><Column2>27</Column2><Column3>27</Column3></ColumnWidths>
+        <Column0>295</Column0><Column1>27</Column1><Column2>27</Column2><Column3>27</Column3></ColumnWidths>
       </Workspace>
       <Build>
         
@@ -31,7 +31,7 @@
     <Windows>
       
       
-    <Wnd0>
+    <Wnd2>
         <Tabs>
           <Tab>
             <Identity>TabID-8809-25783</Identity>
@@ -43,7 +43,7 @@
           </Tab>
         </Tabs>
         
-      <SelectedTab>0</SelectedTab></Wnd0><Wnd1>
+      <SelectedTab>0</SelectedTab></Wnd2><Wnd3>
         <Tabs>
           <Tab>
             <Identity>TabID-23049-26335</Identity>
@@ -59,20 +59,20 @@
           </Tab>
         </Tabs>
         
-      <SelectedTab>0</SelectedTab></Wnd1></Windows>
+      <SelectedTab>0</SelectedTab></Wnd3></Windows>
     <Editor>
       
       
       
       
-    <Pane><Tab><Factory>TextEditor</Factory><Filename>C:\Documents and Settings\Cory\My Documents\School\Fall 2009\Clinic Project\Development\UofU_GPSReceiver\Main\RTC.c</Filename><XPos>0</XPos><YPos>2</YPos><SelStart>413</SelStart><SelEnd>424</SelEnd></Tab><ActiveTab>0</ActiveTab><Tab><Factory>TextEditor</Factory><Filename>C:\Documents and Settings\Cory\My Documents\School\Fall 2009\Clinic Project\Development\UofU_GPSReceiver\Main\main.c</Filename><XPos>0</XPos><YPos>38</YPos><SelStart>1277</SelStart><SelEnd>1277</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>C:\Documents and Settings\Cory\My Documents\School\Fall 2009\Clinic Project\Development\UofU_GPSReceiver\RTC\main.c</Filename><XPos>0</XPos><YPos>18</YPos><SelStart>580</SelStart><SelEnd>580</SelEnd></Tab></Pane><ActivePane>0</ActivePane><Sizes><Pane><X>1000000</X><Y>1000000</Y></Pane></Sizes><SplitMode>1</SplitMode></Editor>
+    <Pane><Tab><Factory>TextEditor</Factory><Filename>C:\Documents and Settings\Cory\My Documents\School\Fall 2009\Clinic Project\Development\UofU_GPSReceiver\Main\RTC.c</Filename><XPos>0</XPos><YPos>2</YPos><SelStart>413</SelStart><SelEnd>424</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>C:\Documents and Settings\Cory\My Documents\School\Fall 2009\Clinic Project\Development\UofU_GPSReceiver\Main\main.c</Filename><XPos>0</XPos><YPos>38</YPos><SelStart>1277</SelStart><SelEnd>1277</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>C:\Documents and Settings\Cory\My Documents\School\Fall 2009\Clinic Project\Development\UofU_GPSReceiver\RTC\main.c</Filename><XPos>0</XPos><YPos>18</YPos><SelStart>580</SelStart><SelEnd>580</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>C:\Documents and Settings\Cory\My Documents\School\Fall 2009\Clinic Project\Development\UofU_GPSReceiver\Main\ADC.c</Filename><XPos>0</XPos><YPos>161</YPos><SelStart>7110</SelStart><SelEnd>7110</SelEnd></Tab><ActiveTab>3</ActiveTab></Pane><ActivePane>0</ActivePane><Sizes><Pane><X>1000000</X><Y>1000000</Y></Pane></Sizes><SplitMode>1</SplitMode></Editor>
     <Positions>
       
       
       
       
       
-    <Top><Row0><Sizes><Toolbar-00c0a268><key>iaridepm.enu1</key></Toolbar-00c0a268></Sizes></Row0></Top><Left><Row0><Sizes><Wnd0><Rect><Top>-2</Top><Left>-2</Left><Bottom>482</Bottom><Right>540</Right><x>-2</x><y>-2</y><xscreen>200</xscreen><yscreen>200</yscreen><sizeHorzCX>156250</sizeHorzCX><sizeHorzCY>276243</sizeHorzCY><sizeVertCX>423438</sizeVertCX><sizeVertCY>668508</sizeVertCY></Rect></Wnd0></Sizes></Row0></Left><Right><Row0><Sizes/></Row0></Right><Bottom><Row0><Sizes><Wnd1><Rect><Top>-2</Top><Left>-2</Left><Bottom>198</Bottom><Right>1282</Right><x>-2</x><y>-2</y><xscreen>1284</xscreen><yscreen>200</yscreen><sizeHorzCX>1003125</sizeHorzCX><sizeHorzCY>276243</sizeHorzCY><sizeVertCX>156250</sizeVertCX><sizeVertCY>276243</sizeVertCY></Rect></Wnd1></Sizes></Row0></Bottom><Float><Sizes/></Float></Positions>
+    <Top><Row0><Sizes><Toolbar-00c0a270><key>iaridepm.enu1</key></Toolbar-00c0a270></Sizes></Row0></Top><Left><Row0><Sizes><Wnd2><Rect><Top>-2</Top><Left>-2</Left><Bottom>495</Bottom><Right>369</Right><x>-2</x><y>-2</y><xscreen>58</xscreen><yscreen>187</yscreen><sizeHorzCX>45313</sizeHorzCX><sizeHorzCY>258287</sizeHorzCY><sizeVertCX>289844</sizeVertCX><sizeVertCY>686464</sizeVertCY></Rect></Wnd2></Sizes></Row0></Left><Right><Row0><Sizes/></Row0></Right><Bottom><Row0><Sizes><Wnd3><Rect><Top>-2</Top><Left>-2</Left><Bottom>185</Bottom><Right>1282</Right><x>-2</x><y>-2</y><xscreen>1284</xscreen><yscreen>187</yscreen><sizeHorzCX>1003125</sizeHorzCX><sizeHorzCY>258287</sizeHorzCY><sizeVertCX>45313</sizeVertCX><sizeVertCY>258287</sizeVertCY></Rect></Wnd3></Sizes></Row0></Bottom><Float><Sizes/></Float></Positions>
   </Desktop>
 </Workspace>
 
