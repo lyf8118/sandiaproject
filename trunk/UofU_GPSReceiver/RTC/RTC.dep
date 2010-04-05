@@ -6,62 +6,56 @@
   <configuration>
     <name>Debug</name>
     <outputs>
-      <file>$PROJ_DIR$\..\Main\main.c</file>
-      <file>$PROJ_DIR$\main.c</file>
-      <file>$PROJ_DIR$\Debug\Obj\RTC.pbd</file>
-      <file>$TOOLKIT_DIR$\lib\dlib\dl430xsfn.r43</file>
-      <file>$PROJ_DIR$\Debug\Obj\RTC.pbi</file>
-      <file>$TOOLKIT_DIR$\inc\dlib\DLib_Product.h</file>
-      <file>$PROJ_DIR$\..\Main\USBCDC\Common\types.h</file>
-      <file>$TOOLKIT_DIR$\inc\msp430x552x.h</file>
-      <file>$PROJ_DIR$\Debug\Exe\RTC.d43</file>
-      <file>$TOOLKIT_DIR$\inc\dlib\DLib_Threads.h</file>
-      <file>$TOOLKIT_DIR$\lib\dlib\dl430xsfn.h</file>
-      <file>$TOOLKIT_DIR$\inc\dlib\string.h</file>
-      <file>$PROJ_DIR$\..\Main\USBCDC\USBmain.h</file>
-      <file>$PROJ_DIR$\..\Main\USBCDC\Common\hal_UCS.h</file>
-      <file>$PROJ_DIR$\Debug\Obj\main.pbi</file>
-      <file>$PROJ_DIR$\..\Main\USBCDC\USB_Common\defMSP430USB.h</file>
-      <file>$TOOLKIT_DIR$\inc\dlib\ycheck.h</file>
-      <file>$PROJ_DIR$\..\Main\USBCDC\USB_CDC_API\UsbCdc.h</file>
       <file>$PROJ_DIR$\..\Main\USBCDC\USB_Common\descriptors.h</file>
+      <file>$TOOLKIT_DIR$\config\multiplier32_loc2.xcl</file>
+      <file>$TOOLKIT_DIR$\inc\dlib\DLib_Product.h</file>
+      <file>$PROJ_DIR$\Debug\Obj\RTC.r43</file>
+      <file>$TOOLKIT_DIR$\config\lnk430F5529.xcl</file>
+      <file>$TOOLKIT_DIR$\lib\dlib\dl430xsfn.r43</file>
+      <file>$TOOLKIT_DIR$\inc\dlib\DLib_Threads.h</file>
+      <file>$PROJ_DIR$\..\Main\USBCDC\Common\device.h</file>
+      <file>$PROJ_DIR$\Debug\Obj\main.r43</file>
+      <file>$PROJ_DIR$\Debug\Obj\main.pbi</file>
       <file>$TOOLKIT_DIR$\inc\dlib\yvals.h</file>
-      <file>$PROJ_DIR$\..\Main\USBCDC\USBCDC_constructs.h</file>
+      <file>$PROJ_DIR$\Debug\Obj\RTC.pbi</file>
+      <file>$PROJ_DIR$\..\Main\USBCDC\USB_CDC_API\UsbCdc.h</file>
+      <file>$TOOLKIT_DIR$\inc\dlib\string.h</file>
+      <file>$TOOLKIT_DIR$\lib\dlib\dl430xsfn.h</file>
+      <file>$PROJ_DIR$\..\Main\USBCDC\Common\hal_UCS.h</file>
+      <file>$TOOLKIT_DIR$\inc\dlib\DLib_Defaults.h</file>
       <file>$TOOLKIT_DIR$\inc\intrinsics.h</file>
       <file>$TOOLKIT_DIR$\inc\in430.h</file>
-      <file>$PROJ_DIR$\..\Main\USBCDC\Common\device.h</file>
-      <file>$TOOLKIT_DIR$\inc\dlib\DLib_Defaults.h</file>
-      <file>$PROJ_DIR$\Debug\Obj\main.r43</file>
-      <file>$TOOLKIT_DIR$\config\multiplier32_loc2.xcl</file>
-      <file>$PROJ_DIR$\Debug\Obj\RTC.r43</file>
-      <file>$PROJ_DIR$\..\Main\UGPS.h</file>
+      <file>$PROJ_DIR$\..\Main\USBCDC\USBCDC_constructs.h</file>
+      <file>$TOOLKIT_DIR$\inc\dlib\ycheck.h</file>
+      <file>$PROJ_DIR$\..\Main\USBCDC\USB_Common\defMSP430USB.h</file>
       <file>$TOOLKIT_DIR$\inc\dlib\signal.h</file>
-      <file>$TOOLKIT_DIR$\config\lnk430F5529.xcl</file>
-      <file>$TOOLKIT_DIR$\inc\dlib\xencoding_limits.h</file>
-      <file>$PROJ_DIR$\..\Main\USBCDC\USB_Common\usb.h</file>
-      <file>$PROJ_DIR$\..\Main\RTC.c</file>
+      <file>$PROJ_DIR$\..\Main\USBCDC\USBmain.h</file>
+      <file>$TOOLKIT_DIR$\inc\msp430x552x.h</file>
       <file>$TOOLKIT_DIR$\inc\dlib\ysizet.h</file>
+      <file>$PROJ_DIR$\..\Main\USBCDC\USB_Common\usb.h</file>
+      <file>$PROJ_DIR$\Debug\Exe\RTC.d43</file>
+      <file>$TOOLKIT_DIR$\inc\dlib\xencoding_limits.h</file>
+      <file>$PROJ_DIR$\Debug\Obj\RTC.pbd</file>
+      <file>$PROJ_DIR$\..\Main\UGPS.h</file>
+      <file>$PROJ_DIR$\main.c</file>
+      <file>$PROJ_DIR$\..\Main\RTC.c</file>
+      <file>$PROJ_DIR$\..\Main\USBCDC\Common\types.h</file>
     </outputs>
     <file>
-      <name>$PROJ_DIR$\main.c</name>
+      <name>[ROOT_NODE]</name>
       <outputs>
         <tool>
-          <name>ICC430</name>
-          <file> 25</file>
-        </tool>
-        <tool>
-          <name>BICOMP</name>
-          <file> 14</file>
+          <name>XLINK</name>
+          <file> 27</file>
         </tool>
       </outputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\Debug\Exe\RTC.d43</name>
       <inputs>
         <tool>
-          <name>ICC430</name>
-          <file> 28 7 22 21 29 16 19 24 10 5 31 9 23 6 13 18 32 17 11 34 20 12 15</file>
-        </tool>
-        <tool>
-          <name>BICOMP</name>
-          <file> 28 7 22 21 29 16 19 24 5 31 9 23 6 13 18 32 17 11 34 20 12 15</file>
+          <name>XLINK</name>
+          <file> 4 1 3 8 5</file>
         </tool>
       </inputs>
     </file>
@@ -70,48 +64,53 @@
       <inputs>
         <tool>
           <name>BILINK</name>
-          <file> 4 14</file>
+          <file> 11 9</file>
         </tool>
       </inputs>
     </file>
     <file>
-      <name>$PROJ_DIR$\Debug\Exe\RTC.d43</name>
-      <inputs>
-        <tool>
-          <name>XLINK</name>
-          <file> 30 26 27 25 3</file>
-        </tool>
-      </inputs>
-    </file>
-    <file>
-      <name>[ROOT_NODE]</name>
+      <name>$PROJ_DIR$\main.c</name>
       <outputs>
         <tool>
-          <name>XLINK</name>
+          <name>BICOMP</name>
+          <file> 9</file>
+        </tool>
+        <tool>
+          <name>ICC430</name>
           <file> 8</file>
         </tool>
       </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 30 24 18 17 22 20 10 16 2 28 6 7 33 15 0 26 12 13 25 19 23 21</file>
+        </tool>
+        <tool>
+          <name>ICC430</name>
+          <file> 30 24 18 17 22 20 10 16 14 2 28 6 7 33 15 0 26 12 13 25 19 23 21</file>
+        </tool>
+      </inputs>
     </file>
     <file>
       <name>$PROJ_DIR$\..\Main\RTC.c</name>
       <outputs>
         <tool>
-          <name>ICC430</name>
-          <file> 27</file>
+          <name>BICOMP</name>
+          <file> 11</file>
         </tool>
         <tool>
-          <name>BICOMP</name>
-          <file> 4</file>
+          <name>ICC430</name>
+          <file> 3</file>
         </tool>
       </outputs>
       <inputs>
         <tool>
-          <name>ICC430</name>
-          <file> 28 7 22 21 29 16 19 24 10 5 31 9 23 6 13 18 32 17 11 34 20 12 15</file>
+          <name>BICOMP</name>
+          <file> 30 24 18 17 22 20 10 16 2 28 6 7 33 15 0 26 12 13 25 19 23 21</file>
         </tool>
         <tool>
-          <name>BICOMP</name>
-          <file> 28 7 22 21 29 16 19 24 5 31 9 23 6 13 18 32 17 11 34 20 12 15</file>
+          <name>ICC430</name>
+          <file> 30 24 18 17 22 20 10 16 14 2 28 6 7 33 15 0 26 12 13 25 19 23 21</file>
         </tool>
       </inputs>
     </file>
