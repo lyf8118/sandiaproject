@@ -1,22 +1,6 @@
-// (c)2009 by Texas Instruments Incorporated, All Rights Reserved.
-//----------------------------------------------------------------------------+
-// LED Control Demo
-// This USB demo example is to be used with a PC application (e.g. HyperTerminal)
-// This demo application is used to control the operation of the LED at P1.0.
-// Typing the following pharses in the HyperTerminal Window does the following
-// 1. "LED ON" Turns on the LED and returns "LED is ON" phrase to PC
-// 2. "LED OFF" Turns off the LED and returns "LED is OFF" back to HyperTerminal
-// 3. "LED TOGGLE - SLOW" Turns on the timer used to toggle LED with a large 
-//     period and returns "LED is toggling slowly" phrase back to HyperTerminal
-// 4. "LED TOGGLE - FAST" Turns on the timer used to toggle LED with a smaller
-//     period and returns "LED is toggling fast" phrase back to HyperTerminal
-//
-// Please refer to "USB CDC API Demo Examples Guide.pdf" for more details
-//----------------------------------------------------------------------------+
+// contains all the methods for reading and writing the micron flash memory
+// main is used to test methods
 
-/*----------------------------------------------------------------------------+
-| Main Routine                                                                |
-+----------------------------------------------------------------------------*/
 #include "../Main/UGPS.h"
 
 char p[2048];
