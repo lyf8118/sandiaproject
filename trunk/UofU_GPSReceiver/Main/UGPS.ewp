@@ -1830,6 +1830,9 @@
     <name>$PROJ_DIR$\ExternalWakeup.c</name>
   </file>
   <file>
+    <name>$PROJ_DIR$\Flash.c</name>
+  </file>
+  <file>
     <name>$PROJ_DIR$\InternalFlash.c</name>
   </file>
   <file>

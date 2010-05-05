@@ -41,6 +41,7 @@
 void main(void)
 {
   WDTCTL = WDTPW+WDTHOLD;                   // Stop watchdog timer
+  //TODO: find out the source of ACLK in debugger (I'm curious) see UCSCTL4 for answer
 
   if(FlashInfoStored())         //checking if flash chip info has already been stored
   {
@@ -61,5 +62,6 @@ void main(void)
     
     //setup SiGe pins and micron flash
     //control the switching between the flash chips for a set amount of time
+    takesample();
   }
 }

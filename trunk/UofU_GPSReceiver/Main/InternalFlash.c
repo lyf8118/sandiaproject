@@ -86,6 +86,8 @@ char BadPage(int pageNumber, int flashID)
 // returns next good block #
 int FindNextPage(int currentPage, int flashID)
 {
+  if(currentPage == 1023) //reached end of pages, pageData[1023+1] is out of bounds
+    return -1;
   while(BadPage(currentPage + 1, flashID)) 
   {
     currentPage++;

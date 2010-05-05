@@ -22,13 +22,13 @@
 @REM but they are listed at the end of this file for reference.
 
 
-"C:\Program Files\IAR Systems\Embedded Workbench 5.4 Kickstart\common\bin\cspybat" "C:\Program Files\IAR Systems\Embedded Workbench 5.4 Kickstart\430\bin\430proc.dll" "C:\Program Files\IAR Systems\Embedded Workbench 5.4 Kickstart\430\bin\430fet.dll"  %1 --plugin "C:\Program Files\IAR Systems\Embedded Workbench 5.4 Kickstart\430\bin\<libsupport_plugin>" --backend -B "--hardware_multiplier" "32" "--hwmult_type" "8" "-p" "C:\Program Files\IAR Systems\Embedded Workbench 5.4 Kickstart\430\config\MSP430F5529.ddf" "--core=430Xv2" "--data_model=small" "--iv_base" "0xFF80" "--no_wrap_around" "-d" "fet" "--erase_main_and_info" "--derivative" "MSP430F5529" "--protocol" "spy-bi-wire-jtag" "--eem" "EMEX_HIGH" "--port" "Automatic" "--connection" "ti_usb" "--settlingtime=0" 
+"C:\Program Files\IAR Systems\Embedded Workbench 5.3 Kickstart\common\bin\cspybat" "C:\Program Files\IAR Systems\Embedded Workbench 5.3 Kickstart\430\bin\430proc.dll" "C:\Program Files\IAR Systems\Embedded Workbench 5.3 Kickstart\430\bin\430fet.dll"  %1 --plugin "C:\Program Files\IAR Systems\Embedded Workbench 5.3 Kickstart\430\bin\<libsupport_plugin>" --backend -B "--hardware_multiplier" "32" "--hwmult_type" "8" "-p" "C:\Program Files\IAR Systems\Embedded Workbench 5.3 Kickstart\430\config\MSP430F5529.ddf" "--core=430Xv2" "--data_model=small" "--iv_base" "0xFF80" "-d" "fet" "--erase_main_and_info" "--derivative" "MSP430F5529" "--vccvoltage=3.0" "--protocol" "spy-bi-wire-jtag" "--eem" "EMEX_HIGH" "--port" "Automatic" "--connection" "ti_usb" "--settlingtime=0" 
 
 
 @REM Loaded plugins:
-@REM    C:\Program Files\IAR Systems\Embedded Workbench 5.4 Kickstart\430\bin\430libsupport.dll
-@REM    C:\Program Files\IAR Systems\Embedded Workbench 5.4 Kickstart\430\plugins\lcd\lcd.dll
-@REM    C:\Program Files\IAR Systems\Embedded Workbench 5.4 Kickstart\common\plugins\CodeCoverage\CodeCoverage.dll
-@REM    C:\Program Files\IAR Systems\Embedded Workbench 5.4 Kickstart\common\plugins\Profiling\Profiling.dll
-@REM    C:\Program Files\IAR Systems\Embedded Workbench 5.4 Kickstart\common\plugins\stack\stack.dll
-@REM    C:\Program Files\IAR Systems\Embedded Workbench 5.4 Kickstart\common\plugins\SymList\SymList.dll
+@REM    C:\Program Files\IAR Systems\Embedded Workbench 5.3 Kickstart\430\bin\430libsupport.dll
+@REM    C:\Program Files\IAR Systems\Embedded Workbench 5.3 Kickstart\430\plugins\lcd\lcd.dll
+@REM    C:\Program Files\IAR Systems\Embedded Workbench 5.3 Kickstart\common\plugins\CodeCoverage\CodeCoverage.dll
+@REM    C:\Program Files\IAR Systems\Embedded Workbench 5.3 Kickstart\common\plugins\Profiling\Profiling.dll
+@REM    C:\Program Files\IAR Systems\Embedded Workbench 5.3 Kickstart\common\plugins\stack\stack.dll
+@REM    C:\Program Files\IAR Systems\Embedded Workbench 5.3 Kickstart\common\plugins\SymList\SymList.dll

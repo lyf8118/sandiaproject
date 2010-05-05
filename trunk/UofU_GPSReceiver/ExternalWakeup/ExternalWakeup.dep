@@ -6,52 +6,75 @@
   <configuration>
     <name>Debug</name>
     <outputs>
-      <file>$PROJ_DIR$\..\Main\USBCDC\USB_Common\defMSP430USB.h</file>
-      <file>$PROJ_DIR$\..\Main\USBCDC\USB_Common\usb.h</file>
-      <file>$PROJ_DIR$\Debug\Obj\PulseCounter.pbi</file>
-      <file>$PROJ_DIR$\Debug\Obj\ExternalWakeup.pbd</file>
-      <file>$PROJ_DIR$\Debug\Obj\ExternalWakeup.r43</file>
-      <file>$PROJ_DIR$\Debug\Obj\main.pbi</file>
-      <file>$TOOLKIT_DIR$\inc\dlib\yvals.h</file>
-      <file>$TOOLKIT_DIR$\inc\dlib\ycheck.h</file>
-      <file>$TOOLKIT_DIR$\lib\dlib\dl430xsfn.r43</file>
-      <file>$PROJ_DIR$\..\Main\USBCDC\Common\hal_UCS.h</file>
-      <file>$PROJ_DIR$\..\Main\PulseCounter.c</file>
-      <file>$PROJ_DIR$\Debug\Obj\PulseCounter.pbd</file>
-      <file>$PROJ_DIR$\..\Main\USBCDC\USBCDC_constructs.h</file>
-      <file>$TOOLKIT_DIR$\inc\dlib\signal.h</file>
-      <file>$TOOLKIT_DIR$\inc\dlib\DLib_Defaults.h</file>
-      <file>$PROJ_DIR$\Debug\Obj\PulseCounter.r43</file>
-      <file>$TOOLKIT_DIR$\inc\msp430x552x.h</file>
       <file>$TOOLKIT_DIR$\inc\dlib\DLib_Product.h</file>
-      <file>$PROJ_DIR$\Debug\Obj\main.r43</file>
-      <file>$TOOLKIT_DIR$\inc\dlib\string.h</file>
-      <file>$PROJ_DIR$\main.c</file>
-      <file>$TOOLKIT_DIR$\inc\dlib\DLib_Threads.h</file>
-      <file>$TOOLKIT_DIR$\config\lnk430F5529.xcl</file>
-      <file>$TOOLKIT_DIR$\inc\in430.h</file>
-      <file>$PROJ_DIR$\..\Main\USBCDC\USBmain.h</file>
-      <file>$TOOLKIT_DIR$\inc\dlib\xencoding_limits.h</file>
       <file>$PROJ_DIR$\Debug\Obj\ExternalWakeup.pbi</file>
-      <file>$TOOLKIT_DIR$\lib\dlib\dl430xsfn.h</file>
-      <file>$PROJ_DIR$\..\Main\USBCDC\USB_Common\descriptors.h</file>
-      <file>$TOOLKIT_DIR$\inc\intrinsics.h</file>
-      <file>$PROJ_DIR$\..\Main\USBCDC\Common\device.h</file>
+      <file>$TOOLKIT_DIR$\inc\dlib\DLib_Threads.h</file>
+      <file>$PROJ_DIR$\Debug\Obj\PulseCounter.pbi</file>
       <file>$TOOLKIT_DIR$\inc\dlib\ysizet.h</file>
-      <file>$PROJ_DIR$\Debug\Exe\ExternalWakeup.d43</file>
-      <file>$PROJ_DIR$\Debug\Exe\PulseCounter.d43</file>
-      <file>$PROJ_DIR$\..\Main\USBCDC\USB_CDC_API\UsbCdc.h</file>
-      <file>$PROJ_DIR$\..\Main\USBCDC\Common\types.h</file>
-      <file>$PROJ_DIR$\..\Main\UGPS.h</file>
-      <file>$TOOLKIT_DIR$\config\multiplier32_loc2.xcl</file>
       <file>$PROJ_DIR$\..\Main\ExternalWakeup.c</file>
+      <file>$TOOLKIT_DIR$\lib\dlib\dl430xsfn.h</file>
+      <file>$PROJ_DIR$\..\Main\USBCDC\Common\types.h</file>
+      <file>$PROJ_DIR$\..\Main\USBCDC\USB_Common\descriptors.h</file>
+      <file>$PROJ_DIR$\Debug\Obj\ExternalWakeup.pbd</file>
+      <file>$PROJ_DIR$\..\Main\USBCDC\Common\device.h</file>
+      <file>$PROJ_DIR$\Debug\Obj\PulseCounter.r43</file>
+      <file>$PROJ_DIR$\..\Main\USBCDC\Common\hal_UCS.h</file>
+      <file>$TOOLKIT_DIR$\inc\in430.h</file>
+      <file>$TOOLKIT_DIR$\inc\dlib\signal.h</file>
+      <file>$TOOLKIT_DIR$\config\multiplier32_loc2.xcl</file>
+      <file>$PROJ_DIR$\..\Main\USBCDC\USBCDC_constructs.h</file>
+      <file>$PROJ_DIR$\Debug\Obj\PulseCounter.pbd</file>
+      <file>$PROJ_DIR$\Debug\Exe\ExternalWakeup.d43</file>
+      <file>$PROJ_DIR$\..\Main\USBCDC\USB_Common\usb.h</file>
+      <file>$PROJ_DIR$\..\Main\USBCDC\USB_Common\defMSP430USB.h</file>
+      <file>$PROJ_DIR$\Debug\Obj\ExternalWakeup.r43</file>
+      <file>$PROJ_DIR$\..\Main\USBCDC\USBmain.h</file>
+      <file>$TOOLKIT_DIR$\lib\dlib\dl430xsfn.r43</file>
+      <file>$PROJ_DIR$\Debug\Obj\main.pbi</file>
+      <file>$PROJ_DIR$\..\Main\USBCDC\USB_CDC_API\UsbCdc.h</file>
+      <file>$TOOLKIT_DIR$\inc\dlib\ycheck.h</file>
+      <file>$PROJ_DIR$\..\Main\PulseCounter.c</file>
+      <file>$TOOLKIT_DIR$\inc\dlib\xencoding_limits.h</file>
+      <file>$TOOLKIT_DIR$\inc\intrinsics.h</file>
+      <file>$TOOLKIT_DIR$\config\lnk430F5529.xcl</file>
+      <file>$PROJ_DIR$\Debug\Exe\PulseCounter.d43</file>
+      <file>$TOOLKIT_DIR$\inc\dlib\yvals.h</file>
+      <file>$TOOLKIT_DIR$\inc\msp430x552x.h</file>
+      <file>$TOOLKIT_DIR$\inc\dlib\string.h</file>
+      <file>$PROJ_DIR$\Debug\Obj\main.r43</file>
+      <file>$PROJ_DIR$\main.c</file>
+      <file>$PROJ_DIR$\..\Main\UGPS.h</file>
+      <file>$TOOLKIT_DIR$\inc\dlib\DLib_Defaults.h</file>
     </outputs>
+    <file>
+      <name>$PROJ_DIR$\..\Main\ExternalWakeup.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 1</file>
+        </tool>
+        <tool>
+          <name>ICC430</name>
+          <file> 21</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 37 33 13 29 14 26 32 38 0 28 2 10 7 12 8 19 25 34 4 16 22 20</file>
+        </tool>
+        <tool>
+          <name>ICC430</name>
+          <file> 37 33 13 29 14 26 32 38 6 0 28 2 10 7 12 8 19 25 34 4 16 22 20</file>
+        </tool>
+      </inputs>
+    </file>
     <file>
       <name>$PROJ_DIR$\Debug\Obj\ExternalWakeup.pbd</name>
       <inputs>
         <tool>
           <name>BILINK</name>
-          <file> 26 5</file>
+          <file> 1 24</file>
         </tool>
       </inputs>
     </file>
@@ -60,62 +83,16 @@
       <outputs>
         <tool>
           <name>XLINK</name>
-          <file> 32</file>
+          <file> 18</file>
         </tool>
       </outputs>
-    </file>
-    <file>
-      <name>$PROJ_DIR$\..\Main\PulseCounter.c</name>
-      <outputs>
-        <tool>
-          <name>BICOMP</name>
-          <file> 2</file>
-        </tool>
-        <tool>
-          <name>ICC430</name>
-          <file> 15</file>
-        </tool>
-      </outputs>
-      <inputs>
-        <tool>
-          <name>BICOMP</name>
-          <file> 36 16 23 29 30 35 9 28 1 34 19 7 6 14 17 25 21 31 12 24 0</file>
-        </tool>
-        <tool>
-          <name>ICC430</name>
-          <file> 36 16 23 29 30 35 9 28 1 34 19 7 6 14 27 17 25 21 31 12 24 0</file>
-        </tool>
-      </inputs>
     </file>
     <file>
       <name>$PROJ_DIR$\Debug\Obj\PulseCounter.pbd</name>
       <inputs>
         <tool>
           <name>BILINK</name>
-          <file> 2 5</file>
-        </tool>
-      </inputs>
-    </file>
-    <file>
-      <name>$PROJ_DIR$\main.c</name>
-      <outputs>
-        <tool>
-          <name>BICOMP</name>
-          <file> 5</file>
-        </tool>
-        <tool>
-          <name>ICC430</name>
-          <file> 18</file>
-        </tool>
-      </outputs>
-      <inputs>
-        <tool>
-          <name>BICOMP</name>
-          <file> 36 16 23 29 13 7 6 14 17 25 21 30 35 9 28 1 34 19 31 12 24 0</file>
-        </tool>
-        <tool>
-          <name>ICC430</name>
-          <file> 36 16 23 29 13 7 6 14 27 17 25 21 30 35 9 28 1 34 19 31 12 24 0</file>
+          <file> 3 24</file>
         </tool>
       </inputs>
     </file>
@@ -124,7 +101,30 @@
       <inputs>
         <tool>
           <name>XLINK</name>
-          <file> 22 37 4 18 8</file>
+          <file> 30 15 21 35 23</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\Main\PulseCounter.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 3</file>
+        </tool>
+        <tool>
+          <name>ICC430</name>
+          <file> 11</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 37 33 13 29 10 7 12 8 19 25 34 26 32 38 0 28 2 4 16 22 20</file>
+        </tool>
+        <tool>
+          <name>ICC430</name>
+          <file> 37 33 13 29 10 7 12 8 19 25 34 26 32 38 6 0 28 2 4 16 22 20</file>
         </tool>
       </inputs>
     </file>
@@ -133,30 +133,30 @@
       <inputs>
         <tool>
           <name>XLINK</name>
-          <file> 22 37 15 18 8</file>
+          <file> 30 15 11 35 23</file>
         </tool>
       </inputs>
     </file>
     <file>
-      <name>$PROJ_DIR$\..\Main\ExternalWakeup.c</name>
+      <name>$PROJ_DIR$\main.c</name>
       <outputs>
         <tool>
           <name>BICOMP</name>
-          <file> 26</file>
+          <file> 24</file>
         </tool>
         <tool>
           <name>ICC430</name>
-          <file> 4</file>
+          <file> 35</file>
         </tool>
       </outputs>
       <inputs>
         <tool>
           <name>BICOMP</name>
-          <file> 36 16 23 29 13 7 6 14 17 25 21 30 35 9 28 1 34 19 31 12 24 0</file>
+          <file> 37 33 13 29 14 26 32 38 0 28 2 10 7 12 8 19 25 34 4 16 22 20</file>
         </tool>
         <tool>
           <name>ICC430</name>
-          <file> 36 16 23 29 13 7 6 14 27 17 25 21 30 35 9 28 1 34 19 31 12 24 0</file>
+          <file> 37 33 13 29 14 26 32 38 6 0 28 2 10 7 12 8 19 25 34 4 16 22 20</file>
         </tool>
       </inputs>
     </file>
