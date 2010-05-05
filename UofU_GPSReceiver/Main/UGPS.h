@@ -132,7 +132,9 @@ static volatile BYTE bDataReceived_event = FALSE; // Indicates data has been rec
 static char wholeString[MAX_STR_LENGTH] = "";     // The entire input string from the last 'return'
 static unsigned int SlowToggle_Period = 20000-1;
 static unsigned int FastToggle_Period = 1000-1;
-static char page[2048];                 
+static char page[2048];
+
+void takesample(void);          //main function to call for gathering samples
 
 //////////////////////////////////////////////////////////////////////////////
 
