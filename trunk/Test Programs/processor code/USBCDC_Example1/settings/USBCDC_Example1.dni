@@ -11,9 +11,10 @@ ActionState=1
 Enabled=0
 ShowSource=1
 [DebugChecksum]
-Checksum=1977595663
+Checksum=-1770736565
 [DisAssemblyWindow]
-NumStates=_ 0
+NumStates=_ 1
+State 1=_ 1
 [CodeCoverage]
 Enabled=_ 0
 [State Storage]
@@ -39,6 +40,8 @@ LimitSize=0
 ByteLimit=50
 [BreakpointUsageDialog]
 Placement=_ 294 230 731 508
+[InstructionProfiling]
+Enabled=_ 0
 [Log file]
 LoggingEnabled=_ 0
 LogFile=_ ""
@@ -51,7 +54,8 @@ Count=0
 [FET]
 Clock mode=14
 Extended Clock mode=61663
-Extended Clock Control Enable=0
+Secure Password=
+Extended Clock Control Enable=1
 Advanced Extended Clock Control=0
 Emulation mode=0
 Free running=0
