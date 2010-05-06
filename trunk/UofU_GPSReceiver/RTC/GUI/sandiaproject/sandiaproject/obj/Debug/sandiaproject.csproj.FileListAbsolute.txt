@@ -1,0 +1,18 @@
+C:\Users\Jacob\Documents\Visual Studio 2008\Projects\sandiaproject\sandiaproject\bin\Debug\sandiaproject.exe
+C:\Users\Jacob\Documents\Visual Studio 2008\Projects\sandiaproject\sandiaproject\bin\Debug\sandiaproject.pdb
+C:\Users\Jacob\Documents\Visual Studio 2008\Projects\sandiaproject\sandiaproject\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Jacob\Documents\Visual Studio 2008\Projects\sandiaproject\sandiaproject\obj\Debug\sandiaproject.Form1.resources
+C:\Users\Jacob\Documents\Visual Studio 2008\Projects\sandiaproject\sandiaproject\obj\Debug\sandiaproject.Properties.Resources.resources
+C:\Users\Jacob\Documents\Visual Studio 2008\Projects\sandiaproject\sandiaproject\obj\Debug\sandiaproject.csproj.GenerateResource.Cache
+C:\Users\Jacob\Documents\Visual Studio 2008\Projects\sandiaproject\sandiaproject\obj\Debug\sandiaproject.exe
+C:\Users\Jacob\Documents\Visual Studio 2008\Projects\sandiaproject\sandiaproject\obj\Debug\sandiaproject.pdb
+C:\Users\Jacob\Documents\school\senior project\Test Programs\Serial communication\sandiaproject\sandiaproject\obj\Debug\sandiaproject.exe
+C:\Users\Jacob\Documents\school\senior project\Test Programs\Serial communication\sandiaproject\sandiaproject\obj\Debug\sandiaproject.pdb
+C:\Users\jacob\Documents\school\spring 2010\senior project\project\Test Programs\Serial communication\sandiaproject\sandiaproject\obj\Debug\sandiaproject.exe
+C:\Users\jacob\Documents\school\spring 2010\senior project\project\Test Programs\Serial communication\sandiaproject\sandiaproject\obj\Debug\sandiaproject.pdb
+C:\Users\jacob\Documents\school\spring 2010\senior project\project\Test Programs\Serial communication\sandiaproject\sandiaproject\bin\Debug\sandiaproject.exe
+C:\Users\jacob\Documents\school\spring 2010\senior project\project\Test Programs\Serial communication\sandiaproject\sandiaproject\bin\Debug\sandiaproject.pdb
+C:\Users\jacob\Documents\school\spring 2010\senior project\project\Test Programs\Serial communication\sandiaproject\sandiaproject\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\jacob\Documents\school\spring 2010\senior project\project\Test Programs\Serial communication\sandiaproject\sandiaproject\obj\Debug\sandiaproject.Form1.resources
+C:\Users\jacob\Documents\school\spring 2010\senior project\project\Test Programs\Serial communication\sandiaproject\sandiaproject\obj\Debug\sandiaproject.Properties.Resources.resources
+C:\Users\jacob\Documents\school\spring 2010\senior project\project\Test Programs\Serial communication\sandiaproject\sandiaproject\obj\Debug\sandiaproject.csproj.GenerateResource.Cache
