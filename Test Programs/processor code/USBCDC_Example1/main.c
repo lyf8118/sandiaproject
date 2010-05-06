@@ -325,6 +325,16 @@ VOID usb(char status)
     USB_setEnabledEvents(kUSB_VbusOnEvent+kUSB_VbusOffEvent+kUSB_receiveCompletedEvent
                           +kUSB_dataReceivedEvent+kUSB_UsbSuspendEvent+kUSB_UsbResumeEvent);
     
+    // Pre-fill the buffers with visible ASCII characters (0x21 to 0x7E)
+    // this is where we need to add info from the flash.
+    BYTE y=0x21;
+    for(w=0;w<MEGA_DATA_LENGTH;w++)
+    {
+      dataBuf[w] = y++;
+      if(y>0x7E)
+        y = 0x21;
+    }
+    
     // See if we're already attached physically to USB, and if so, connect to it
     // Normally applications don't invoke the event handlers, but this is an exception.  
     if (USB_connectionInfo() & kUSB_vbusPresent)
@@ -361,60 +371,16 @@ VOID usb(char status)
                   
                   if(retInString(wholeString))                                                        // Has the user pressed return yet?
                   {
-                    if(!(strcmp(wholeString, "LED ON")))                                              // Compare to string #1, and respond
+                    if(!(strcmp(wholeString, "GETDATA")))                                              // Compare to string #1, and send data.
                     {
                       TA1CTL &= ~MC_1;                                                                // Turn off Timer
-                      P1OUT |= BIT0;                                                                  // Turn on LED P1.0
-                      strcpy(outString,"\r\nLED is ON\r\n\r\n");                                      // Prepare the outgoing string
-                      sendData_inBackground((BYTE*)outString,strlen(outString),1,0);                  // Send the response over USB
-                    }
-                    else if(!(strcmp(wholeString, "LED OFF")))                                        // Compare to string #2, and respond
-                    {
-                      TA1CTL &= ~MC_1;                                                                // Turn off Timer
-                      P1OUT &= ~BIT0;                                                                 // Turn off LED P1.0
-                      strcpy(outString,"\r\nLED is OFF\r\n\r\n");                                     // Prepare the outgoing string
-                      sendData_inBackground((BYTE*)outString,strlen(outString),1,0);                  // Send the response over USB
-                    }
-                    else if(!(strcmp(wholeString, "LED TOGGLE - SLOW")))                              // Compare to string #3, and respond
-                    {                      
-                      TA1CTL &= ~MC_1;                                                                // Turn off Timer                      
-                      TA1CCR0 = SlowToggle_Period;                                                    // Set Timer Period for slow LED toggle
-                      TA1CTL |= MC_1;                                                                 // Start Timer
-                      strcpy(outString,"\r\nLED is toggling slowly\r\n\r\n");                         // Prepare the outgoing string
-                      sendData_inBackground((BYTE*)outString,strlen(outString),1,0);                  // Send the response over USB
-                    }
-                    else if(!(strcmp(wholeString, "LED TOGGLE - FAST")))                              // Compare to string #4, and respond
-                    {
-                      TA1CTL &= ~MC_1;                                                                // Turn off Timer                     
-                      TA1CCR0 = FastToggle_Period;                                                    // Set Timer Period for fast LED toggle
-                      TA1CTL |= MC_1;
-                      strcpy(outString,"\r\nLED is toggling fast\r\n\r\n");                           // Prepare the outgoing string
-                      sendData_inBackground((BYTE*)outString,strlen(outString),1,0);                  // Send the response over USB
-                    } 
-                    
-                    else if(!(strcmp(wholeString, "READSTATUS")))                              // Compare to string #4, and respond
-                    { 
-                      char st[2] = "";
-                      st[0] = ((!(!(status & BIT3)))+48);
-                      strcpy(outString,"\r\nReading Status: \r\n");
-                      strcat(outString,"\r\nProgram Fail: ");                           // Prepare the outgoing string 
-                      strcat(outString, st);
-                      st[0] = ((!(!(status & BIT2)))+48);
-                      strcat(outString,"\r\nERASE Fail: "); 
-                      strcat(outString, st);
-                      st[0] = ((!(!(status & BIT0)))+48);
-                      strcat(outString,"\r\nO.I.P.: ");
-                      strcat(outString, st);
-                      st[0] = ((!(!(status & BIT5)))+48);
-                      strcat(outString,"\r\nECC Fail: "); 
-                      strcat(outString, st);
-                      st[0] = ((!(!(status & BIT1)))+48);
-                      strcat(outString,"\r\nWrite Enable: "); 
-                      strcat(outString, st);
-                      strcat(outString, "\r\n");
-                      sendData_inBackground((BYTE*)outString,strlen(outString),1,0);                  // Send the response over USB
-                     
-                    }                    
+                      if(sendData_waitTilDone(dataBuf,MEGA_DATA_LENGTH,1,0))     // Send all of RAM
+                      {
+                        USBCDC_abortSend(&x,1);               // Operation probably still open; cancel it
+                        break;
+                      }
+                      //sendData_inBackground((BYTE*)outString,strlen(outString),1,0);                  // Send the response over USB
+                    }                   
                     else                                                                               // Handle other
                     {
                       strcpy(outString,"\r\nNo such command!\r\n\r\n");                                // Prepare the outgoing string
